@@ -1,0 +1,6 @@
+<div *ngFor="let actor of actors">
+  {{actor.firstName}} {{actor.lastName}} <button type="button" (click)="editActor(actor.id)">Edit</button> <button type="button" (click)="deleteActor(actor)">Delete</button>
+</div>
+<button type="button" (click)="createActor()">
+  Create actor
+</button>
