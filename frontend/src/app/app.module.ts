@@ -20,6 +20,8 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BandViewComponent } from './band-view/band-view.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 
 defineLocale('de', deLocale);
@@ -36,13 +38,16 @@ export function tokenGetter() {
     ActorFormComponent,
     ActorListComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    BandViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxDatatableModule,
+    BrowserModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
