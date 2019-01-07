@@ -1,0 +1,34 @@
+
+/*.band__container {
+  width: 300px;
+}*/
+
+.band__image {
+  width: 100%;
+  height: 350px;
+  margin-top: 60px;
+}
+
+.band__description {
+  width: 100%;
+  height: auto
+}
+
+/*.band__date {
+  padding: 0;
+  margin: 0;
+  color: #a4a4a4;
+  line-height: 16px;
+}*/
+
+.band__name {
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  transition: color .3s ease;
+}
+
+h3 {
+  margin-top: 20px;
+}
