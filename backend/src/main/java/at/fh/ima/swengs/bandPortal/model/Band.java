@@ -22,18 +22,17 @@ public class Band {
     @JsonIgnore
     private long version;
 
+    @Column(nullable = true)
     private String name;
 
     @OneToMany(mappedBy = "band")
     private List<Members> member;
 
+    @Column(nullable = true)
     private String genre;
 
     @ManyToOne
     private Country country;
-
-    @OneToOne
-    private User user;
 
     @ManyToMany
     @JoinTable(name = "events_bands",
@@ -45,6 +44,7 @@ public class Band {
     @OneToMany(mappedBy = "band")
     private List<Album> albums;
 
+    @Column(nullable = true)
     private String bandPicure;
 
     public Band() {
@@ -55,7 +55,6 @@ public class Band {
         this.member = member;
         this.genre = genre;
         this.country = country;
-        this.user = user;
         this.events = events;
         this.albums = albums;
         this.bandPicure = bandPicure;
@@ -99,14 +98,6 @@ public class Band {
 
     public void setCountry(Country country) {
         this.country = country;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getBandPicure() {

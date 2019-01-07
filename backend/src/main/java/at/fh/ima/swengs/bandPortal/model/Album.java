@@ -16,12 +16,13 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long albumID;
-
+    @Column(nullable = true)
     private String name;
 
     @ManyToOne
     private Band band;
 
+    @Column(nullable = true)
     private int releaseYear;
 
     @OneToMany(mappedBy = "album")

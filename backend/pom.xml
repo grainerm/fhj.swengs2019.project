@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.fh.ima.swengs</groupId>
-    <artifactId>moviedbv3</artifactId>
+    <artifactId>BandPortal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>moviedbv3</name>
+    <name>BandPortal</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>

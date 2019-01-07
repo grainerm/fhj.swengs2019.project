@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource()
-public interface AlbumRepository extends PagingAndSortingRepository<Album,Long>, JpaRepository<Album, Long>, CrudRepository<Album, Long> {
+public interface BandRepository extends PagingAndSortingRepository<Band,Long>, JpaRepository<Band, Long>, CrudRepository<Band, Long> {
 
-    public List<Album> findByName(@Param("name") String name);
+    public List<Band> findByName(@Param("name") String name);
 }

@@ -18,16 +18,20 @@ public class Events {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long eventID;
 
+    @Column(nullable = true)
     private String name;
 
+    @Column(nullable = true)
     private String place;
 
+    @Column(nullable = true)
     private Date date;
 
+    @Column(nullable = true)
     private String eventType;
 
     @ManyToOne
-    private String hostCountry;
+    private Country hostCountry;
 
     @ManyToMany
     @JoinTable(name = "events_bands",
@@ -43,7 +47,7 @@ public class Events {
     public Events() {
     }
 
-    public Events(String name, String place, Date date, String eventType, String hostCountry, Set<Band> bands) {
+    public Events(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
         this.name = name;
         this.place = place;
         this.date = date;
@@ -92,11 +96,11 @@ public class Events {
         this.eventType = eventType;
     }
 
-    public String getHostCountry() {
+    public Country getHostCountry() {
         return hostCountry;
     }
 
-    public void setHostCountry(String hostCountry) {
+    public void setHostCountry(Country hostCountry) {
         this.hostCountry = hostCountry;
     }
 

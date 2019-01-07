@@ -16,11 +16,13 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = true)
     private String name;
 
     @ManyToOne
-    private Band band;
+    private Album album;
 
+    @Column(nullable = true)
     private float length;
 
     @Version
@@ -32,7 +34,7 @@ public class Song {
 
     public Song(String name, Band band, float length) {
         this.name = name;
-        this.band = band;
+        this.album = album;
         this.length = length;
     }
 
@@ -52,12 +54,12 @@ public class Song {
         this.name = name;
     }
 
-    public Band getBand() {
-        return band;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setBand(Band band) {
-        this.band = band;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public float getLength() {

@@ -16,11 +16,13 @@ public class Members {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long memberID;
 
+    @Column(nullable = true)
     private String name;
 
     @ManyToOne
     private Band band;
 
+    @Column(nullable = true)
     private String role;
 
     @Version
