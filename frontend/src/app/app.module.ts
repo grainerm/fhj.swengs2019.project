@@ -12,14 +12,18 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {ToastrModule} from 'ngx-toastr';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ActorService} from './service/actor.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { EventsComponent } from './events/events.component';
 
 
 defineLocale('de', deLocale);
@@ -36,7 +40,9 @@ export function tokenGetter() {
     ActorFormComponent,
     ActorListComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    HomeComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,4 +67,5 @@ export function tokenGetter() {
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
