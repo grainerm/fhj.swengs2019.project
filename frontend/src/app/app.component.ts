@@ -30,4 +30,8 @@ export class AppComponent implements OnInit {
   navLogin() {
     this.router.navigate(['/login']);
   }
+
+  navHome() {
+    this.router.navigate(['/home']);
+  }
 }
