@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Set;
 
 public class BandDTO {
-    private long id;
+    private Long id;
     private String name;
-    private List<Member> member;
+    private List<Long> member;
     private String genre;
     private Country country;
-    private Set<Event> events;
-    private List<Album> albums;
+    private Set<Long> events;
+    private List<Long> albums;
     private String bandPicure;
 
     public long getId() {
@@ -35,11 +35,11 @@ public class BandDTO {
         this.name = name;
     }
 
-    public List<Member> getMember() {
+    public List<Long> getMember() {
         return member;
     }
 
-    public void setMember(List<Member> member) {
+    public void setMember(List<Long> member) {
         this.member = member;
     }
 
@@ -59,19 +59,19 @@ public class BandDTO {
         this.country = country;
     }
 
-    public Set<Event> getEvents() {
+    public Set<Long> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Event> events) {
+    public void setEvents(Set<Long> events) {
         this.events = events;
     }
 
-    public List<Album> getAlbums() {
+    public List<Long> getAlbums() {
         return albums;
     }
 
-    public void setAlbums(List<Album> albums) {
+    public void setAlbums(List<Long> albums) {
         this.albums = albums;
     }
 

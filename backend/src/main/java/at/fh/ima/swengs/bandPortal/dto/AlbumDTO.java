@@ -10,7 +10,7 @@ public class AlbumDTO {
     private String name;
     private Band band;
     private int releaseYear;
-    private List<Song> songs;
+    private List<Long> songs;
 
     public long getAlbumID() {
         return albumID;
@@ -44,11 +44,11 @@ public class AlbumDTO {
         this.releaseYear = releaseYear;
     }
 
-    public List<Song> getSongs() {
+    public List<Long> getSongs() {
         return songs;
     }
 
-    public void setSongs(List<Song> songs) {
+    public void setSongs(List<Long> songs) {
         this.songs = songs;
     }
 }
