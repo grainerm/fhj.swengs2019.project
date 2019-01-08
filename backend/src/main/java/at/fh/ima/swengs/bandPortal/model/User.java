@@ -18,7 +18,21 @@ public class User {
 
     private String username;
     private String password;
+
+    @OneToOne
+    private Band band;
+
     private boolean admin;
+
+    public User() {
+    }
+
+    public User(String username, String password, Band band, boolean admin) {
+        this.username = username;
+        this.password = password;
+        this.band = band;
+        this.admin = admin;
+    }
 
     public boolean isAdmin() {
         return admin;
@@ -42,6 +56,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Band getBand() {
+        return band;
+    }
+
+    public void setBand(Band band) {
+        this.band = band;
     }
 
     @Override
