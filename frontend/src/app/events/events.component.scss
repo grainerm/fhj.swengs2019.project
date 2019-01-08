@@ -19,26 +19,29 @@
   font-size: 100px;
 }
 
+.search-input {
+  margin-left: 35%;
+}
+
 .search-input input {
   width: 50%;
   margin-bottom: 40px;
-  float: right;
-  margin-right: 30%;
+  float: left;
 }
 
-.search-btn button {
-  //float: right;
-  padding: 6px 10px;
-  margin-top: -60%;
-  margin-left: 15%;
-  //margin-right: 300px;
+.search-input button {
   background: #ddd;
   font-size: 17px;
   border: none;
   cursor: pointer;
+  //height: 40px;
+
 }
 
-.search button:hover {
+.search-input button:hover {
   background: #ccc;
 }
 
+h1 {
+  color: lightgrey;
+}
