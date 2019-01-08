@@ -9,8 +9,8 @@
 
 <div class="container" [formGroup]="bandForm">
   <div align="center">
-    <h1>Linkin Park</h1>
-    <img src="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/03/linkin-park-2014.jpg?fit=673%2C373">
+    <h1>{{bandForm.controls['name']}}</h1>
+    <img src="{{bandForm.controls.bandPicture.value}}">
   </div>
   <div class="row">
 
@@ -18,32 +18,19 @@
     <div class="col info">
       <h2>Infos</h2>
 
-      <div [formGroup]="memberForm">
+      <div *ngFor="let member of members" [formGroup]="memberForm">
         <!-- Member Info -->
         <div class="row mb-1 form-group">
           <div class="col-sm-5">
-            <input id="role" type="text" name="role" formControlName="role" value="Singer"
+            <input id="role" type="text" name="role" formControlName="role" [value]="member.role"
                    class="form-control infoInput"/>
           </div>
           <div class="col-sm-6">
-            <input id="name" type="text" name="name" formControlName="name" value="Mike Shinoda"
+            <input id="name" type="text" name="name" formControlName="name" [value]="member.name"
                    class="form-control infoInput"/>
           </div>
           <div class="col-sm-1">
             <button class="btn"><i class="fa fa-trash"></i></button>
-          </div>
-        </div>
-        <div class="row mb-1">
-          <div class="col-sm-5">
-            <input id="lj" type="text" name="role" formControlName="role" value="Guitar"
-                   class="form-control infoInput" disabled/>
-          </div>
-          <div class="col-sm-6">
-            <input id="lkj" type="text" name="name" formControlName="name" value="Brad Delson"
-                   class="form-control infoInput"/>
-          </div>
-          <div class="col-sm-1">
-            <button class="btn" (click)="deleteMember(member)"><i class="fa fa-trash"></i></button>
           </div>
         </div>
 
@@ -73,7 +60,7 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <input id="year" type="text" name="year" formControlName="foundingYear" value="1995"
+          <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
                  class="form-control infoInput"/>
         </div>
         <div class="col-sm-6">

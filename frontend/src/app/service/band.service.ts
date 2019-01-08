@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MemberService {
+export class BandService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get('/api/members');
-  }
-
-  delete(member) {
-    return this.http.delete('/api/members/' + member.id);
+  getById(id: number) {
+    return this.http.get('/api/dto/bands/' + id).pipe(map((res: any) => {
+      return res;
+    }));
   }
 }

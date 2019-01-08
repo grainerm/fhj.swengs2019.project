@@ -34,6 +34,7 @@ public class BandFacade {
         entity.setEvents(eventService.getEvents(dto.getEvents()));
         entity.setCountry(dto.getCountry());
         entity.setMember(memberService.getMembers(dto.getMember()));
+        entity.setFoundingYear(dto.getFoundingYear());
     }
 
     private void mapEntityToDto(Band entity, BandDTO dto) {
@@ -44,6 +45,7 @@ public class BandFacade {
         dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));
         dto.setCountry(entity.getCountry());
         dto.setMember(entity.getMember().stream().map((s) -> s.getMemberID()).collect(Collectors.toList()));
+        dto.setFoundingYear(entity.getFoundingYear());
     }
 
     public BandDTO update(Long id, BandDTO dto) {

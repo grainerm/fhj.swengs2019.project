@@ -25,6 +25,9 @@ public class Band {
     @Column(nullable = true)
     private String name;
 
+    @Column(nullable = true)
+    private int foundingYear;
+
     @OneToMany(mappedBy = "band")
     private List<Member> members;
 
@@ -50,7 +53,7 @@ public class Band {
     public Band() {
     }
 
-    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicure) {
+    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicure, int foundingYear) {
         this.name = name;
         this.members = members;
         this.genre = genre;
@@ -58,6 +61,7 @@ public class Band {
         this.events = events;
         this.albums = albums;
         this.bandPicture = bandPicure;
+        this.foundingYear = foundingYear;
     }
 
     public long getId() {
@@ -122,5 +126,13 @@ public class Band {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public int getFoundingYear() {
+        return foundingYear;
+    }
+
+    public void setFoundingYear(int foundingYear) {
+        this.foundingYear = foundingYear;
     }
 }
