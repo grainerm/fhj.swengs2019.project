@@ -7,7 +7,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
-<div class="container">
+<div class="container" [formGroup]="bandForm">
   <div align="center">
     <h1>Linkin Park</h1>
     <img src="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/03/linkin-park-2014.jpg?fit=673%2C373">
@@ -43,7 +43,7 @@
                    class="form-control infoInput"/>
           </div>
           <div class="col-sm-1">
-            <button class="btn" (click)="deleteMember(member)">><i class="fa fa-trash"></i></button>
+            <button class="btn" (click)="deleteMember(member)"><i class="fa fa-trash"></i></button>
           </div>
         </div>
 
@@ -73,7 +73,7 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <input id="year" type="text" name="year" formControlName="year" value="1995"
+          <input id="year" type="text" name="year" formControlName="foundingYear" value="1995"
                  class="form-control infoInput"/>
         </div>
         <div class="col-sm-6">
@@ -104,8 +104,61 @@
               dolore magna aliqua.</p>
           </div>
         </div>
+        <div class="row mt-1 pull-right">
+        <button class="btn" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">New Event</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" [formGroup]="eventForm" (submit)="addEvent()">
+    <div class="row mb-1">
+      <div class="col-md-4">
+        <label for="eventName">Name:</label>
+      </div>
+      <div class="col-md-8">
+        <input id="eventName" type="text" name="name" formControlName="eventName" value=""
+               class="form-control"/>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-4">
+        <label for="location">Location:</label>
+      </div>
+      <div class="col-md-8">
+        <input id="location" type="text" name="location" formControlName="location" value=""
+               class="form-control"/>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-4">
+        <label for="date">Date:</label>
+      </div>
+      <div class="col-md-8">
+        <input id="date" bsDatepicker type="text" name="date" formControlName="date" value=""
+               class="form-control"/>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <label for="type">Type:</label>
+      </div>
+      <div class="col-md-8">
+        <input id="type" type="text" name="type" formControlName="type" value=""
+               class="form-control"/>
+      </div>
+    </div>
+    <div class="row pull-right mr-1">
+      <button class="btn" type="submit">Save</button>
+    </div>
+  </div>
+</ng-template>
