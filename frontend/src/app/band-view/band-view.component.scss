@@ -8,7 +8,7 @@ h2 {
   background-color: DodgerBlue; /* Blue background */
   border: none; /* Remove borders */
   color: white; /* White text */
-  padding: 10px 16px; /* Some padding */
+  padding: 5px 16px; /* Some padding */
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
@@ -16,4 +16,32 @@ h2 {
 /* Darker background on mouse-over */
 .btn:hover {
   background-color: RoyalBlue;
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+  border-left: 4px #efefef solid;
+}
+
+.row-striped {
+  padding: 15px 0;
+}
+
+.info {
+  margin-left: -15%;
+  margin-right: 2.5%;
+}
+
+.events {
+  margin-right: -15%;
+  margin-left: 2.5%;
+}
+
+.infoInput:disabled {
+  background-color: white;
 }

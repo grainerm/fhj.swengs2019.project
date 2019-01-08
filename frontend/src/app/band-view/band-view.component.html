@@ -1,26 +1,111 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<div align="center">
-  <h1>Linkin Park</h1>
-  <img src="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/03/linkin-park-2014.jpg?fit=673%2C373">
-</div>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
 <div class="container">
+  <div align="center">
+    <h1>Linkin Park</h1>
+    <img src="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/03/linkin-park-2014.jpg?fit=673%2C373">
+  </div>
   <div class="row">
-    <div class="col-sm-6">
+
+    <!-- Info Column -->
+    <div class="col info">
       <h2>Infos</h2>
 
-      <div class="row">
-      <div class="col">
-      <input id="role" type="text" name="role" formControlName="role" value="Singer" class="form-control-plaintext"/>
-      </div>
-        <div class="col">
-          <input id="name" type="text" name="name" formControlName="name" value="Mike Shinoda" class="form-control-plaintext"/>
+      <div [formGroup]="memberForm">
+        <!-- Member Info -->
+        <div class="row mb-1 form-group">
+          <div class="col-sm-5">
+            <input id="role" type="text" name="role" formControlName="role" value="Singer"
+                   class="form-control infoInput"/>
+          </div>
+          <div class="col-sm-6">
+            <input id="name" type="text" name="name" formControlName="name" value="Mike Shinoda"
+                   class="form-control infoInput"/>
+          </div>
+          <div class="col-sm-1">
+            <button class="btn"><i class="fa fa-trash"></i></button>
+          </div>
         </div>
-        <button class="btn"><i class="fa fa-trash"></i></button>
+        <div class="row mb-1">
+          <div class="col-sm-5">
+            <input id="lj" type="text" name="role" formControlName="role" value="Guitar"
+                   class="form-control infoInput" disabled/>
+          </div>
+          <div class="col-sm-6">
+            <input id="lkj" type="text" name="name" formControlName="name" value="Brad Delson"
+                   class="form-control infoInput"/>
+          </div>
+          <div class="col-sm-1">
+            <button class="btn" (click)="deleteMember(member)">><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+
+        <!-- new Member -->
+        <div class="row mb-5">
+          <div class="col-sm-5">
+            <input id="newRole" type="text" name="role" formControlName="role" value=""
+                   class="form-control infoInput" disabled/>
+          </div>
+          <div class="col-sm-6">
+            <input id="newMember" type="text" name="name" formControlName="name" value=""
+                   class="form-control infoInput"/>
+          </div>
+          <div class="col-sm-1 ">
+            <button class="btn"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <!-- other Info -->
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Founding Year</label>
+        </div>
+        <div class="col-sm-6">
+          <label>Country</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <input id="year" type="text" name="year" formControlName="year" value="1995"
+                 class="form-control infoInput"/>
+        </div>
+        <div class="col-sm-6">
+          <ngx-select id="country" [items]="test" name="country" [multiple]="true"
+                      formControlName="country"></ngx-select>
+
+        </div>
       </div>
     </div>
-    <div class="col-sm-6">
+
+    <!-- Event column -->
+    <div class="col events">
       <h2>Events</h2>
+      <div class="container">
+        <div class="row row-striped">
+          <div class="col-2 text-right">
+            <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
+            <h2>OCT</h2>
+          </div>
+          <div class="col-10">
+            <h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
+            <ul class="list-inline">
+              <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
+              <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
+              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+            </ul>
+            <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
