@@ -9,6 +9,7 @@ import {ActorResolver} from './resolver/actor.resolver';
 import {ActorListResolver} from './resolver/actor-list.resolver';
 import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
+import {BandViewComponent} from './band-view/band-view.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'events', component: EventsComponent
+  },
+  {
+    path: 'band-view', component: BandViewComponent
   },
   /*{
     path: 'actor-form', component: ActorFormComponent, canActivate: [AuthGuard], resolve: {

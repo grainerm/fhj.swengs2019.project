@@ -12,8 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
-import {BsDatepickerModule, BsDropdownModule, ModalModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
@@ -44,7 +43,7 @@ export function tokenGetter() {
     ActorListComponent,
     LoginComponent,
     LogoutComponent,
-    BandViewComponent
+    BandViewComponent,
     LogoutComponent,
     HomeComponent,
     EventsComponent
