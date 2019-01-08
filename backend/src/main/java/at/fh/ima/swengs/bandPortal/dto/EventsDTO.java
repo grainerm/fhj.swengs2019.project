@@ -5,6 +5,7 @@ import at.fh.ima.swengs.bandPortal.model.Country;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 public class EventsDTO {
@@ -15,7 +16,7 @@ public class EventsDTO {
     private Date date;
     private String eventType;
     private Country hostCountry;
-    private Set<Long> bands;
+    private List<Long> bands;
 
     public Long getEventID() {
         return eventID;
@@ -65,11 +66,11 @@ public class EventsDTO {
         this.hostCountry = hostCountry;
     }
 
-    public Set<Long> getBands() {
+    public List<Long> getBands() {
         return bands;
     }
 
-    public void setBands(Set<Long> bands) {
+    public void setBands(List<Long> bands) {
         this.bands = bands;
     }
 }
