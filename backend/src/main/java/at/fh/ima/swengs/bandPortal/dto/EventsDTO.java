@@ -9,19 +9,19 @@ import java.util.Set;
 
 public class EventsDTO {
 
-    private long eventID;
+    private Long eventID;
     private String name;
     private String place;
     private Date date;
     private String eventType;
     private Country hostCountry;
-    private Set<Band> bands;
+    private Set<Long> bands;
 
-    public long getEventID() {
+    public Long getEventID() {
         return eventID;
     }
 
-    public void setEventID(long eventID) {
+    public void setEventID(Long eventID) {
         this.eventID = eventID;
     }
 
@@ -65,11 +65,11 @@ public class EventsDTO {
         this.hostCountry = hostCountry;
     }
 
-    public Set<Band> getBands() {
+    public Set<Long> getBands() {
         return bands;
     }
 
-    public void setBands(Set<Band> bands) {
+    public void setBands(Set<Long> bands) {
         this.bands = bands;
     }
 }
