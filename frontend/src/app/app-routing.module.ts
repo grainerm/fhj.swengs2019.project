@@ -7,12 +7,21 @@ import {AuthGuard} from './auth.guard';
 import {MoviesResolver} from './resolver/movies.resolver';
 import {ActorResolver} from './resolver/actor.resolver';
 import {ActorListResolver} from './resolver/actor-list.resolver';
+import {HomeComponent} from './home/home.component';
+import {EventsComponent} from './events/events.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/actor-list', pathMatch: 'full'
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+
+  {
+    path: 'home', component: HomeComponent
   },
   {
+    path: 'events', component: EventsComponent
+  },
+  /*{
     path: 'actor-form', component: ActorFormComponent, canActivate: [AuthGuard], resolve: {
       actor: ActorResolver,
       movies: MoviesResolver, }
@@ -25,7 +34,7 @@ const routes: Routes = [
   {
     path: 'actor-list', component: ActorListComponent, canActivate: [AuthGuard], resolve: {
       actors: ActorListResolver, }
-  },
+  },*/
   {
     path: 'login', component: LoginComponent
   },
