@@ -12,7 +12,7 @@ import java.util.Set;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "eventID")
-public class Events {
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +44,10 @@ public class Events {
     @JsonIgnore
     private long version;
 
-    public Events() {
+    public Event() {
     }
 
-    public Events(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
+    public Event(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
         this.name = name;
         this.place = place;
         this.date = date;

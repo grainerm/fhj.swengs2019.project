@@ -26,7 +26,7 @@ public class Band {
     private String name;
 
     @OneToMany(mappedBy = "band")
-    private List<Members> member;
+    private List<Member> members;
 
     @Column(nullable = true)
     private String genre;
@@ -39,25 +39,25 @@ public class Band {
             joinColumns = @JoinColumn(name = "bands_id"),
             inverseJoinColumns = @JoinColumn(name = "events_id")
     )
-    private Set<Events> events;
+    private Set<Event> events;
 
     @OneToMany(mappedBy = "band")
     private List<Album> albums;
 
     @Column(nullable = true)
-    private String bandPicure;
+    private String bandPicture;
 
     public Band() {
     }
 
-    public Band(String name, List<Members> member, String genre, Country country, User user, Set<Events> events, List<Album> albums, String bandPicure) {
+    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicure) {
         this.name = name;
-        this.member = member;
+        this.members = members;
         this.genre = genre;
         this.country = country;
         this.events = events;
         this.albums = albums;
-        this.bandPicure = bandPicure;
+        this.bandPicture = bandPicure;
     }
 
     public long getId() {
@@ -76,12 +76,12 @@ public class Band {
         this.name = name;
     }
 
-    public List<Members> getMember() {
-        return member;
+    public List<Member> getMember() {
+        return members;
     }
 
-    public void setMember(List<Members> member) {
-        this.member = member;
+    public void setMember(List<Member> members) {
+        this.members = members;
     }
 
     public String getGenre() {
@@ -100,19 +100,19 @@ public class Band {
         this.country = country;
     }
 
-    public String getBandPicure() {
-        return bandPicure;
+    public String getBandPicture() {
+        return bandPicture;
     }
 
-    public void setBandPicure(String bandPicure) {
-        this.bandPicure = bandPicure;
+    public void setBandPicture(String bandPicure) {
+        this.bandPicture = bandPicure;
     }
 
-    public Set<Events> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Events> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
     }
 
