@@ -1,7 +1,8 @@
 package at.fh.ima.swengs.bandPortal.dto;
 
 import at.fh.ima.swengs.bandPortal.model.Band;
-import at.fh.ima.swengs.bandPortal.model.Events;
+import at.fh.ima.swengs.bandPortal.model.Event;
+
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class CountryDTO {
     private long countryID;
     private String name;
     private List<Band> bands;
-    private List<Events> events;
+    private List<Event> events;
 
     public long getCountryID() {
         return countryID;
@@ -36,11 +37,11 @@ public class CountryDTO {
         this.bands = bands;
     }
 
-    public List<Events> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Events> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 }
