@@ -5,9 +5,7 @@ import at.fh.ima.swengs.bandPortal.model.BandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service()
 public class BandService {
@@ -24,8 +22,8 @@ public class BandService {
         return bandRepository.save(entity);
     }
 
-    public Set<Band> getBands(Set<Long> dtos) {
-        Set<Band> entities = new HashSet<>();
+    public List<Band> getBands(List<Long> dtos) {
+        List<Band> entities = new ArrayList<>();
         if (dtos != null) {
             dtos.forEach((dto) -> entities.add(bandRepository.findById(dto).get()));
         }

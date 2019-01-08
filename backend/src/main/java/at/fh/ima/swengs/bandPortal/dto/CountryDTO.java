@@ -5,13 +5,14 @@ import at.fh.ima.swengs.bandPortal.model.Event;
 
 
 import java.util.List;
+import java.util.Set;
 
 public class CountryDTO {
 
     private long countryID;
     private String name;
-    private List<Band> bands;
-    private List<Event> events;
+    private List<Long> bands;
+    private Set<Long> events;
 
     public long getCountryID() {
         return countryID;
@@ -29,19 +30,19 @@ public class CountryDTO {
         this.name = name;
     }
 
-    public List<Band> getBands() {
+    public List<Long> getBands() {
         return bands;
     }
 
-    public void setBands(List<Band> bands) {
+    public void setBands(List<Long> bands) {
         this.bands = bands;
     }
 
-    public List<Event> getEvents() {
+    public Set<Long> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(Set<Long> events) {
         this.events = events;
     }
 }
