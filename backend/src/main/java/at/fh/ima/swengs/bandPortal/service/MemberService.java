@@ -5,9 +5,7 @@ import at.fh.ima.swengs.bandPortal.model.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service()
 public class MemberService {
@@ -24,8 +22,8 @@ public class MemberService {
         return memberRepository.save(entity);
     }
 
-    public Set<Member> getMembers(Set<Long> dtos) {
-        Set<Member> entities = new HashSet<>();
+    public List<Member> getMembers(List<Long> dtos) {
+        List<Member> entities = new ArrayList<>();
         if (dtos != null) {
             dtos.forEach((dto) -> entities.add(memberRepository.findById(dto).get()));
         }
