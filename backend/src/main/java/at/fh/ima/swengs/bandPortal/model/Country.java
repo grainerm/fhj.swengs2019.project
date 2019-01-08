@@ -24,7 +24,7 @@ public class Country {
     private List<Band> bands;
 
     @OneToMany(mappedBy = "hostCountry")
-    private List<Events> events;
+    private List<Event> events;
 
     @Version
     @JsonIgnore
@@ -33,7 +33,7 @@ public class Country {
     public Country() {
     }
 
-    public Country(String name, List<Band> bands, List<Events> events) {
+    public Country(String name, List<Band> bands, List<Event> events) {
         this.name = name;
         this.bands = bands;
         this.events = events;
@@ -63,11 +63,11 @@ public class Country {
         this.bands = bands;
     }
 
-    public List<Events> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Events> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 }

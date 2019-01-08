@@ -10,7 +10,7 @@ import javax.persistence.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "memberID")
-public class Members {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +37,10 @@ public class Members {
         this.version = version;
     }
 
-    public Members() {
+    public Member() {
     }
 
-    public Members(String name, Band band, String role) {
+    public Member(String name, Band band, String role) {
         this.name = name;
         this.band = band;
         this.role = role;
