@@ -1,0 +1,24 @@
+/*
+SELECT * FROM IMA16_ortner_SWENGS_project_1.band;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.country;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.album;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.events;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.member;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.song;
+SELECT * FROM IMA16_ortner_SWENGS_project_1.user;
+*/
+
+INSERT INTO IMA16_ortner_SWENGS_project_1.country(name, version)
+VALUES ('England', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1970', 'Rock', 'Queen', '1', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.album(name, release_year, band_id, version)
+VALUES ('A kind of Magic', '1986', '1', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.song(name, length, album_albumid, version)
+VALUES ('One Vision', '5.10', '1', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.song(name, length, album_albumid, version)
+VALUES ('A kind of Magic', '4.24', '1', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.member(name, role, band_id, version)
+VALUES ('Freddie Mercury', 'Singer', '1', '1'); 
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, version)
+VALUES ('Rock am Ring', '20191212', 'concert', 'Hohe Straße 7', '1', '1');

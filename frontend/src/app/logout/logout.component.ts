@@ -22,6 +22,7 @@ export class LogoutComponent implements OnInit {
 
   logout() {
     this.userService.logout();
+    this.isLoggedIn = false;
   }
 
 }
