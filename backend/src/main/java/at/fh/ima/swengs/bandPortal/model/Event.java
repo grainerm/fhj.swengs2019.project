@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,7 @@ public class Event {
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "band_id")
     )
-    private Set<Band> bands;
+    private List<Band> bands;
 
     @Version
     @JsonIgnore
@@ -47,7 +48,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
+    public Event(String name, String place, Date date, String eventType, Country hostCountry, List<Band> bands) {
         this.name = name;
         this.place = place;
         this.date = date;
@@ -104,11 +105,11 @@ public class Event {
         this.hostCountry = hostCountry;
     }
 
-    public Set<Band> getBands() {
+    public List<Band> getBands() {
         return bands;
     }
 
-    public void setBands(Set<Band> bands) {
+    public void setBands(List<Band> bands) {
         this.bands = bands;
     }
 }

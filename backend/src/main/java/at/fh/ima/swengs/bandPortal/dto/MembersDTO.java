@@ -7,16 +7,16 @@ import javax.persistence.ManyToOne;
 
 public class MembersDTO {
 
-    private long memberID;
+    private Long memberID;
     private String name;
     private Band band;
     private String role;
 
-    public long getMemberID() {
+    public Long getMemberID() {
         return memberID;
     }
 
-    public void setMemberID(long memberID) {
+    public void setMemberID(Long memberID) {
         this.memberID = memberID;
     }
 

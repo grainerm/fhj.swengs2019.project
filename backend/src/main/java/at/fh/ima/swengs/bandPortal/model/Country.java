@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
@@ -24,7 +25,7 @@ public class Country {
     private List<Band> bands;
 
     @OneToMany(mappedBy = "hostCountry")
-    private List<Event> events;
+    private Set<Event> events;
 
     @Version
     @JsonIgnore
@@ -33,7 +34,7 @@ public class Country {
     public Country() {
     }
 
-    public Country(String name, List<Band> bands, List<Event> events) {
+    public Country(String name, List<Band> bands, Set<Event> events) {
         this.name = name;
         this.bands = bands;
         this.events = events;
@@ -63,11 +64,11 @@ public class Country {
         this.bands = bands;
     }
 
-    public List<Event> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
     }
 }
