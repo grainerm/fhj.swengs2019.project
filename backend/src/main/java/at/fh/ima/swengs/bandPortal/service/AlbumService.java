@@ -5,9 +5,7 @@ import at.fh.ima.swengs.bandPortal.model.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service()
 public class AlbumService {
@@ -24,8 +22,8 @@ public class AlbumService {
         return albumRepository.save(entity);
     }
 
-    public Set<Album> getAlben(Set<Long> dtos) {
-        Set<Album> entities = new HashSet<>();
+    public List<Album> getAlben(List<Long> dtos) {
+        List<Album> entities = new ArrayList<>();
         if (dtos != null) {
             dtos.forEach((dto) -> entities.add(albumRepository.findById(dto).get()));
         }
