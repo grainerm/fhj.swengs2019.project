@@ -2,8 +2,9 @@ package at.fh.ima.swengs.bandPortal.dto;
 
 import at.fh.ima.swengs.bandPortal.model.Album;
 import at.fh.ima.swengs.bandPortal.model.Country;
-import at.fh.ima.swengs.bandPortal.model.Events;
-import at.fh.ima.swengs.bandPortal.model.Members;
+import at.fh.ima.swengs.bandPortal.model.Member;
+
+import sun.plugin2.ipc.Event;
 
 import java.util.List;
 import java.util.Set;
@@ -11,10 +12,10 @@ import java.util.Set;
 public class BandDTO {
     private long id;
     private String name;
-    private List<Members> member;
+    private List<Member> member;
     private String genre;
     private Country country;
-    private Set<Events> events;
+    private Set<Event> events;
     private List<Album> albums;
     private String bandPicure;
 
@@ -34,11 +35,11 @@ public class BandDTO {
         this.name = name;
     }
 
-    public List<Members> getMember() {
+    public List<Member> getMember() {
         return member;
     }
 
-    public void setMember(List<Members> member) {
+    public void setMember(List<Member> member) {
         this.member = member;
     }
 
@@ -58,11 +59,11 @@ public class BandDTO {
         this.country = country;
     }
 
-    public Set<Events> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Events> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
     }
 
