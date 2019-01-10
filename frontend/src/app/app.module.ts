@@ -12,7 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule, BsDropdownModule, CollapseModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
@@ -20,6 +20,8 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BandViewComponent } from './band-view/band-view.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -41,6 +43,8 @@ export function tokenGetter() {
     ActorListComponent,
     LoginComponent,
     LogoutComponent,
+    BandViewComponent,
+    LogoutComponent,
     HomeComponent,
     EventsComponent
   ],
@@ -49,6 +53,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

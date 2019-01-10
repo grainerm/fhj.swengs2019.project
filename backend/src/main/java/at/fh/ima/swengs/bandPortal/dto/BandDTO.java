@@ -10,14 +10,15 @@ import java.util.List;
 import java.util.Set;
 
 public class BandDTO {
-    private Long id;
+    private long id;
     private String name;
     private List<Long> member;
     private String genre;
     private Country country;
     private Set<Long> events;
     private List<Long> albums;
-    private String bandPicure;
+    private String bandPicture;
+
     private int foundingYear;
 
     public long getId() {
@@ -76,12 +77,20 @@ public class BandDTO {
         this.albums = albums;
     }
 
-    public String getBandPicure() {
-        return bandPicure;
+    public String getBandPicture() {
+        return bandPicture;
     }
 
-    public void setBandPicure(String bandPicure) {
-        this.bandPicure = bandPicure;
+    public void setBandPicture(String bandPicture) {
+        this.bandPicture = bandPicture;
+    }
+
+    public int getFoundingYear() {
+        return foundingYear;
+    }
+
+    public void setFoundingYear(int foundingYear) {
+        this.foundingYear = foundingYear;
     }
 
     public int getFoundingYear() {

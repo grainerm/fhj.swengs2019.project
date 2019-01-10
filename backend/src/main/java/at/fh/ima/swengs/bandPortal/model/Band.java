@@ -3,6 +3,8 @@ package at.fh.ima.swengs.bandPortal.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,7 +27,10 @@ public class Band {
     @Column(nullable = true)
     private String name;
 
-    @OneToMany(mappedBy = "band")
+    @Column(nullable = true)
+    private int foundingYear;
+
+    @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
     private List<Member> members;
 
     @Column(nullable = true)
@@ -53,7 +58,8 @@ public class Band {
     public Band() {
     }
 
-    public Band(String name, List<Member> members, String genre, int foundingYear, Country country, Set<Event> events, List<Album> albums, String bandPicture) {
+    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicture, int foundingYear) {
+
         this.name = name;
         this.members = members;
         this.genre = genre;
@@ -62,6 +68,7 @@ public class Band {
         this.events = events;
         this.albums = albums;
         this.bandPicture = bandPicture;
+        this.foundingYear = foundingYear;
     }
 
     public long getId() {
@@ -108,8 +115,8 @@ public class Band {
         return bandPicture;
     }
 
-    public void setBandPicture(String bandPicure) {
-        this.bandPicture = bandPicure;
+    public void setBandPicture(String bandPicture) {
+        this.bandPicture = bandPicture;
     }
 
     public Set<Event> getEvents() {
@@ -135,7 +142,6 @@ public class Band {
     public void setMembers(List<Member> members) {
         this.members = members;
     }
-
     public int getFoundingYear() {
         return foundingYear;
     }
