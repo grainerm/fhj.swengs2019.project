@@ -31,6 +31,9 @@ public class Band {
     @Column(nullable = true)
     private String genre;
 
+    @Column(nullable = true)
+    private int foundingYear;
+
     @ManyToOne
     private Country country;
 
@@ -50,14 +53,15 @@ public class Band {
     public Band() {
     }
 
-    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicure) {
+    public Band(String name, List<Member> members, String genre, int foundingYear, Country country, Set<Event> events, List<Album> albums, String bandPicture) {
         this.name = name;
         this.members = members;
         this.genre = genre;
+        this.foundingYear = foundingYear;
         this.country = country;
         this.events = events;
         this.albums = albums;
-        this.bandPicture = bandPicure;
+        this.bandPicture = bandPicture;
     }
 
     public long getId() {
@@ -122,5 +126,21 @@ public class Band {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
+
+    public int getFoundingYear() {
+        return foundingYear;
+    }
+
+    public void setFoundingYear(int foundingYear) {
+        this.foundingYear = foundingYear;
     }
 }
