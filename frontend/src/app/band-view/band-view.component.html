@@ -7,20 +7,20 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
-<div class="container" [formGroup]="bandForm">
+<div class="container" [formGroup]="bandForm" (submit)="saveBand()">
   <div align="center">
-    <h1>{{bandForm.controls['name']}}</h1>
-    <img src="{{bandForm.controls.bandPicture.value}}">
+    <h1>{{bandForm.value.name}}</h1>
   </div>
+  <img src="{{bandForm.value.bandPicture}}" >
   <div class="row">
 
     <!-- Info Column -->
     <div class="col info">
       <h2>Infos</h2>
 
-      <div *ngFor="let member of members" [formGroup]="memberForm">
+      <div [formGroup]="memberForm">
         <!-- Member Info -->
-        <div class="row mb-1 form-group">
+        <div *ngFor="let member of members" class="row mb-1 form-group">
           <div class="col-sm-5">
             <input id="role" type="text" name="role" formControlName="role" [value]="member.role"
                    class="form-control infoInput"/>
@@ -30,7 +30,7 @@
                    class="form-control infoInput"/>
           </div>
           <div class="col-sm-1">
-            <button class="btn"><i class="fa fa-trash"></i></button>
+            <button (click)="deleteMember(member)" class="btn"><i class="fa fa-trash"></i></button>
           </div>
         </div>
 
@@ -38,14 +38,14 @@
         <div class="row mb-5">
           <div class="col-sm-5">
             <input id="newRole" type="text" name="role" formControlName="role" value=""
-                   class="form-control infoInput" disabled/>
+                   class="form-control infoInput" />
           </div>
           <div class="col-sm-6">
             <input id="newMember" type="text" name="name" formControlName="name" value=""
                    class="form-control infoInput"/>
           </div>
           <div class="col-sm-1 ">
-            <button class="btn"><i class="fa fa-plus"></i></button>
+            <button type="button" (click)="addMember()" class="btn"><i class="fa fa-plus"></i></button>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
       <div class="row">
         <div class="col-sm-6">
           <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
-                 class="form-control infoInput"/>
+                 class="form-control infoInput" value="{{bandForm.value.foundingYear}}"/>
         </div>
         <div class="col-sm-6">
           <ngx-select id="country" [items]="test" name="country" [multiple]="true"
@@ -74,26 +74,25 @@
     <!-- Event column -->
     <div class="col events">
       <h2>Events</h2>
-      <div class="container">
-        <div class="row row-striped">
+      <div class="container"  [formGroup]="eventForm">
+        <div class="row row-striped" *ngFor="let event of events">
           <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-            <h2>OCT</h2>
+            <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date:'MM'}}</span></h1>
+            <h2>{{event.date | date:'MMM'}}</h2>
           </div>
           <div class="col-10">
-            <h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
+            <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
             <ul class="list-inline">
-              <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-              <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+              <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date | date:'EE'}}</li>
+              <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date | date:'HH:mm'}}</li>
+              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.place}}</li>
             </ul>
-            <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.</p>
+            <p>{{event.eventType}}</p>
           </div>
         </div>
-        <div class="row mt-1 pull-right">
+      </div>
+      <div class="row mt-1 pull-right">
         <button class="btn" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
-        </div>
       </div>
 
     </div>

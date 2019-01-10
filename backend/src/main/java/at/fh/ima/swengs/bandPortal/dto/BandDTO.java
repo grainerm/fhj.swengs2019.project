@@ -17,7 +17,7 @@ public class BandDTO {
     private Country country;
     private Set<Long> events;
     private List<Long> albums;
-    private String bandPicure;
+    private String bandPicture;
     private int foundingYear;
 
     public long getId() {
@@ -76,12 +76,12 @@ public class BandDTO {
         this.albums = albums;
     }
 
-    public String getBandPicure() {
-        return bandPicure;
+    public String getBandPicture() {
+        return bandPicture;
     }
 
-    public void setBandPicure(String bandPicure) {
-        this.bandPicure = bandPicure;
+    public void setBandPicture(String bandPicture) {
+        this.bandPicture = bandPicture;
     }
 
     public int getFoundingYear() {

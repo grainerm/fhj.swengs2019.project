@@ -7,12 +7,12 @@ import javax.persistence.ManyToOne;
 
 public class MembersDTO {
 
-    private Long memberID;
+    private long memberID;
     private String name;
     private Band band;
     private String role;
 
-    public Long getMemberID() {
+    public long getMemberID() {
         return memberID;
     }
 
