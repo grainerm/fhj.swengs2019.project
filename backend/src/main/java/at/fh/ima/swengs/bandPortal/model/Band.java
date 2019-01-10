@@ -36,6 +36,9 @@ public class Band {
     @Column(nullable = true)
     private String genre;
 
+    @Column(nullable = true)
+    private int foundingYear;
+
     @ManyToOne
     private Country country;
 
@@ -56,9 +59,11 @@ public class Band {
     }
 
     public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicture, int foundingYear) {
+
         this.name = name;
         this.members = members;
         this.genre = genre;
+        this.foundingYear = foundingYear;
         this.country = country;
         this.events = events;
         this.albums = albums;
@@ -130,6 +135,13 @@ public class Band {
         this.albums = albums;
     }
 
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
     public int getFoundingYear() {
         return foundingYear;
     }
