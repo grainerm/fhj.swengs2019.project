@@ -24,6 +24,8 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
+import { BanduserFormComponent } from './banduser-form/banduser-form.component';
+import { BanduserListComponent } from './banduser-list/banduser-list.component';
 
 
 defineLocale('de', deLocale);
@@ -42,7 +44,9 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    BanduserFormComponent,
+    BanduserListComponent
   ],
   imports: [
     BrowserModule,

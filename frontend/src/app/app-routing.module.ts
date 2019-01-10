@@ -9,6 +9,8 @@ import {ActorResolver} from './resolver/actor.resolver';
 import {ActorListResolver} from './resolver/actor-list.resolver';
 import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
+import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {BanduserFormComponent} from './banduser-form/banduser-form.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,15 @@ const routes: Routes = [
   },*/
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'banduser-list', component: BanduserListComponent
+  },
+  {
+    path: 'banduser-form', component: BanduserFormComponent
+  },
+  {
+    path: 'banduser-form/:id', component: BanduserFormComponent
   },
 ];
 
