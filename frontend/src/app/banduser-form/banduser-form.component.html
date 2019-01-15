@@ -16,15 +16,17 @@
       </div>
     </div>
   </div>
-</form>
 
-  <div class="btn-group">
+  <div class="btn-group" *ngIf="newBand === false">
     <button type="submit" class="btn btn-primary" [disabled]="bandForm.invalid">
       Save
     </button>
-  </div><br><br>
+  </div>
+</form>
 
-<form [formGroup]="userForm" (ngSubmit)="saveUser()">
+<br><br>
+
+<form [formGroup]="userForm" (ngSubmit)="saveUser()" *ngIf="newBand === true">
   <div class="row">
     <div class="col">
       <div class="form-group">
@@ -46,7 +48,7 @@
       <input id="password" type="text" name="password" formControlName="password" class="form-control"/>
     </div>
   </div>
-  <div class="row" *ngIf="newBand === true">
+  <div class="row">
     <div class="col">
       <label for="band">Band:</label>
       <input id="band" [value]="bandForm.value.name" name="band" formControlName="band" class="form-control" readonly/>
