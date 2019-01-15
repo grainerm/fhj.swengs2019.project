@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class UserService {
 
+  isAdmin: boolean;
   isLoggedIn = false;
   loggedInChange: Subject<boolean> = new Subject<boolean>();
   jwtHelperService: JwtHelperService;
@@ -42,8 +43,13 @@ export class UserService {
       localStorage.setItem(this.accessTokenLocalStorageKey, token);
       console.log(this.jwtHelperService.decodeToken(token));
       this.loggedInChange.next(true);
-      this.router.navigate(['/actor-list']);
-      return res;
+      this.isAdmin = this.getRole();
+      if (this.isAdmin) {
+        this.router.navigate(['/banduser-list']);
+        return res;
+      }
+      this.getBand();
+      console.log(user.id);
     }));
   }
 
@@ -68,5 +74,25 @@ export class UserService {
 
         return throwError(err);
       }));
+  }
+
+  getAll() {
+    return this.http.get('/api/users');
+  }
+
+  getRole() {
+    const helper = new JwtHelperService();
+    let token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    token = helper.decodeToken(token);
+    // console.log(token)
+    if (token['authorities'].includes('ROLE_ADMIN')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  getBand() {
+    this.router.navigate(['/band-view/1']);
   }
 }
