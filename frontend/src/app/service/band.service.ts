@@ -16,4 +16,8 @@ export class BandService {
       return res;
     }));
   }
+
+  getAll() {
+    return this.http.get('/api/bands');
+  }
 }
