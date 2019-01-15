@@ -135,13 +135,6 @@ public class Band {
         this.albums = albums;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
     public int getFoundingYear() {
         return foundingYear;
     }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {Band} from '../api/bandname';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,10 @@ export class BandService {
 
   getAll() {
     return this.http.get('/api/bands');
+  }
+
+  create(band: Band) {
+    return this.http.post('/api/dto/bands', band)
+      .pipe();
   }
 }
