@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BandDTO {
-    private long id;
+    private Long id;
     private String name;
     private List<Long> member;
     private String genre;
@@ -20,11 +20,11 @@ public class BandDTO {
     private String bandPicture;
     private int foundingYear;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
