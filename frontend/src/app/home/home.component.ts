@@ -15,17 +15,7 @@ import {Band} from '../api/band';
 })
 export class HomeComponent implements OnInit {
 
-  /*@Input('image')
-  image = '';
-
-  @Input('name')
-  name = '';
-
-  @Input('description')
-  description = '';*/
-
   bands: Array<Band>;
-  //homeForm;
 
   constructor(private route: ActivatedRoute, private bandService: BandService, private router: Router) { }
 
