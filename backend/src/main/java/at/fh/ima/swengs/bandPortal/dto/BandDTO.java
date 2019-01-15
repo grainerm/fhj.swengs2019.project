@@ -18,6 +18,7 @@ public class BandDTO {
     private Set<Long> events;
     private List<Long> albums;
     private String bandPicture;
+    private String description;
 
     private int foundingYear;
 
@@ -93,4 +94,11 @@ public class BandDTO {
         this.foundingYear = foundingYear;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
