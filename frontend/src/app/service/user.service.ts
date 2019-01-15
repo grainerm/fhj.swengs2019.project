@@ -53,14 +53,14 @@ export class UserService {
     this.router.navigate(['/login']);
   }
   delete(user) {
-    return this.http.delete('/api/bandusers/' + user.id);
+    return this.http.delete('/api/users/' + user.id);
   }
   create(user: User) {
-    return this.http.post('/api/dto/bandusers', user);
+    return this.http.post('/api/dto/users', user);
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/bandusers/' + user.id, user).pipe(
+    return this.http.put('/api/dto/users/' + user.id, user).pipe(
       catchError((err: HttpErrorResponse) => {
         console.log('toastrService!');
 
@@ -69,4 +69,9 @@ export class UserService {
         return throwError(err);
       }));
   }
+
+  getAll() {
+    return this.http.get('/api/users');
+  }
+
 }

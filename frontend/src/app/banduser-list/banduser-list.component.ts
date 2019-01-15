@@ -19,8 +19,14 @@ export class BanduserListComponent implements OnInit {
 
   ngOnInit() {
 
+    /*this.users = this.userService.getAll(this.users);
+
     const data = this.route.snapshot.data;
-    this.users = data.users;
+    this.users = data.users._embedded.users;
+    console.log(this.users);*/
+    this.userService.getAll().subscribe((response: any) => {
+      this.users = response._embedded.users;
+    });
   }
 
   deleteUser(user: User) {

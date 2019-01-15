@@ -12,7 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, ModalModule, SortableModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
@@ -58,6 +58,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     ModalModule.forRoot(),
+    SortableModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
