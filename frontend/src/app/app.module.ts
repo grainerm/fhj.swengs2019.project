@@ -26,6 +26,9 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
+import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import { BandnameComponent } from './bandname/bandname.component';
 
 
 defineLocale('de', deLocale);
@@ -42,6 +45,8 @@ export function tokenGetter() {
     ActorFormComponent,
     ActorListComponent,
     LoginComponent,
+    BanduserListComponent,
+    BanduserFormComponent,
     LogoutComponent,
     BandViewComponent,
     LogoutComponent,

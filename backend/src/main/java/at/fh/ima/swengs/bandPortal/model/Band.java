@@ -36,9 +36,6 @@ public class Band {
     @Column(nullable = true)
     private String genre;
 
-    @Column(nullable = true)
-    private int foundingYear;
-
     @ManyToOne
     private Country country;
 
@@ -135,13 +132,6 @@ public class Band {
         this.albums = albums;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
     public int getFoundingYear() {
         return foundingYear;
     }

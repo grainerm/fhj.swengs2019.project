@@ -1,9 +1,34 @@
+<form [formGroup]="bandForm" (ngSubmit)="saveBand()">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="name">Bandname:</label>
+        <input id="name" type="text" name="name" formControlName="name" class="form-control"/>
+        <div *ngIf="bandForm.controls.name.invalid && (bandForm.controls.name.dirty || bandForm.controls.name.touched)"
+             class="alert alert-danger">
+          <div *ngIf="bandForm.controls.name.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="bandForm.controls.name.errors.minlength">
+            Name must be at least 2 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary" [disabled]="bandForm.invalid">
+      Save
+    </button>
+  </div><br><br>
+
 <form [formGroup]="userForm" (ngSubmit)="saveUser()">
   <div class="row">
     <div class="col">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input id="username" type="text" name="userame" formControlName="username" class="form-control"/>
+        <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
         <div *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)"
              class="alert alert-danger">
           <div *ngIf="userForm.controls.username.errors.required">
@@ -20,11 +45,10 @@
       <input id="password" type="text" name="password" formControlName="password" class="form-control"/>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="newBand === true">
     <div class="col">
       <label for="band">Band:</label>
-      <ngx-select id="band" [items]="bandOptions" name="band" [multiple]="false"
-                  formControlName="band" optionTextField="name"></ngx-select>
+      <input id="band" [value]="bandForm.value.name" name="band" formControlName="band" class="form-control"/>
     </div>
   </div>
  <div class="row">
