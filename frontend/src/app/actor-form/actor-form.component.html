@@ -12,7 +12,7 @@
         <input id="firstName" type="text" name="firstName" formControlName="firstName" class="form-control"/>
         <div *ngIf="actorForm.controls.firstName.invalid && (actorForm.controls.firstName.dirty || actorForm.controls.firstName.touched)"
              class="alert alert-danger">
-          <div *ngIf="actorForm.controls.firstName.errors.required">
+          <div *ngIf="actorForm.controls.fisrstName.errors.required">
             Name is required.
           </div>
           <div *ngIf="actorForm.controls.firstName.errors.minlength">

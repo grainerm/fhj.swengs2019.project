@@ -28,7 +28,7 @@ public class BandFacade {
 
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
-        entity.setBandPicture(dto.getBandPicure());
+        entity.setBandPicture(dto.getBandPicture());
         entity.setGenre(dto.getGenre());
         entity.setAlbums(albumService.getAlben(dto.getAlbums()));
         entity.setEvents(eventService.getEvents(dto.getEvents()));
@@ -39,7 +39,7 @@ public class BandFacade {
 
     private void mapEntityToDto(Band entity, BandDTO dto) {
         dto.setName(entity.getName());
-        dto.setBandPicure(entity.getBandPicture());
+        dto.setBandPicture(entity.getBandPicture());
         dto.setGenre(entity.getGenre());
         dto.setAlbums(entity.getAlbums().stream().map((s) -> s.getAlbumID()).collect(Collectors.toList()));
         dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));

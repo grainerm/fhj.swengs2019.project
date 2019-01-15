@@ -9,8 +9,8 @@ import {ActorResolver} from './resolver/actor.resolver';
 import {ActorListResolver} from './resolver/actor-list.resolver';
 import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
-import {BanduserListComponent} from './banduser-list/banduser-list.component';
-import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {BandViewComponent} from './band-view/band-view.component';
+import {BandResolver} from './resolver/band.resolver';
 
 const routes: Routes = [
   {
@@ -22,6 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'events', component: EventsComponent
+  },
+  {
+    path: 'band-view/:id', component: BandViewComponent, resolve: {
+      band: BandResolver
+    }
   },
   /*{
     path: 'actor-form', component: ActorFormComponent, canActivate: [AuthGuard], resolve: {
@@ -39,15 +44,6 @@ const routes: Routes = [
   },*/
   {
     path: 'login', component: LoginComponent
-  },
-  {
-    path: 'banduser-list', component: BanduserListComponent
-  },
-  {
-    path: 'banduser-form', component: BanduserFormComponent
-  },
-  {
-    path: 'banduser-form/:id', component: BanduserFormComponent
   },
 ];
 

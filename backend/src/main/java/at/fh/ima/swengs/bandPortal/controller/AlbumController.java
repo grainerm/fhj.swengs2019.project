@@ -18,7 +18,7 @@ public class AlbumController {
         return albumFacade.getById(id);
     }
 
-    @PostMapping("/dto/albeb")
+    @PostMapping("/dto/alben")
     AlbumDTO create(@RequestBody @Valid AlbumDTO dto) {
         return albumFacade.create(dto);
     }
