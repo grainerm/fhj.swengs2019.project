@@ -37,3 +37,15 @@ h3 {
 p {
   color: aliceblue;
 }
+
+button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: lightgrey ;
+  font-size: 40px;
+  padding-left: 0px;
+}
