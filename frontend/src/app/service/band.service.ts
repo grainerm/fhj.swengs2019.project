@@ -26,4 +26,13 @@ export class BandService {
   create(band: Band) {
     return this.http.post('/api/dto/bands', band);
   }
+
+  getAll() {
+    return this.http.get('/api/bands');
+  }
+
+  create(band: Band) {
+    return this.http.post('/api/dto/bands', band)
+      .pipe();
+  }
 }

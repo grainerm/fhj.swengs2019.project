@@ -4,4 +4,6 @@ export interface Band {
   foundingYear?: number;
   genre?: string;
   member?: Array<any>;
+  bandPicture: string;
+  description: string;
 }

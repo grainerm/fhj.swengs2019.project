@@ -7,12 +7,14 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <form (submit)="saveBand()" [formGroup]="bandForm">
-  <div class="container">
-    <div align="center">
-      <h1>{{bandForm.value.name}}</h1>
-    </div>
-    <img src="{{bandForm.value.bandPicture}}">
-    <div class="row">
+<div class="container">
+  <div align="center">
+    <h1>{{bandForm.value.name}}</h1>
+  </div>
+  <div class="col-md-8 offset-2">
+    <img src="{{bandForm.value.bandPicture}}" class="band__image"/>
+  </div>
+  <div class="row">
 
       <!-- Info Column -->
       <div class="col info">

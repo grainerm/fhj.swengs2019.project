@@ -11,6 +11,9 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {BandViewComponent} from './band-view/band-view.component';
 import {BandResolver} from './resolver/band.resolver';
+import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {BandListResolver} from './resolver/band-list.resolver';
 
 const routes: Routes = [
   {
@@ -18,7 +21,9 @@ const routes: Routes = [
   },
 
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, resolve: {
+      bands: BandListResolver
+    }
   },
   {
     path: 'events', component: EventsComponent
@@ -44,6 +49,15 @@ const routes: Routes = [
   },*/
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'banduser-list', component: BanduserListComponent
+  },
+  {
+    path: 'banduser-form', component: BanduserFormComponent
+  },
+  {
+    path: 'banduser-form/:id', component: BanduserFormComponent
   },
 ];
 
