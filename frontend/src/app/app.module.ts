@@ -28,7 +28,6 @@ import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
-import { BandnameComponent } from './bandname/bandname.component';
 
 
 defineLocale('de', deLocale);
