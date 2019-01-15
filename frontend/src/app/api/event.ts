@@ -4,5 +4,4 @@ export interface Event {
   place: string;
   date: string;
   eventType: string;
-  //bands: Array<any>;
 }
