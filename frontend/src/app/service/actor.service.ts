@@ -12,7 +12,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ActorService {
 
-  constructor(private toastrService: ToastrService, private http: HttpClient, private onlineStatusService: OnlineStatusService, private router: Router) {
+  constructor(private toastrService: ToastrService, private http: HttpClient, private onlineStatusService: OnlineStatusService,
+              private router: Router) {
     this.onlineStatusService.status.subscribe((status: OnlineStatusType) => {
       if (status === OnlineStatusType.ONLINE) {
         const offlineActors = this.getOfflineActors();
