@@ -11,6 +11,11 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {BandViewComponent} from './band-view/band-view.component';
 import {BandResolver} from './resolver/band.resolver';
+import {MapComponent} from './map/map.component';
+import {BandListResolver} from './resolver/band-list.resolver';
+import {CountriesResolver} from './resolver/countries.resolver';
+import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {BanduserFormComponent} from './banduser-form/banduser-form.component';
 
 const routes: Routes = [
   {
