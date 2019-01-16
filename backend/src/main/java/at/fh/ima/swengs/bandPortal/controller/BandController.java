@@ -28,4 +28,9 @@ public class BandController {
         return bandFacade.update(id, dto);
     }
 
+    /*@GetMapping("/dto/user_band")
+    BandDTO getUserBand() {
+        return bandFacade.getUserBand();
+    }*/
+
 }

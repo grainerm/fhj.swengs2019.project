@@ -15,6 +15,7 @@ public class UserFacade {
     private UserDetailsServiceImpl userDetailsService;
 
     void mapDtoToEntity(UserDTO dto, User entity) {
+        entity.setId(dto.getId());
         entity.setUsername(dto.getUsername());
         entity.setPassword(dto.getPassword());
         entity.setAdmin(dto.isAdmin());

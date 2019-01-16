@@ -18,6 +18,8 @@ export class UserService {
   loggedInChange: Subject<boolean> = new Subject<boolean>();
   jwtHelperService: JwtHelperService;
 
+  users: Array<User>;
+
   accessTokenLocalStorageKey = 'access_token';
 
   constructor(private http: HttpClient, private router: Router, private toastrService: ToastrService) {
@@ -48,7 +50,7 @@ export class UserService {
         this.router.navigate(['/banduser-list']);
         return res;
       }
-      this.getBand();
+      this.getBand(user);
       console.log(user.id);
     }));
   }
@@ -68,8 +70,6 @@ export class UserService {
   update(user: User) {
     return this.http.put('/api/dto/bandusers/' + user.id, user).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log('toastrService!');
-
         this.toastrService.error('You can not update when offline');
 
         return throwError(err);
@@ -92,7 +92,7 @@ export class UserService {
     return false;
   }
 
-  getBand() {
-    this.router.navigate(['/band-view/1']);
+  getBand(user) {
+    this.router.navigate(['/band-view']);
   }
 }
