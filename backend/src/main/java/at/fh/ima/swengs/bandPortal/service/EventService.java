@@ -31,4 +31,11 @@ public class EventService {
         }
         return entities;
     }
+    public Set<Event> getEventsByName(Set<String> dtos) {
+        Set<Event> entities = new HashSet<>();
+        if (dtos != null) {
+            dtos.forEach((dto) -> entities.add(eventRepository.findByName(dto).get(0)));
+        }
+        return entities;
+    }
 }

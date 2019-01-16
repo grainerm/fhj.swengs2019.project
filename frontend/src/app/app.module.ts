@@ -26,6 +26,7 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
+import { MapComponent } from './map/map.component';
 
 
 defineLocale('de', deLocale);
@@ -46,7 +47,8 @@ export function tokenGetter() {
     BandViewComponent,
     LogoutComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

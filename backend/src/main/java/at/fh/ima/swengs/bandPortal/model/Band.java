@@ -36,8 +36,6 @@ public class Band {
     @Column(nullable = true)
     private String genre;
 
-    @Column(nullable = true)
-    private int foundingYear;
 
     @ManyToOne
     private Country country;
@@ -68,7 +66,6 @@ public class Band {
         this.events = events;
         this.albums = albums;
         this.bandPicture = bandPicture;
-        this.foundingYear = foundingYear;
     }
 
     public long getId() {
