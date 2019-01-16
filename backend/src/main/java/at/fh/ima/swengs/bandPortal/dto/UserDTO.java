@@ -9,7 +9,7 @@ public class UserDTO {
     private Long id;
     private String username;
     private String password;
-    private Band band;
+    private Long band_id;
     private boolean admin;
 
     public Long getId() {
@@ -36,12 +36,12 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Band getBand() {
-        return band;
+    public Long getBand_id() {
+        return band_id;
     }
 
-    public void setBand(Band band) {
-        this.band = band;
+    public void setBand_id(Long band_id) {
+        this.band_id = band_id;
     }
 
     public boolean isAdmin() {

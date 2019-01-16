@@ -13,4 +13,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long>, 
 
     User findByUsername(String username);
 
+    Long findByBand(Long band);
+
 }
