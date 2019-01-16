@@ -2,6 +2,7 @@ package at.fh.ima.swengs.bandPortal.dto;
 
 import at.fh.ima.swengs.bandPortal.model.Album;
 import at.fh.ima.swengs.bandPortal.model.Country;
+import at.fh.ima.swengs.bandPortal.model.Media;
 import at.fh.ima.swengs.bandPortal.model.Member;
 
 import sun.plugin2.ipc.Event;
@@ -14,10 +15,11 @@ public class BandDTO {
     private String name;
     private List<Long> member;
     private String genre;
-    private Country country;
+    private Long country;
     private Set<Long> events;
     private List<Long> albums;
     private String bandPicture;
+    //private Set<Media> bandPicture;
     private String description;
 
     private int foundingYear;
@@ -54,11 +56,11 @@ public class BandDTO {
         this.genre = genre;
     }
 
-    public Country getCountry() {
+    public Long getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(Long country) {
         this.country = country;
     }
 
@@ -77,6 +79,15 @@ public class BandDTO {
     public void setAlbums(List<Long> albums) {
         this.albums = albums;
     }
+
+    /*public Set<Media> getBandPicture() {
+        return bandPicture;
+    }
+
+    public void setBandPicture(Media bandPicture) {
+        if(bandPicture != null)
+            this.bandPicture.add(bandPicture);
+    }*/
 
     public String getBandPicture() {
         return bandPicture;

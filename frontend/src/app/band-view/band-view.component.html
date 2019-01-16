@@ -12,6 +12,7 @@
     <h1>{{bandForm.value.name}}</h1>
   </div>
   <div class="col-md-8 offset-2">
+    <app-mediainput></app-mediainput>
     <img src="{{bandForm.value.bandPicture}}" class="band__image"/>
   </div>
   <div class="row">
@@ -24,15 +25,15 @@
           <!-- Member Info -->
           <div *ngFor="let member of members" class="row mb-1 form-group">
             <div class="col-sm-5">
-              <input id="role" type="text" name="role" formControlName="role" [value]="member.role"
+              <input id="role" type="text" name="role" [value]="member.role"
                      class="form-control infoInput"/>
             </div>
             <div class="col-sm-6">
-              <input id="name" type="text" name="name" formControlName="name" [value]="member.name"
+              <input id="name" type="text" name="name" [value]="member.name"
                      class="form-control infoInput"/>
             </div>
             <div class="col-sm-1">
-              <button (click)="deleteMember(member)" class="btn"><i class="fa fa-trash"></i></button>
+              <button (click)="deleteMember(member)" type="button" class="btn"><i class="fa fa-trash"></i></button>
             </div>
           </div>
 
@@ -66,7 +67,7 @@
             <label>Country</label>
           </div>
           <div class="col-sm-7">
-            <ngx-select id="country" [items]="countries" optionTextField="name" name="country"
+            <ngx-select id="country" [items]="countries" optionValueField="countryID" optionTextField="name" name="country"
                         [placeholder]="bandForm.value.country.name" [noAutoComplete]="true"
                         formControlName="country"></ngx-select>
 
@@ -113,7 +114,7 @@
           </div>
         </div>
         <div class="row mt-1 pull-right">
-          <button class="btn" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
+          <button class="btn" type="button" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
         </div>
 
       </div>
@@ -173,7 +174,7 @@
           <label for="type">Host Country:</label>
         </div>
         <div class="col-md-8">
-          <ngx-select id="hostCountry" [items]="countries" optionTextField="name" name="country"
+          <ngx-select id="hostCountry" [items]="countries" optionValueField="countryID" optionTextField="name" name="country"
                       placeholder="Select a country..." [noAutoComplete]="true"
                       formControlName="hostCountry"></ngx-select>
         </div>

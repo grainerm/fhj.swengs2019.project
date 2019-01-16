@@ -1,8 +1,10 @@
 package at.fh.ima.swengs.bandPortal.facade;
 
 import at.fh.ima.swengs.bandPortal.dto.EventsDTO;
+import at.fh.ima.swengs.bandPortal.model.Country;
 import at.fh.ima.swengs.bandPortal.model.Event;
 import at.fh.ima.swengs.bandPortal.service.BandService;
+import at.fh.ima.swengs.bandPortal.service.CountryService;
 import at.fh.ima.swengs.bandPortal.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +22,16 @@ public class EventFacade {
     @Autowired
     private BandService bandService;
 
+    @Autowired
+    private CountryService countryService;
+
 
     void mapDtoToEntity(EventsDTO dto, Event entity){
         entity.setName(dto.getName());
         entity.setPlace(dto.getPlace());
         entity.setDate(dto.getDate());
         entity.setEventType(dto.getEventType());
-        entity.setHostCountry(dto.getHostCountry());
+        entity.setHostCountry(countryService.findById(dto.getHostCountry()).get());
         entity.setBands(bandService.getBands(dto.getBands()));
     }
 
@@ -36,7 +41,7 @@ public class EventFacade {
         dto.setPlace(entity.getPlace());
         dto.setDate(entity.getDate());
         dto.setEventType(entity.getEventType());
-        dto.setHostCountry(entity.getHostCountry());
+        dto.setHostCountry(entity.getHostCountry().getCountryID());
         dto.setBands(entity.getBands().stream().map((m) -> m.getId()).collect(Collectors.toList()));
     }
 

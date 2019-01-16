@@ -17,7 +17,7 @@ import {Country} from '../api/country';
 })
 export class BandViewComponent implements OnInit {
 
-  countries: Array<Country>;
+  countries;
   memberForm;
   eventForm;
   bandForm;
@@ -26,7 +26,8 @@ export class BandViewComponent implements OnInit {
   events;
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
-              private bandService: BandService, private eventService: EventService, private  countryService: CountryService) { }
+              private bandService: BandService, private eventService: EventService, private  countryService: CountryService) {
+  }
 
   ngOnInit() {
 
@@ -48,19 +49,20 @@ export class BandViewComponent implements OnInit {
       'events': new FormControl(),
       'albums': new FormControl(),
       'member': new FormControl(),
-      'bandPicture': new FormControl()
+      'bandPicture': new FormControl(),
+      'description': new FormControl()
     });
     this.memberForm = new FormGroup({
-      'memberID': new FormControl(),
+      'memberID': new FormControl(0),
       'role': new FormControl(),
       'name': new FormControl(),
-      'band_id': new FormControl()
+      'band_id': new FormControl(this.route.snapshot.paramMap.get('id'))
     });
     this.eventForm = new FormGroup({
-      'eventID': new FormControl(),
+      'eventID': new FormControl(0),
       'name': new FormControl(),
       'place': new FormControl(),
-      'date': new FormControl(new Date()),
+      'date': new FormControl(),
       'eventType': new FormControl(),
       'hostCountry': new FormControl()
     });
@@ -92,9 +94,9 @@ export class BandViewComponent implements OnInit {
 
   deleteMember(member: Member) {
     // const member = this.memberForm.value;
-    console.log(member.memberID);
+    console.log(member);
     this.memberService.delete(member)
-      .subscribe(() => {
+      .subscribe((response) => {
         this.ngOnInit();
       });
 
@@ -103,12 +105,14 @@ export class BandViewComponent implements OnInit {
   addMember() {
     const id = this.route.snapshot.paramMap.get('id');
     const member = this.memberForm.value;
-    console.log(member);
     this.memberService.create(member)
       .subscribe((response: any) => {
-      alert('created successfully');
-    });
-    this.members.push(member);
+        this.members.push(response);
+      });
+    this.memberForm.reset();
+    // this.bandForm.controls.member.setValue(this.members);
+
+    console.log(this.bandForm.value);
     // this.memberForm.controls.name.setValue('');
     // this.memberForm.controls.role.setValue('');
   }
@@ -119,9 +123,8 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
-    console.log(band.id);
-    const id = this.route.snapshot.paramMap.get('id');
-    if (band.id === 0) {
+    console.log(band);
+    if (band.id) {
       this.bandService.update(band)
         .subscribe((response) => {
           alert('updated successfully');
@@ -132,7 +135,10 @@ export class BandViewComponent implements OnInit {
 
   addEvent() {
     const event = this.eventForm.value;
-    this.events.push(event);
+    this.eventService.create(event)
+      .subscribe((response: any) => {
+        this.events.push(response);
+      });
     console.log(event.date);
     this.eventForm.reset();
     this.modalRef.hide();

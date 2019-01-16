@@ -15,7 +15,7 @@ public class EventsDTO {
     private String place;
     private Date date;
     private String eventType;
-    private Country hostCountry;
+    private Long hostCountry;
     private List<Long> bands;
 
     public Long getEventID() {
@@ -58,11 +58,11 @@ public class EventsDTO {
         this.eventType = eventType;
     }
 
-    public Country getHostCountry() {
+    public Long getHostCountry() {
         return hostCountry;
     }
 
-    public void setHostCountry(Country hostCountry) {
+    public void setHostCountry(Long hostCountry) {
         this.hostCountry = hostCountry;
     }
 

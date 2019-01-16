@@ -28,6 +28,9 @@ import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {MediainputComponent} from './mediainput/mediainput.component';
+import {FileUploadModule} from 'ng2-file-upload';
+import {SafeUrlPipe} from './safe-url.pipe';
 
 
 defineLocale('de', deLocale);
@@ -50,13 +53,16 @@ export function tokenGetter() {
     BandViewComponent,
     LogoutComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    MediainputComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FileUploadModule,
     ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {

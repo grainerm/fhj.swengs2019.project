@@ -9,7 +9,7 @@ public class MembersDTO {
 
     private long memberID;
     private String name;
-    private Band band;
+    private Long band_id;
     private String role;
 
     public long getMemberID() {
@@ -28,12 +28,12 @@ public class MembersDTO {
         this.name = name;
     }
 
-    public Band getBand() {
-        return band;
+    public Long getBand_id() {
+        return band_id;
     }
 
-    public void setBand(Band band) {
-        this.band = band;
+    public void setBand_id(Long band_id) {
+        this.band_id = band_id;
     }
 
     public String getRole() {
