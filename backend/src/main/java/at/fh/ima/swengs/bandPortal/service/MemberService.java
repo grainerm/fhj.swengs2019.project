@@ -1,5 +1,7 @@
 package at.fh.ima.swengs.bandPortal.service;
 
+import at.fh.ima.swengs.bandPortal.model.Band;
+import at.fh.ima.swengs.bandPortal.model.BandRepository;
 import at.fh.ima.swengs.bandPortal.model.Member;
 import at.fh.ima.swengs.bandPortal.model.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private BandRepository bandRepository;
 
 
     public Optional<Member> findById(Long id) {
@@ -28,5 +33,10 @@ public class MemberService {
             dtos.forEach((dto) -> entities.add(memberRepository.findById(dto).get()));
         }
         return entities;
+    }
+
+    public Optional<Band> getBand(Long id)
+    {
+       return bandRepository.findById(id);
     }
 }

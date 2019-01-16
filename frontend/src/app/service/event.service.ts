@@ -12,4 +12,11 @@ export class EventService {
     return this.http.get('/api/events');
   }
 
+  delete(event) {
+    return this.http.delete('/api/events/' + event.eventID);
+  }
+
+  create(event) {
+    return this.http.post('/api/dto/events', event);
+  }
 }

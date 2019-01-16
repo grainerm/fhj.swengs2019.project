@@ -52,6 +52,10 @@ public class Band {
     @OneToMany(mappedBy = "band")
     private List<Album> albums;
 
+    /*@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "band_picture")
+    private Media bandPicture;*/
+
     @Column(nullable = true)
     private String bandPicture;
 
