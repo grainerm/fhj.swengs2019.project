@@ -16,16 +16,17 @@ public class MemberFacade {
     private MemberService memberService;
 
     void mapDtoToEntity(MembersDTO dto, Member entity){
+        entity.setMemberID(dto.getMemberID());
         entity.setName(dto.getName());
         entity.setRole(dto.getRole());
-        entity.setBand(dto.getBand());
+        entity.setBand(memberService.getBand(dto.getBand_id()).get());
     }
 
     private void mapEntityToDto(Member entity, MembersDTO dto){
         dto.setMemberID(entity.getMemberID());
         dto.setName(entity.getName());
         dto.setRole(entity.getRole());
-        dto.setBand(entity.getBand());
+        dto.setBand_id(entity.getBand().getId());
     }
 
     public MembersDTO update(Long id, MembersDTO dto) {

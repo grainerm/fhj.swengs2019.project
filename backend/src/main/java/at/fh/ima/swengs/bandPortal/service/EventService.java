@@ -1,5 +1,6 @@
 package at.fh.ima.swengs.bandPortal.service;
 
+import at.fh.ima.swengs.bandPortal.model.CountryRepository;
 import at.fh.ima.swengs.bandPortal.model.Event;
 import at.fh.ima.swengs.bandPortal.model.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,5 @@ public class EventService {
         }
         return entities;
     }
+
 }

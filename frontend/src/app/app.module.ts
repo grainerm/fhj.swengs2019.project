@@ -28,6 +28,9 @@ import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
 import {MapComponent} from './map/map.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {MediainputComponent} from './mediainput/mediainput.component';
+import {FileUploadModule} from 'ng2-file-upload';
+import {SafeUrlPipe} from './safe-url.pipe';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 
 
@@ -52,13 +55,17 @@ export function tokenGetter() {
     LogoutComponent,
     HomeComponent,
     EventsComponent,
-    MapComponent
+    MediainputComponent,
+    SafeUrlPipe,
+    EventsComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FileUploadModule,
     ModalModule.forRoot(),
     SortableModule.forRoot(),
     JwtModule.forRoot({

@@ -9,6 +9,6 @@ export class CountryService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get('api/dto/countries');
+    return this.http.get('api/countries');
   }
 }
