@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service()
@@ -27,18 +30,20 @@ public class CountryFacade {
 
     void mapDtoToEntity(CountryDTO dto, Country entity) {
         entity.setName(dto.getName());
-        entity.setEvents(eventService.getEvents(dto.getEvents()));
-        entity.setBands(bandService.getBands(dto.getBands()));
+        entity.setEvents(eventService.getEventsByName(dto.getEvents()));
+        entity.setBands(bandService.getBandsForName(dto.getBands()));
+        entity.setNameCode(dto.getNameCode());
     }
 
     private void mapEntityToDto(Country entity, CountryDTO dto) {
-        dto.setCountryID(entity.getCountryID());
+        dto.setId(entity.getNameCode());
         dto.setName(entity.getName());
-        dto.setBands(entity.getBands().stream().map((s) -> s.getId()).collect(Collectors.toList()));
-        dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));
+        dto.setBands(entity.getBands().stream().map((s) -> s.getName()).collect(Collectors.toList()));
+        dto.setEvents(entity.getEvents().stream().map((s) -> s.getName()).collect(Collectors.toSet()));
+        dto.setNameCode(entity.getNameCode());
     }
 
-    public CountryDTO update(Long id, CountryDTO dto) {
+    public CountryDTO update(long id, CountryDTO dto) {
         Country entity = countryService.findById(id).get();
         mapDtoToEntity(dto, entity);
         mapEntityToDto(countryService.save(entity), dto);
@@ -52,10 +57,19 @@ public class CountryFacade {
         return dto;
     }
 
-    public CountryDTO getById(Long id) {
+    public CountryDTO getById(long id) {
         Country entity = countryService.findById(id).get();
         CountryDTO dto = new CountryDTO();
         mapEntityToDto(entity, dto);
         return dto;
+    }
+    public List<CountryDTO> getAll(){
+         List<CountryDTO> cdto = new ArrayList<CountryDTO>();
+         countryService.getAllCountries().forEach(entity -> {
+             CountryDTO dto = new CountryDTO();
+             mapEntityToDto(entity,dto);
+             cdto.add(dto);
+         });
+         return cdto;
     }
 }

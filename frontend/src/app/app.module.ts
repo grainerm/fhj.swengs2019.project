@@ -12,7 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, ModalModule, SortableModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
@@ -26,11 +26,12 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
-import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {MapComponent} from './map/map.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import {SafeUrlPipe} from './safe-url.pipe';
+import {BanduserListComponent} from './banduser-list/banduser-list.component';
 
 
 defineLocale('de', deLocale);
@@ -56,6 +57,8 @@ export function tokenGetter() {
     EventsComponent,
     MediainputComponent,
     SafeUrlPipe
+    EventsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ export function tokenGetter() {
     FormsModule,
     FileUploadModule,
     ModalModule.forRoot(),
+    SortableModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

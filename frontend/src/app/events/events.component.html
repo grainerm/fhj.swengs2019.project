@@ -1,101 +1,24 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
 <h1 class="events">Upcoming Events!</h1>
 <div class="row">
-  <div class="col-sm-6 search-input">
+  <!--div class="col-sm-6 search-input">
     <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
     <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-  </div>
+  </div-->
 </div>
 <div class="container">
-  <div class="row row-striped">
+  <div class="row row-striped" *ngFor="let event of events">
     <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-      <h2>OCT</h2>
+      <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date: 'dd'}}</span></h1>
+      <h2>{{event.date | date: 'MMM'}}</h2>
     </div>
     <div class="col-10">
-      <h3 class="text-uppercase"><strong>Queen</strong></h3>
+      <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
       <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Eichberg</li>
+        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date | date:'EE'}}</li>
+        <!--li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date | date:'HH:mm'}}</li-->
+        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.place}}</li>
       </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
-  <div class="row row-striped">
-    <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">27</span></h1>
-      <h2>OCT</h2>
-    </div>
-    <div class="col-10">
-      <h3 class="text-uppercase"><strong>Linkin Park</strong></h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Friday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 2:30 PM - 4:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Graz</li>
-      </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
-  <div class="row row-striped">
-    <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-      <h2>OCT</h2>
-    </div>
-    <div class="col-10">
-      <h3 class="text-uppercase"><strong>Queen</strong></h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Eichberg</li>
-      </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
-  <div class="row row-striped">
-    <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-      <h2>OCT</h2>
-    </div>
-    <div class="col-10">
-      <h3 class="text-uppercase"><strong>Queen</strong></h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Eichberg</li>
-      </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
-  <div class="row row-striped">
-    <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-      <h2>OCT</h2>
-    </div>
-    <div class="col-10">
-      <h3 class="text-uppercase"><strong>Queen</strong></h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Eichberg</li>
-      </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
-  <div class="row row-striped">
-    <div class="col-2 text-right">
-      <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-      <h2>OCT</h2>
-    </div>
-    <div class="col-10">
-      <h3 class="text-uppercase"><strong>Queen</strong></h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>Eichberg</li>
-      </ul>
-      <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>{{event.eventType}}</p>
     </div>
   </div>
 </div>
