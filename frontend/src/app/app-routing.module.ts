@@ -11,9 +11,6 @@ import {HomeComponent} from './home/home.component';
 import {EventsComponent} from './events/events.component';
 import {BandViewComponent} from './band-view/band-view.component';
 import {BandResolver} from './resolver/band.resolver';
-import {BanduserListComponent} from './banduser-list/banduser-list.component';
-import {BanduserFormComponent} from './banduser-form/banduser-form.component';
-import {BandListResolver} from './resolver/band-list.resolver';
 
 const routes: Routes = [
   {
@@ -27,6 +24,9 @@ const routes: Routes = [
   },
   {
     path: 'events', component: EventsComponent
+  },
+  {
+    path: 'map', component: MapComponent, resolve: { countries: CountriesResolver}
   },
   {
     path: 'band-view/:id', component: BandViewComponent, resolve: {

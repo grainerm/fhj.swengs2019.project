@@ -29,4 +29,12 @@ public class BandService {
         }
         return entities;
     }
+
+    public List<Band> getBandsForName(List<String> dtos) {
+        List<Band> entities = new ArrayList<>();
+        if (dtos != null) {
+            dtos.forEach((dto) -> entities.add(bandRepository.findByName(dto).get(0)));
+        }
+        return entities;
+    }
 }

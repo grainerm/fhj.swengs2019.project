@@ -37,7 +37,7 @@ public class Band {
     private String genre;
 
     @Column(nullable = true)
-    private String description;
+    private int foundingYear;
 
     @ManyToOne
     private Country country;

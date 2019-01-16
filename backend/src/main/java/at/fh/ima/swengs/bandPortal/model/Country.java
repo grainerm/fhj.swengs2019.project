@@ -11,12 +11,15 @@ import java.util.Set;
 @Entity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "countryID")
+        property = "id")
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long countryID;
+    private long id;
+
+    @Column(nullable = true)
+    private String nameCode;
 
     @Column(nullable = true)
     private String name;
@@ -34,18 +37,19 @@ public class Country {
     public Country() {
     }
 
-    public Country(String name, List<Band> bands, Set<Event> events) {
+    public Country(String name, List<Band> bands, Set<Event> events, String nameCode) {
         this.name = name;
         this.bands = bands;
         this.events = events;
+        this.nameCode = nameCode;
     }
 
-    public long getCountryID() {
-        return countryID;
+    public long getId() {
+        return this.id;
     }
 
-    public void setCountryID(long countryID) {
-        this.countryID = countryID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -70,5 +74,13 @@ public class Country {
 
     public void setEvents(Set<Event> events) {
         this.events = events;
+    }
+
+    public String getNameCode() {
+        return nameCode;
+    }
+
+    public void setNameCode(String name_code) {
+        this.nameCode = name_code;
     }
 }

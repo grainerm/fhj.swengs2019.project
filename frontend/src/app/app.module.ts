@@ -12,7 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
-import {BsDatepickerModule, ModalModule, SortableModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, ModalModule} from 'ngx-bootstrap';
 
 import {defineLocale} from 'ngx-bootstrap/chronos';
 import {deLocale} from 'ngx-bootstrap/locale';
@@ -26,8 +26,6 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
-import {BanduserListComponent} from './banduser-list/banduser-list.component';
-import {BanduserFormComponent} from './banduser-form/banduser-form.component';
 
 
 defineLocale('de', deLocale);
@@ -50,7 +48,8 @@ export function tokenGetter() {
     BandViewComponent,
     LogoutComponent,
     HomeComponent,
-    EventsComponent
+    EventsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
