@@ -10,6 +10,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/events">Events</a>
       </li>
+      <li *ngIf="isLoggedIn && isAdmin" class="nav-item">
+        <a class="nav-link" href="/banduser-list">Admin Center</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button *ngIf="!isLoggedIn" class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="navLogin()">Login</button>
