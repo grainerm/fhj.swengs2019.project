@@ -39,6 +39,7 @@ public class BandFacade {
     }
 
     private void mapEntityToDto(Band entity, BandDTO dto) {
+        dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setBandPicture(entity.getBandPicture());
         dto.setGenre(entity.getGenre());

@@ -30,7 +30,7 @@ export class BanduserFormComponent implements OnInit {
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'password': new FormControl(),
-      'band': new FormControl(),
+      'band_id': new FormControl(),
       'admin': new FormControl(),
     });
 
@@ -50,12 +50,15 @@ export class BanduserFormComponent implements OnInit {
       .subscribe((response: any) => {
         this.newBand = true;
         alert('created successfully');
-        console.log(this.bandForm.id);
+        this.bandForm.setValue({
+          id: response.id,
+          name: response.name
         });
+        this.userForm.controls.band_id.setValue(response.id);
+      });
   }
 
   saveUser() {
-
     const user = this.userForm.value;
     if (user.id) {
       this.userService.update(user)
@@ -73,7 +76,7 @@ export class BanduserFormComponent implements OnInit {
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {
-            this.router.navigate(['/banduser-form', response.id]);
+            this.router.navigate(['/banduser-list']);
           }
         });
     }
