@@ -18,6 +18,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service("userDetailsService")   // It has to be annotated with @Service.
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -80,5 +81,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
     }
+/*
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
 
+    public User save(User entity) {
+        return userRepository.save(entity);
+    }
+*/
 }

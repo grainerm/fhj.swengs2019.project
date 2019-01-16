@@ -7,6 +7,8 @@ import {ActivatedRoute, Route} from '@angular/router';
 import {BandService} from '../service/band.service';
 import {EventService} from '../service/event.service';
 import {Member} from '../api/member';
+import {CountryService} from '../service/country.service';
+import {Country} from '../api/country';
 
 @Component({
   selector: 'app-band-view',
@@ -15,7 +17,7 @@ import {Member} from '../api/member';
 })
 export class BandViewComponent implements OnInit {
 
-  private test: Array<string>;
+  countries: Array<Country>;
   memberForm;
   eventForm;
   bandForm;
@@ -24,7 +26,7 @@ export class BandViewComponent implements OnInit {
   events;
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
-              private bandService: BandService, private eventService: EventService) { }
+              private bandService: BandService, private eventService: EventService, private  countryService: CountryService) { }
 
   ngOnInit() {
 
@@ -46,9 +48,9 @@ export class BandViewComponent implements OnInit {
       'events': new FormControl(),
       'albums': new FormControl(),
       'member': new FormControl(),
-      'bandPicture': new FormControl()
+      'bandPicture': new FormControl(),
+      'description': new FormControl()
     });
-    // TODO member validator
     this.memberForm = new FormGroup({
       'memberID': new FormControl(),
       'role': new FormControl(),
@@ -56,20 +58,27 @@ export class BandViewComponent implements OnInit {
       'band_id': new FormControl()
     });
     this.eventForm = new FormGroup({
-      'eventName': new FormControl(),
-      'location': new FormControl(),
-      'date': new FormControl(),
-      'type': new FormControl()
+      'eventID': new FormControl(),
+      'name': new FormControl(),
+      'place': new FormControl(),
+      'date': new FormControl(new Date()),
+      'eventType': new FormControl(),
+      'hostCountry': new FormControl()
     });
 
-    this.test = ['lala', 'dljdf'];
+    this.countryService.getAll().subscribe((response: any) => {
+      this.countries = response._embedded.countries;
+      console.log(this.countries);
+    });
 
     const data = this.route.snapshot.data;
     const band = data.band;
+    // console.log(band.member);
     if (band) {
       this.bandForm.setValue(band);
-      console.log(this.bandForm.value.name);
+      console.log(this.bandForm.value);
     }
+
     const id = this.route.snapshot.paramMap.get('id');
     this.memberService.getAll(id)
       .subscribe((response: any) => {
@@ -95,7 +104,6 @@ export class BandViewComponent implements OnInit {
   addMember() {
     const id = this.route.snapshot.paramMap.get('id');
     const member = this.memberForm.value;
-    member.bands_id = id;
     console.log(member);
     this.memberService.create(member)
       .subscribe((response: any) => {
@@ -108,6 +116,27 @@ export class BandViewComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  saveBand() {
+    const band = this.bandForm.value;
+    console.log(band.id);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (band.id === 0) {
+      this.bandService.update(band)
+        .subscribe((response) => {
+          alert('updated successfully');
+          this.bandForm.setValue(response);
+        });
+    }
+  }
+
+  addEvent() {
+    const event = this.eventForm.value;
+    this.events.push(event);
+    console.log(event.date);
+    this.eventForm.reset();
+    this.modalRef.hide();
   }
 
 }

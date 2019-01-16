@@ -1,0 +1,48 @@
+.btn-create {
+  width: 40%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-delete {
+  width: 10%;
+  color: red;
+  border-color: red;
+  margin-bottom: 3px;
+  margin-top: 8px;
+}
+
+.btn-delete:hover {
+  color: white;
+  background-color: red;
+}
+
+.btn-edit {
+  width: 10%;
+  color: orange;
+  border-color: orange;
+  margin-right: 3px;
+  margin-left: 7px;
+  margin-bottom: 3px;
+  margin-top: 8px;
+}
+
+.btn-edit:hover {
+  color: white;
+  background-color: orange;
+
+}
+
+.user-list {
+  color: black;
+  width: 200px;
+  text-align: center;
+  font-size: 98%;
+  margin-top: 8px;
+}
+
+.banduser-comp {
+
+}
+
