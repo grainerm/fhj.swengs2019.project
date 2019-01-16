@@ -50,7 +50,7 @@ export class UserService {
         this.router.navigate(['/banduser-list']);
         return res;
       }
-      this.getBand(user);
+      this.getBand();
       console.log(user.id);
     }));
   }
@@ -61,14 +61,14 @@ export class UserService {
     this.router.navigate(['/login']);
   }
   delete(user) {
-    return this.http.delete('/api/bandusers/' + user.id);
+    return this.http.delete('/api/users/' + user.id);
   }
   create(user: User) {
-    return this.http.post('/api/dto/bandusers', user);
+    return this.http.post('/api/dto/users', user);
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/bandusers/' + user.id, user).pipe(
+    return this.http.put('/api/dto/users/' + user.id, user).pipe(
       catchError((err: HttpErrorResponse) => {
         this.toastrService.error('You can not update when offline');
 
@@ -92,7 +92,7 @@ export class UserService {
     return false;
   }
 
-  getBand(user) {
-    this.router.navigate(['/band-view']);
+  getBand() {
+    this.router.navigate(['/band-view/1']);
   }
 }

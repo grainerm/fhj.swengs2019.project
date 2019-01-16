@@ -22,3 +22,337 @@ INSERT INTO IMA16_ortner_SWENGS_project_1.member(name, role, band_id, version)
 VALUES ('Freddie Mercury', 'Singer', '1', '1'); 
 INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, version)
 VALUES ('Rock am Ring', '20191212', 'concert', 'Hohe Straße 7', '1', '1');
+
+____________________________________________________________________________________
+
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1970', 'Rock', 'Queen', '1', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1965', 'Metal', 'Metallica', '14', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1989', 'Punk Rock', 'Linkin Park', '14', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1969', 'Pop', 'Michael Jackson', '14', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1999', 'Pop', 'Abba', '14', '1');
+
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1960', 'Austro Pop', 'A3', '80', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1990', 'Rock', 'Bon Jovi', '80', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '2002', 'Rock', 'Fall Out Boy', '80', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.band(band_picture, founding_year, genre, name, country_countryid, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '2000', 'Country', 'Abba', '80', '1');
+
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Konzert alla Bon Jovi', '20191212', 'concert', 'Hohe Straße 7', '14', '7', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Hallo Bon', '20190812', 'concert', 'Hohe Straße 7', '14', '5', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Rock am Ring', '20190712', 'concert', 'Hohe Straße 7', '14', '8', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Rock am Ring', '20191012', 'concert', 'Hohe Straße 7', '14', '7', '1');
+
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Konzert alla Bon Jovi', '20190512', 'concert', 'Hohe Straße 7', '80', '3', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Hallo Bon', '20191112', 'concert', 'Hohe Straße 7', '80', '3', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Rock am Ring', '20190312', 'concert', 'Hohe Straße 7', '80', '2', '1');
+INSERT INTO IMA16_ortner_SWENGS_project_1.event(name, date, event_type, place, host_country_countryid, band_id, version)
+VALUES ('Rock am Ring', '20190212', 'concert', 'Hohe Straße 7', '80', '5', '1');
+
+
+
+
+
+-- cml inserts
+INSERT INTO country(name_code,name,version) VALUES ('AF', 'Afghanistan',1);
+INSERT INTO country(name_code,name,version) VALUES ('AL', 'Albania',1);
+INSERT INTO country(name_code,name,version) VALUES ('DZ', 'Algeria',1);
+INSERT INTO country(name_code,name,version) VALUES ('DS', 'American Samoa',1);
+INSERT INTO country(name_code,name,version) VALUES ('AD', 'Andorra',1);
+INSERT INTO country(name_code,name,version) VALUES ('AO', 'Angola',1);
+INSERT INTO country(name_code,name,version) VALUES ('AI', 'Anguilla',1);
+INSERT INTO country(name_code,name,version) VALUES ('AQ', 'Antarctica',1);
+INSERT INTO country(name_code,name,version) VALUES ('AG', 'Antigua and Barbuda',1);
+INSERT INTO country(name_code,name,version) VALUES ('AR', 'Argentina',1);
+INSERT INTO country(name_code,name,version) VALUES ('AM', 'Armenia',1);
+INSERT INTO country(name_code,name,version) VALUES ('AW', 'Aruba',1);
+INSERT INTO country(name_code,name,version) VALUES ('AU', 'Australia',1);
+INSERT INTO country(name_code,name,version) VALUES ('AT', 'Austria',1);
+INSERT INTO country(name_code,name,version) VALUES ('AZ', 'Azerbaijan',1);
+INSERT INTO country(name_code,name,version) VALUES ('BS', 'Bahamas',1);
+INSERT INTO country(name_code,name,version) VALUES ('BH', 'Bahrain',1);
+INSERT INTO country(name_code,name,version) VALUES ('BD', 'Bangladesh',1);
+INSERT INTO country(name_code,name,version) VALUES ('BB', 'Barbados',1);
+INSERT INTO country(name_code,name,version) VALUES ('BY', 'Belarus',1);
+INSERT INTO country(name_code,name,version) VALUES ('BE', 'Belgium',1);
+INSERT INTO country(name_code,name,version) VALUES ('BZ', 'Belize',1);
+INSERT INTO country(name_code,name,version) VALUES ('BJ', 'Benin',1);
+INSERT INTO country(name_code,name,version) VALUES ('BM', 'Bermuda',1);
+INSERT INTO country(name_code,name,version) VALUES ('BT', 'Bhutan',1);
+INSERT INTO country(name_code,name,version) VALUES ('BO', 'Bolivia',1);
+INSERT INTO country(name_code,name,version) VALUES ('BA', 'Bosnia and Herzegovina',1);
+INSERT INTO country(name_code,name,version) VALUES ('BW', 'Botswana',1);
+INSERT INTO country(name_code,name,version) VALUES ('BV', 'Bouvet Island',1);
+INSERT INTO country(name_code,name,version) VALUES ('BR', 'Brazil',1);
+INSERT INTO country(name_code,name,version) VALUES ('IO', 'British Indian Ocean Territory',1);
+INSERT INTO country(name_code,name,version) VALUES ('BN', 'Brunei Darussalam',1);
+INSERT INTO country(name_code,name,version) VALUES ('BG', 'Bulgaria',1);
+INSERT INTO country(name_code,name,version) VALUES ('BF', 'Burkina Faso',1);
+INSERT INTO country(name_code,name,version) VALUES ('BI', 'Burundi',1);
+INSERT INTO country(name_code,name,version) VALUES ('KH', 'Cambodia',1);
+INSERT INTO country(name_code,name,version) VALUES ('CM', 'Cameroon',1);
+INSERT INTO country(name_code,name,version) VALUES ('CA', 'Canada',1);
+INSERT INTO country(name_code,name,version) VALUES ('CV', 'Cape Verde',1);
+INSERT INTO country(name_code,name,version) VALUES ('KY', 'Cayman Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('CF', 'Central African Republic',1);
+INSERT INTO country(name_code,name,version) VALUES ('TD', 'Chad',1);
+INSERT INTO country(name_code,name,version) VALUES ('CL', 'Chile',1);
+INSERT INTO country(name_code,name,version) VALUES ('CN', 'China',1);
+INSERT INTO country(name_code,name,version) VALUES ('CX', 'Christmas Island',1);
+INSERT INTO country(name_code,name,version) VALUES ('CC', 'Cocos (Keeling) Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('CO', 'Colombia',1);
+INSERT INTO country(name_code,name,version) VALUES ('KM', 'Comoros',1);
+INSERT INTO country(name_code,name,version) VALUES ('CG', 'Congo',1);
+INSERT INTO country(name_code,name,version) VALUES ('CK', 'Cook Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('CR', 'Costa Rica',1);
+INSERT INTO country(name_code,name,version) VALUES ('HR', 'Croatia (Hrvatska)',1);
+INSERT INTO country(name_code,name,version) VALUES ('CU', 'Cuba',1);
+INSERT INTO country(name_code,name,version) VALUES ('CY', 'Cyprus',1);
+INSERT INTO country(name_code,name,version) VALUES ('CZ', 'Czech Republic',1);
+INSERT INTO country(name_code,name,version) VALUES ('DK', 'Denmark',1);
+INSERT INTO country(name_code,name,version) VALUES ('DJ', 'Djibouti',1);
+INSERT INTO country(name_code,name,version) VALUES ('DM', 'Dominica',1);
+INSERT INTO country(name_code,name,version) VALUES ('DO', 'Dominican Republic',1);
+INSERT INTO country(name_code,name,version) VALUES ('TP', 'East Timor',1);
+INSERT INTO country(name_code,name,version) VALUES ('EC', 'Ecuador',1);
+INSERT INTO country(name_code,name,version) VALUES ('EG', 'Egypt',1);
+INSERT INTO country(name_code,name,version) VALUES ('SV', 'El Salvador',1);
+INSERT INTO country(name_code,name,version) VALUES ('GQ', 'Equatorial Guinea',1);
+INSERT INTO country(name_code,name,version) VALUES ('ER', 'Eritrea',1);
+INSERT INTO country(name_code,name,version) VALUES ('EE', 'Estonia',1);
+INSERT INTO country(name_code,name,version) VALUES ('ET', 'Ethiopia',1);
+INSERT INTO country(name_code,name,version) VALUES ('FK', 'Falkland Islands (Malvinas)',1);
+INSERT INTO country(name_code,name,version) VALUES ('FO', 'Faroe Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('FJ', 'Fiji',1);
+INSERT INTO country(name_code,name,version) VALUES ('FI', 'Finland',1);
+INSERT INTO country(name_code,name,version) VALUES ('FR', 'France',1);
+INSERT INTO country(name_code,name,version) VALUES ('FX', 'France, Metropolitan',1);
+INSERT INTO country(name_code,name,version) VALUES ('GF', 'French Guiana',1);
+INSERT INTO country(name_code,name,version) VALUES ('PF', 'French Polynesia',1);
+INSERT INTO country(name_code,name,version) VALUES ('TF', 'French Southern Territories',1);
+INSERT INTO country(name_code,name,version) VALUES ('GA', 'Gabon',1);
+INSERT INTO country(name_code,name,version) VALUES ('GM', 'Gambia',1);
+INSERT INTO country(name_code,name,version) VALUES ('GE', 'Georgia',1);
+INSERT INTO country(name_code,name,version) VALUES ('DE', 'Germany',1);
+INSERT INTO country(name_code,name,version) VALUES ('GH', 'Ghana',1);
+INSERT INTO country(name_code,name,version) VALUES ('GI', 'Gibraltar',1);
+INSERT INTO country(name_code,name,version) VALUES ('GK', 'Guernsey',1);
+INSERT INTO country(name_code,name,version) VALUES ('GR', 'Greece',1);
+INSERT INTO country(name_code,name,version) VALUES ('GL', 'Greenland',1);
+INSERT INTO country(name_code,name,version) VALUES ('GD', 'Grenada',1);
+INSERT INTO country(name_code,name,version) VALUES ('GP', 'Guadeloupe',1);
+INSERT INTO country(name_code,name,version) VALUES ('GU', 'Guam',1);
+INSERT INTO country(name_code,name,version) VALUES ('GT', 'Guatemala',1);
+INSERT INTO country(name_code,name,version) VALUES ('GN', 'Guinea',1);
+INSERT INTO country(name_code,name,version) VALUES ('GW', 'Guinea-Bissau',1);
+INSERT INTO country(name_code,name,version) VALUES ('GY', 'Guyana',1);
+INSERT INTO country(name_code,name,version) VALUES ('HT', 'Haiti',1);
+INSERT INTO country(name_code,name,version) VALUES ('HM', 'Heard and Mc Donald Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('HN', 'Honduras',1);
+INSERT INTO country(name_code,name,version) VALUES ('HK', 'Hong Kong',1);
+INSERT INTO country(name_code,name,version) VALUES ('HU', 'Hungary',1);
+INSERT INTO country(name_code,name,version) VALUES ('IS', 'Iceland',1);
+INSERT INTO country(name_code,name,version) VALUES ('IN', 'India',1);
+INSERT INTO country(name_code,name,version) VALUES ('IM', 'Isle of Man',1);
+INSERT INTO country(name_code,name,version) VALUES ('ID', 'Indonesia',1);
+INSERT INTO country(name_code,name,version) VALUES ('IR', 'Iran (Islamic Republic of)',1);
+INSERT INTO country(name_code,name,version) VALUES ('IQ', 'Iraq',1);
+INSERT INTO country(name_code,name,version) VALUES ('IE', 'Ireland',1);
+INSERT INTO country(name_code,name,version) VALUES ('IL', 'Israel',1);
+INSERT INTO country(name_code,name,version) VALUES ('IT', 'Italy',1);
+INSERT INTO country(name_code,name,version) VALUES ('CI', 'Ivory Coast',1);
+INSERT INTO country(name_code,name,version) VALUES ('JE', 'Jersey',1);
+INSERT INTO country(name_code,name,version) VALUES ('JM', 'Jamaica',1);
+INSERT INTO country(name_code,name,version) VALUES ('JP', 'Japan',1);
+INSERT INTO country(name_code,name,version) VALUES ('JO', 'Jordan',1);
+INSERT INTO country(name_code,name,version) VALUES ('KZ', 'Kazakhstan',1);
+INSERT INTO country(name_code,name,version) VALUES ('KE', 'Kenya',1);
+INSERT INTO country(name_code,name,version) VALUES ('KI', 'Kiribati',1);
+INSERT INTO country(name_code,name,version) VALUES ('KP', 'Korea, Democratic People''s Republic of',1);
+INSERT INTO country(name_code,name,version) VALUES ('KR', 'Korea, Republic of',1);
+INSERT INTO country(name_code,name,version) VALUES ('XK', 'Kosovo',1);
+INSERT INTO country(name_code,name,version) VALUES ('KW', 'Kuwait',1);
+INSERT INTO country(name_code,name,version) VALUES ('KG', 'Kyrgyzstan',1);
+INSERT INTO country(name_code,name,version) VALUES ('LA', 'Lao People''s Democratic Republic',1);
+INSERT INTO country(name_code,name,version) VALUES ('LV', 'Latvia',1);
+INSERT INTO country(name_code,name,version) VALUES ('LB', 'Lebanon',1);
+INSERT INTO country(name_code,name,version) VALUES ('LS', 'Lesotho',1);
+INSERT INTO country(name_code,name,version) VALUES ('LR', 'Liberia',1);
+INSERT INTO country(name_code,name,version) VALUES ('LY', 'Libyan Arab Jamahiriya',1);
+INSERT INTO country(name_code,name,version) VALUES ('LI', 'Liechtenstein',1);
+INSERT INTO country(name_code,name,version) VALUES ('LT', 'Lithuania',1);
+INSERT INTO country(name_code,name,version) VALUES ('LU', 'Luxembourg',1);
+INSERT INTO country(name_code,name,version) VALUES ('MO', 'Macau',1);
+INSERT INTO country(name_code,name,version) VALUES ('MK', 'Macedonia',1);
+INSERT INTO country(name_code,name,version) VALUES ('MG', 'Madagascar',1);
+INSERT INTO country(name_code,name,version) VALUES ('MW', 'Malawi',1);
+INSERT INTO country(name_code,name,version) VALUES ('MY', 'Malaysia',1);
+INSERT INTO country(name_code,name,version) VALUES ('MV', 'Maldives',1);
+INSERT INTO country(name_code,name,version) VALUES ('ML', 'Mali',1);
+INSERT INTO country(name_code,name,version) VALUES ('MT', 'Malta',1);
+INSERT INTO country(name_code,name,version) VALUES ('MH', 'Marshall Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('MQ', 'Martinique',1);
+INSERT INTO country(name_code,name,version) VALUES ('MR', 'Mauritania',1);
+INSERT INTO country(name_code,name,version) VALUES ('MU', 'Mauritius',1);
+INSERT INTO country(name_code,name,version) VALUES ('TY', 'Mayotte',1);
+INSERT INTO country(name_code,name,version) VALUES ('MX', 'Mexico',1);
+INSERT INTO country(name_code,name,version) VALUES ('FM', 'Micronesia, Federated States of',1);
+INSERT INTO country(name_code,name,version) VALUES ('MD', 'Moldova, Republic of',1);
+INSERT INTO country(name_code,name,version) VALUES ('MC', 'Monaco',1);
+INSERT INTO country(name_code,name,version) VALUES ('MN', 'Mongolia',1);
+INSERT INTO country(name_code,name,version) VALUES ('ME', 'Montenegro',1);
+INSERT INTO country(name_code,name,version) VALUES ('MS', 'Montserrat',1);
+INSERT INTO country(name_code,name,version) VALUES ('MA', 'Morocco',1);
+INSERT INTO country(name_code,name,version) VALUES ('MZ', 'Mozambique',1);
+INSERT INTO country(name_code,name,version) VALUES ('MM', 'Myanmar',1);
+INSERT INTO country(name_code,name,version) VALUES ('NA', 'Namibia',1);
+INSERT INTO country(name_code,name,version) VALUES ('NR', 'Nauru',1);
+INSERT INTO country(name_code,name,version) VALUES ('NP', 'Nepal',1);
+INSERT INTO country(name_code,name,version) VALUES ('NL', 'Netherlands',1);
+INSERT INTO country(name_code,name,version) VALUES ('AN', 'Netherlands Antilles',1);
+INSERT INTO country(name_code,name,version) VALUES ('NC', 'New Caledonia',1);
+INSERT INTO country(name_code,name,version) VALUES ('NZ', 'New Zealand',1);
+INSERT INTO country(name_code,name,version) VALUES ('NI', 'Nicaragua',1);
+INSERT INTO country(name_code,name,version) VALUES ('NE', 'Niger',1);
+INSERT INTO country(name_code,name,version) VALUES ('NG', 'Nigeria',1);
+INSERT INTO country(name_code,name,version) VALUES ('NU', 'Niue',1);
+INSERT INTO country(name_code,name,version) VALUES ('NF', 'Norfolk Island',1);
+INSERT INTO country(name_code,name,version) VALUES ('MP', 'Northern Mariana Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('NO', 'Norway',1);
+INSERT INTO country(name_code,name,version) VALUES ('OM', 'Oman',1);
+INSERT INTO country(name_code,name,version) VALUES ('PK', 'Pakistan',1);
+INSERT INTO country(name_code,name,version) VALUES ('PW', 'Palau',1);
+INSERT INTO country(name_code,name,version) VALUES ('PS', 'Palestine',1);
+INSERT INTO country(name_code,name,version) VALUES ('PA', 'Panama',1);
+INSERT INTO country(name_code,name,version) VALUES ('PG', 'Papua New Guinea',1);
+INSERT INTO country(name_code,name,version) VALUES ('PY', 'Paraguay',1);
+INSERT INTO country(name_code,name,version) VALUES ('PE', 'Peru',1);
+INSERT INTO country(name_code,name,version) VALUES ('PH', 'Philippines',1);
+INSERT INTO country(name_code,name,version) VALUES ('PN', 'Pitcairn',1);
+INSERT INTO country(name_code,name,version) VALUES ('PL', 'Poland',1);
+INSERT INTO country(name_code,name,version) VALUES ('PT', 'Portugal',1);
+INSERT INTO country(name_code,name,version) VALUES ('PR', 'Puerto Rico',1);
+INSERT INTO country(name_code,name,version) VALUES ('QA', 'Qatar',1);
+INSERT INTO country(name_code,name,version) VALUES ('RE', 'Reunion',1);
+INSERT INTO country(name_code,name,version) VALUES ('RO', 'Romania',1);
+INSERT INTO country(name_code,name,version) VALUES ('RU', 'Russian Federation',1);
+INSERT INTO country(name_code,name,version) VALUES ('RW', 'Rwanda',1);
+INSERT INTO country(name_code,name,version) VALUES ('KN', 'Saint Kitts and Nevis',1);
+INSERT INTO country(name_code,name,version) VALUES ('LC', 'Saint Lucia',1);
+INSERT INTO country(name_code,name,version) VALUES ('VC', 'Saint Vincent and the Grenadines',1);
+INSERT INTO country(name_code,name,version) VALUES ('WS', 'Samoa',1);
+INSERT INTO country(name_code,name,version) VALUES ('SM', 'San Marino',1);
+INSERT INTO country(name_code,name,version) VALUES ('ST', 'Sao Tome and Principe',1);
+INSERT INTO country(name_code,name,version) VALUES ('SA', 'Saudi Arabia',1);
+INSERT INTO country(name_code,name,version) VALUES ('SN', 'Senegal',1);
+INSERT INTO country(name_code,name,version) VALUES ('RS', 'Serbia',1);
+INSERT INTO country(name_code,name,version) VALUES ('SC', 'Seychelles',1);
+INSERT INTO country(name_code,name,version) VALUES ('SL', 'Sierra Leone',1);
+INSERT INTO country(name_code,name,version) VALUES ('SG', 'Singapore',1);
+INSERT INTO country(name_code,name,version) VALUES ('SK', 'Slovakia',1);
+INSERT INTO country(name_code,name,version) VALUES ('SI', 'Slovenia',1);
+INSERT INTO country(name_code,name,version) VALUES ('SB', 'Solomon Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('SO', 'Somalia',1);
+INSERT INTO country(name_code,name,version) VALUES ('ZA', 'South Africa',1);
+INSERT INTO country(name_code,name,version) VALUES ('GS', 'South Georgia South Sandwich Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('SS', 'South Sudan',1);
+INSERT INTO country(name_code,name,version) VALUES ('ES', 'Spain',1);
+INSERT INTO country(name_code,name,version) VALUES ('LK', 'Sri Lanka',1);
+INSERT INTO country(name_code,name,version) VALUES ('SH', 'St. Helena',1);
+INSERT INTO country(name_code,name,version) VALUES ('PM', 'St. Pierre and Miquelon',1);
+INSERT INTO country(name_code,name,version) VALUES ('SD', 'Sudan',1);
+INSERT INTO country(name_code,name,version) VALUES ('SR', 'Suriname',1);
+INSERT INTO country(name_code,name,version) VALUES ('SJ', 'Svalbard and Jan Mayen Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('SZ', 'Swaziland',1);
+INSERT INTO country(name_code,name,version) VALUES ('SE', 'Sweden',1);
+INSERT INTO country(name_code,name,version) VALUES ('CH', 'Switzerland',1);
+INSERT INTO country(name_code,name,version) VALUES ('SY', 'Syrian Arab Republic',1);
+INSERT INTO country(name_code,name,version) VALUES ('TW', 'Taiwan',1);
+INSERT INTO country(name_code,name,version) VALUES ('TJ', 'Tajikistan',1);
+INSERT INTO country(name_code,name,version) VALUES ('TZ', 'Tanzania, United Republic of',1);
+INSERT INTO country(name_code,name,version) VALUES ('TH', 'Thailand',1);
+INSERT INTO country(name_code,name,version) VALUES ('TG', 'Togo',1);
+INSERT INTO country(name_code,name,version) VALUES ('TK', 'Tokelau',1);
+INSERT INTO country(name_code,name,version) VALUES ('TO', 'Tonga',1);
+INSERT INTO country(name_code,name,version) VALUES ('TT', 'Trinidad and Tobago',1);
+INSERT INTO country(name_code,name,version) VALUES ('TN', 'Tunisia',1);
+INSERT INTO country(name_code,name,version) VALUES ('TR', 'Turkey',1);
+INSERT INTO country(name_code,name,version) VALUES ('TM', 'Turkmenistan',1);
+INSERT INTO country(name_code,name,version) VALUES ('TC', 'Turks and Caicos Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('TV', 'Tuvalu',1);
+INSERT INTO country(name_code,name,version) VALUES ('UG', 'Uganda',1);
+INSERT INTO country(name_code,name,version) VALUES ('UA', 'Ukraine',1);
+INSERT INTO country(name_code,name,version) VALUES ('AE', 'United Arab Emirates',1);
+INSERT INTO country(name_code,name,version) VALUES ('GB', 'United Kingdom',1);
+INSERT INTO country(name_code,name,version) VALUES ('US', 'United States',1);
+INSERT INTO country(name_code,name,version) VALUES ('UM', 'United States minor outlying islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('UY', 'Uruguay',1);
+INSERT INTO country(name_code,name,version) VALUES ('UZ', 'Uzbekistan',1);
+INSERT INTO country(name_code,name,version) VALUES ('VU', 'Vanuatu',1);
+INSERT INTO country(name_code,name,version) VALUES ('VA', 'Vatican City State',1);
+INSERT INTO country(name_code,name,version) VALUES ('VE', 'Venezuela',1);
+INSERT INTO country(name_code,name,version) VALUES ('VN', 'Vietnam',1);
+INSERT INTO country(name_code,name,version) VALUES ('VG', 'Virgin Islands (British)',1);
+INSERT INTO country(name_code,name,version) VALUES ('VI', 'Virgin Islands (U.S.)',1);
+INSERT INTO country(name_code,name,version) VALUES ('WF', 'Wallis and Futuna Islands',1);
+INSERT INTO country(name_code,name,version) VALUES ('EH', 'Western Sahara',1);
+INSERT INTO country(name_code,name,version) VALUES ('YE', 'Yemen',1);
+INSERT INTO country(name_code,name,version) VALUES ('ZR', 'Zaire',1);
+INSERT INTO country(name_code,name,version) VALUES ('ZM', 'Zambia',1);
+INSERT INTO country(name_code,name,version) VALUES ('ZW', 'Zimbabwe',1);
+commit;
+
+
+
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1970', 'Rock', 'Queen', '1', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1965', 'Metal', 'Metallica', '14', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1989', 'Punk Rock', 'Linkin Park', '14', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1969', 'Pop', 'Michael Jackson', '14', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1999', 'Pop', 'Abba', '14', '1');
+
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1960', 'Austro Pop', 'A3', '80', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '1990', 'Rock', 'Bon Jovi', '80', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '2002', 'Rock', 'Fall Out Boy', '80', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.band(band_picture, founding_year, genre, name, country_id, version) 
+VALUES ('https://www.billboard.com/files/media/queen-portrait-circa-1975-billboard-1548.jpg', '2000', 'Country', 'Abba', '80', '1');
+
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Konzert alla Bon Jovi', '20191212', 'concert', 'Hohe Straße 7', '14', '7', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Hallo Bon', '20190812', 'concert', 'Hohe Straße 7', '14', '5', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Rock am Ring', '20190712', 'concert', 'Hohe Straße 7', '14', '8', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Rock am Ring', '20191012', 'concert', 'Hohe Straße 7', '14', '7', '1');
+
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Konzert alla Bon Jovi', '20190512', 'concert', 'Hohe Straße 7', '80', '3', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Hallo Bon', '20191112', 'concert', 'Hohe Straße 7', '80', '3', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Rock am Ring', '20190312', 'concert', 'Hohe Straße 7', '80', '2', '1');
+INSERT INTO IMA16_mali_SWENGS_project_3.event(name, date, event_type, place, host_country_id, band_id, version)
+VALUES ('Rock am Ring', '20190212', 'concert', 'Hohe Straße 7', '80', '5', '1');
+

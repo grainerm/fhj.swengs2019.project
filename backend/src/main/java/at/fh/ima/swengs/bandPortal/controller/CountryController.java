@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 public class CountryController {
@@ -14,9 +16,10 @@ public class CountryController {
     private CountryFacade countryFacade;
 
     @GetMapping("/dto/countries/{id}")
-    CountryDTO getById(@PathVariable Long id) {
+    CountryDTO getById(@PathVariable long id) {
         return countryFacade.getById(id);
     }
+
 
     @PostMapping("/dto/countries")
     CountryDTO create(@RequestBody @Valid CountryDTO dto) {
@@ -24,8 +27,13 @@ public class CountryController {
     }
 
     @PutMapping("/dto/countries/{id}")
-    CountryDTO update(@RequestBody @Valid CountryDTO dto, @PathVariable Long id) {
+    CountryDTO update(@RequestBody @Valid CountryDTO dto, @PathVariable long id) {
         return countryFacade.update(id, dto);
+    }
+
+    @GetMapping("/dto/countries")
+    List<CountryDTO> getAll(){
+        return countryFacade.getAll();
     }
 
 }

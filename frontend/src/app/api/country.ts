@@ -1,4 +1,8 @@
 export interface Country {
   countryID?: number;
-  name?: string;
+  id?: number;
+  name: string;
+  nameCode: string;
+  events?: Array<any>;
+  bands?: Array<any>;
 }
