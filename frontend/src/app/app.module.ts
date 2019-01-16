@@ -26,7 +26,6 @@ import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
-import { MapComponent } from './map/map.component';
 
 
 defineLocale('de', deLocale);
@@ -43,6 +42,8 @@ export function tokenGetter() {
     ActorFormComponent,
     ActorListComponent,
     LoginComponent,
+    BanduserListComponent,
+    BanduserFormComponent,
     LogoutComponent,
     BandViewComponent,
     LogoutComponent,
@@ -56,6 +57,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     ModalModule.forRoot(),
+    SortableModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

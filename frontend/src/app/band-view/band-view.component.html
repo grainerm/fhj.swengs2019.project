@@ -6,98 +6,122 @@
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-
-<div class="container" [formGroup]="bandForm" (submit)="saveBand()">
+<form (submit)="saveBand()" [formGroup]="bandForm">
+<div class="container">
   <div align="center">
     <h1>{{bandForm.value.name}}</h1>
   </div>
-  <img src="{{bandForm.value.bandPicture}}" >
+  <div class="col-md-8 offset-2">
+    <img src="{{bandForm.value.bandPicture}}" class="band__image"/>
+  </div>
   <div class="row">
 
-    <!-- Info Column -->
-    <div class="col info">
-      <h2>Infos</h2>
+      <!-- Info Column -->
+      <div class="col info">
+        <h2>Infos</h2>
 
-      <div [formGroup]="memberForm">
-        <!-- Member Info -->
-        <div *ngFor="let member of members" class="row mb-1 form-group">
-          <div class="col-sm-5">
-            <input id="role" type="text" name="role" formControlName="role" [value]="member.role"
-                   class="form-control infoInput"/>
+        <div [formGroup]="memberForm">
+          <!-- Member Info -->
+          <div *ngFor="let member of members" class="row mb-1 form-group">
+            <div class="col-sm-5">
+              <input id="role" type="text" name="role" formControlName="role" [value]="member.role"
+                     class="form-control infoInput"/>
+            </div>
+            <div class="col-sm-6">
+              <input id="name" type="text" name="name" formControlName="name" [value]="member.name"
+                     class="form-control infoInput"/>
+            </div>
+            <div class="col-sm-1">
+              <button (click)="deleteMember(member)" class="btn"><i class="fa fa-trash"></i></button>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <input id="name" type="text" name="name" formControlName="name" [value]="member.name"
-                   class="form-control infoInput"/>
-          </div>
-          <div class="col-sm-1">
-            <button (click)="deleteMember(member)" class="btn"><i class="fa fa-trash"></i></button>
+
+          <!-- new Member -->
+          <div class="row mb-5">
+            <div class="col-sm-5">
+              <input id="newRole" type="text" name="role" formControlName="role" value=""
+                     class="form-control infoInput"/>
+            </div>
+            <div class="col-sm-6">
+              <input id="newMember" type="text" name="name" formControlName="name" value=""
+                     class="form-control infoInput"/>
+            </div>
+            <div class="col-sm-1 ">
+              <button type="button" (click)="addMember()" class="btn"><i class="fa fa-plus"></i></button>
+            </div>
           </div>
         </div>
-
-        <!-- new Member -->
-        <div class="row mb-5">
+        <!-- other Info -->
+        <div class="row mb-1">
           <div class="col-sm-5">
-            <input id="newRole" type="text" name="role" formControlName="role" value=""
-                   class="form-control infoInput" />
+            <label>Founding Year</label>
           </div>
-          <div class="col-sm-6">
-            <input id="newMember" type="text" name="name" formControlName="name" value=""
-                   class="form-control infoInput"/>
+          <div class="col-sm-7">
+            <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
+                   class="form-control infoInput" value="{{bandForm.value.foundingYear}}"/>
           </div>
-          <div class="col-sm-1 ">
-            <button type="button" (click)="addMember()" class="btn"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="row mb-1">
+          <div class="col-sm-5">
+            <label>Country</label>
+          </div>
+          <div class="col-sm-7">
+            <ngx-select id="country" [items]="countries" optionTextField="name" name="country"
+                        [placeholder]="bandForm.value.country.name" [noAutoComplete]="true"
+                        formControlName="country"></ngx-select>
+
+          </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <label>Genre</label>
+          </div>
+          <div class="col-sm-7">
+            <input id="genre" type="text" name="genre" formControlName="genre"
+                   class="form-control infoInput" value="{{bandForm.value.genre}}"/>
           </div>
         </div>
       </div>
-      <!-- other Info -->
-      <div class="row">
-        <div class="col-sm-6">
-          <label>Founding Year</label>
-        </div>
-        <div class="col-sm-6">
-          <label>Country</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
-                 class="form-control infoInput" value="{{bandForm.value.foundingYear}}"/>
-        </div>
-        <div class="col-sm-6">
-          <ngx-select id="country" [items]="test" name="country" [multiple]="true"
-                      formControlName="country"></ngx-select>
 
+      <!-- Event column -->
+      <div class="col events">
+        <h2>Events</h2>
+        <div class="container" [formGroup]="eventForm">
+          <div class="row row-striped" *ngFor="let event of events">
+            <div class="col-2 text-right">
+              <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date:'dd'}}</span></h1>
+              <h2>{{event.date | date:'MMM'}}</h2>
+            </div>
+            <div class="col-10">
+              <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
+              <ul class="list-inline">
+                <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
+                  date:'EE'}}
+                </li>
+                <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date |
+                  date:'HH:mm'}}
+                </li>
+                <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>
+                  {{event.hostCountry}}, {{event.place}}
+                </li>
+              </ul>
+              <p>{{event.eventType}}</p>
+            </div>
+          </div>
         </div>
+        <div class="row mt-1 pull-right">
+          <button class="btn" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
+        </div>
+
       </div>
     </div>
 
-    <!-- Event column -->
-    <div class="col events">
-      <h2>Events</h2>
-      <div class="container"  [formGroup]="eventForm">
-        <div class="row row-striped" *ngFor="let event of events">
-          <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date:'MM'}}</span></h1>
-            <h2>{{event.date | date:'MMM'}}</h2>
-          </div>
-          <div class="col-10">
-            <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
-            <ul class="list-inline">
-              <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date | date:'EE'}}</li>
-              <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date | date:'HH:mm'}}</li>
-              <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{event.place}}</li>
-            </ul>
-            <p>{{event.eventType}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-1 pull-right">
-        <button class="btn" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
-      </div>
-
-    </div>
   </div>
-</div>
+  <button type="submit" class="btn"><i class="fa fa-plus"></i></button>
+</form>
 
 <ng-template #template>
   <div class="modal-header">
@@ -106,45 +130,57 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" [formGroup]="eventForm" (submit)="addEvent()">
-    <div class="row mb-1">
-      <div class="col-md-4">
-        <label for="eventName">Name:</label>
+  <form (ngSubmit)="addEvent()" [formGroup]="eventForm">
+    <div class="modal-body" (ngSubmit)="addEvent()">
+      <div class="row mb-1">
+        <div class="col-md-4">
+          <label for="eventName">Name:</label>
+        </div>
+        <div class="col-md-8">
+          <input id="eventName" type="text" name="name" formControlName="name" value=""
+                 class="form-control"/>
+        </div>
       </div>
-      <div class="col-md-8">
-        <input id="eventName" type="text" name="name" formControlName="eventName" value=""
-               class="form-control"/>
+      <div class="row mb-1">
+        <div class="col-md-4">
+          <label for="location">Location:</label>
+        </div>
+        <div class="col-md-8">
+          <input id="location" type="text" name="location" formControlName="place" value=""
+                 class="form-control"/>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-md-4">
+          <label for="date">Date:</label>
+        </div>
+        <div class="col-md-8">
+          <input id="date" bsDatepicker type="text" name="date" formControlName="date" value=""
+                 class="form-control" [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}"/>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <label for="type">Type:</label>
+        </div>
+        <div class="col-md-8">
+          <input id="type" type="text" name="type" formControlName="eventType" value=""
+                 class="form-control"/>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <label for="type">Host Country:</label>
+        </div>
+        <div class="col-md-8">
+          <ngx-select id="hostCountry" [items]="countries" optionTextField="name" name="country"
+                      placeholder="Select a country..." [noAutoComplete]="true"
+                      formControlName="hostCountry"></ngx-select>
+        </div>
+      </div>
+      <div class="row pull-right mr-1">
+        <button class="btn" type="submit">Save</button>
       </div>
     </div>
-    <div class="row mb-1">
-      <div class="col-md-4">
-        <label for="location">Location:</label>
-      </div>
-      <div class="col-md-8">
-        <input id="location" type="text" name="location" formControlName="location" value=""
-               class="form-control"/>
-      </div>
-    </div>
-    <div class="row mb-1">
-      <div class="col-md-4">
-        <label for="date">Date:</label>
-      </div>
-      <div class="col-md-8">
-        <input id="date" bsDatepicker type="text" name="date" formControlName="date" value=""
-               class="form-control"/>
-      </div>
-    </div>
-    <div class="row mb-2">
-      <div class="col-md-4">
-        <label for="type">Type:</label>
-      </div>
-      <div class="col-md-8">
-        <input id="type" type="text" name="type" formControlName="type" value=""
-               class="form-control"/>
-      </div>
-    </div>
-    <div class="row pull-right mr-1">
-      <button class="btn" type="submit">Save</button>
-    </div>
-  </div>
+  </form>
 </ng-template>
