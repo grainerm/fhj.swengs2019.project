@@ -54,7 +54,8 @@ export class BanduserFormComponent implements OnInit {
           id: response.id,
           name: response.name
         });
-        this.userForm.controls.band_id.setValue(response.id);
+       this.userForm.controls.band_id.setValue(response.id);
+
       });
   }
 
@@ -73,6 +74,7 @@ export class BanduserFormComponent implements OnInit {
       this.userService.create(user)
         .subscribe((response: any) => {
           alert('created successfully');
+          //console.log(this.userForm);
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {
