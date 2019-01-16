@@ -56,9 +56,9 @@ export function tokenGetter() {
     HomeComponent,
     EventsComponent,
     MediainputComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
     EventsComponent,
-    MapComponent
+    MapComponent,
   ],
   imports: [
     BrowserModule,

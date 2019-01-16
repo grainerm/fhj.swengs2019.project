@@ -46,7 +46,7 @@ public class BandFacade {
         dto.setGenre(entity.getGenre());
         dto.setAlbums(entity.getAlbums().stream().map((s) -> s.getAlbumID()).collect(Collectors.toList()));
         dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));
-        dto.setCountry(entity.getCountry().getCountryID());
+        dto.setCountry(entity.getCountry().getId());
         dto.setMember(entity.getMember().stream().map((s) -> s.getMemberID()).collect(Collectors.toList()));
         dto.setFoundingYear(entity.getFoundingYear());
         dto.setDescription(entity.getDescription());

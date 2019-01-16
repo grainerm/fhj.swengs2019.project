@@ -41,7 +41,7 @@ public class EventFacade {
         dto.setPlace(entity.getPlace());
         dto.setDate(entity.getDate());
         dto.setEventType(entity.getEventType());
-        dto.setHostCountry(entity.getHostCountry().getCountryID());
+        dto.setHostCountry(entity.getHostCountry().getId());
         dto.setBands(entity.getBands().stream().map((m) -> m.getId()).collect(Collectors.toList()));
     }
 

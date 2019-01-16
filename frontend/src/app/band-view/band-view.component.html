@@ -68,7 +68,7 @@
             <label>Country</label>
           </div>
           <div class="col-sm-7">
-            <ngx-select id="country" [items]="countries" optionValueField="countryID" optionTextField="name" name="country"
+            <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
                         [placeholder]="bandForm.value.country.name" [noAutoComplete]="true"
                         formControlName="country"></ngx-select>
 
@@ -175,7 +175,7 @@
           <label for="type">Host Country:</label>
         </div>
         <div class="col-md-8">
-          <ngx-select id="hostCountry" [items]="countries" optionValueField="countryID" optionTextField="name" name="country"
+          <ngx-select id="hostCountry" [items]="countries" optionValueField="id" optionTextField="name" name="country"
                       placeholder="Select a country..." [noAutoComplete]="true"
                       formControlName="hostCountry"></ngx-select>
         </div>
