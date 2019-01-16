@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label for="name">Bandname:</label>
+        <label class="label-text" for="name">Bandname:</label>
         <input id="name" type="text" name="name" formControlName="name" class="form-control"/>
         <div *ngIf="bandForm.controls.name.invalid && (bandForm.controls.name.dirty || bandForm.controls.name.touched)"
              class="alert alert-danger">
@@ -17,8 +17,8 @@
     </div>
   </div>
 
-  <div class="btn-group" *ngIf="newBand === false">
-    <button type="submit" class="btn btn-primary" [disabled]="bandForm.invalid">
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary" [disabled]="bandForm.invalid" *ngIf="newBand === false">
       Save
     </button>
   </div>
@@ -26,11 +26,11 @@
 
 <br><br>
 
-<form [formGroup]="userForm" (ngSubmit)="saveUser()" *ngIf="newBand === true">
+<form [formGroup]="userForm" (ngSubmit)="saveUser()">
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label for="username">Username:</label>
+        <label class="label-text" for="username">Username:</label>
         <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
         <div *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)"
              class="alert alert-danger">
@@ -44,33 +44,30 @@
       </div>
     </div>
     <div class="col">
-      <label for="password">password:</label>
+      <label class="label-text" for="password">Password:</label>
       <input id="password" type="text" name="password" formControlName="password" class="form-control"/>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <label for="band">Band:</label>
-      <input id="band" [value]="bandForm.value.name" name="band" formControlName="band" class="form-control" readonly/>
+      <label class="label-text" for="band_id">Band:</label>
+      <input id="band_id" [value]="bandForm.value.id" name="band_id" formControlName="band_id" class="form-control" readonly/>
     </div>
   </div>
  <div class="row">
     <div class="col">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="admin" id="exampleCheckbox" formControlName="admin" [value]="true">
-        <label class="form-check-label" for="exampleCheckbox">
+        <label class="form-check-label label-text" for="exampleCheckbox">
           Admin
         </label>
       </div>
     </div>
   </div>
 
-  <div class="btn-group">
-    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
-      Save
-    </button>
+  <div class="btn-group" *ngIf="newBand === true">
     <button type="submit" (click)="setShouldNavigateToList()" class="btn btn-primary" [disabled]="userForm.invalid">
-      Save and Back
+      Save
     </button>
     <button type="submit" (click)="navigateToList()" class="btn btn-primary">
       Back without saving

@@ -81,13 +81,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
     }
-/*
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
 
-    public User save(User entity) {
-        return userRepository.save(entity);
-    }
-*/
 }
