@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BandService} from '../service/band.service';
+import {BanduserService} from '../service/banduser.service';
 
 @Component({
   selector: 'app-banduser-form',
@@ -17,7 +18,7 @@ export class BanduserFormComponent implements OnInit {
   bandOptions;
   newBand: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private bandService: BandService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private bandUserService: BanduserService) { }
 
   ngOnInit() {
 
@@ -46,7 +47,7 @@ export class BanduserFormComponent implements OnInit {
   saveBand() {
     const band = this.bandForm.value;
 
-    this.bandService.create(band)
+    this.bandUserService.create(band)
       .subscribe((response: any) => {
         this.newBand = true;
         alert('created successfully');
@@ -74,7 +75,7 @@ export class BanduserFormComponent implements OnInit {
       this.userService.create(user)
         .subscribe((response: any) => {
           alert('created successfully');
-          //console.log(this.userForm);
+          // console.log(this.userForm);
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {

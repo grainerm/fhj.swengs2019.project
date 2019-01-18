@@ -24,6 +24,9 @@ export class BandViewComponent implements OnInit {
   modalRef;
   members;
   events;
+  pictureUrl: string;
+  hasPicture: boolean;
+  regexp;
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
               private bandService: BandService, private eventService: EventService, private  countryService: CountryService) {
@@ -39,6 +42,7 @@ export class BandViewComponent implements OnInit {
       genre: [''],
 
     });*/
+    this.regexp = /\.(jpeg|jpg|gif|png)$/;
 
     this.bandForm = new FormGroup({
       'id': new FormControl(),
@@ -49,22 +53,22 @@ export class BandViewComponent implements OnInit {
       'events': new FormControl(),
       'albums': new FormControl(),
       'member': new FormControl(),
-      'bandPicture': new FormControl(),
+      'bandPicture': new FormControl('', [Validators.required, Validators.pattern(this.regexp)]),
       'description': new FormControl()
     });
     this.memberForm = new FormGroup({
       'memberID': new FormControl(0),
-      'role': new FormControl(),
-      'name': new FormControl(),
+      'role': new FormControl('', [Validators.required]),
+      'name': new FormControl('', [Validators.required]),
       'band_id': new FormControl(this.route.snapshot.paramMap.get('id'))
     });
     this.eventForm = new FormGroup({
       'eventID': new FormControl(0),
-      'name': new FormControl(),
-      'place': new FormControl(),
-      'date': new FormControl(),
-      'eventType': new FormControl(),
-      'hostCountry': new FormControl()
+      'name': new FormControl('', [Validators.required]),
+      'place': new FormControl('', [Validators.required]),
+      'date': new FormControl('', [Validators.required]),
+      'eventType': new FormControl('', [Validators.required]),
+      'hostCountry': new FormControl('', [Validators.required])
     });
 
     this.countryService.getAll().subscribe((response: any) => {
@@ -90,6 +94,13 @@ export class BandViewComponent implements OnInit {
       .subscribe((response: any) => {
         this.events = response._embedded.events;
       });
+
+    this.pictureUrl = '';
+    this.hasPicture = false;
+    if (this.bandForm.value.bandPicture) {
+      this.hasPicture = true;
+      this.pictureUrl = this.bandForm.value.bandPicture;
+    }
   }
 
   deleteMember(member: Member) {
@@ -103,8 +114,12 @@ export class BandViewComponent implements OnInit {
   }
 
   addMember() {
-    const id = this.route.snapshot.paramMap.get('id');
+    if (!this.memberForm.value.memberID) {
+      this.memberForm.controls.memberID.setValue(0);
+      this.memberForm.controls.band_id.setValue(this.route.snapshot.paramMap.get('id'));
+    }
     const member = this.memberForm.value;
+
     this.memberService.create(member)
       .subscribe((response: any) => {
         this.members.push(response);
@@ -123,7 +138,13 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
-    console.log(band);
+    if (band.bandPicture.match(this.regexp)) {
+      this.pictureUrl = band.bandPicture;
+      this.hasPicture = true;
+      console.log('valid picture');
+    } else {
+      band.bandPicture = this.pictureUrl;
+    }
     if (band.id) {
       this.bandService.update(band)
         .subscribe((response) => {
@@ -142,6 +163,10 @@ export class BandViewComponent implements OnInit {
     console.log(event.date);
     this.eventForm.reset();
     this.modalRef.hide();
+  }
+
+  editPicture() {
+    this.hasPicture = false;
   }
 
 }

@@ -11,21 +11,21 @@ export class BandService {
   constructor(private http: HttpClient) { }
 
   getById(id: number) {
-    return this.http.get('/api/dto/bandNames/' + id).pipe(
+    return this.http.get('/api/dto/bands/' + id).pipe(
       map((res: any) => {
-      return res;
-    }));
+        return res;
+      }));
   }
 
   update(band: Band) {
-    return this.http.put('/api/dto/bandNames/' + band.id, band);
+    return this.http.put('/api/dto/bands/' + band.id, band);
   }
 
   create(band: Band) {
-    return this.http.post('/api/dto/bandNames', band);
+    return this.http.post('/api/dto/bands', band);
   }
 
   getAll() {
-    return this.http.get('/api/bandNames');
+    return this.http.get('/api/bands');
   }
 }
