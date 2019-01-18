@@ -71,7 +71,7 @@
         <!-- other Info -->
         <div class="row mb-1">
           <div class="col-sm-5">
-            <label>Founding Year</label>
+            <label class="infoLabel">Founding Year</label>
           </div>
           <div class="col-sm-7">
             <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
@@ -80,7 +80,7 @@
         </div>
         <div class="row mb-1">
           <div class="col-sm-5">
-            <label>Country</label>
+            <label class="infoLabel">Country</label>
           </div>
           <div class="col-sm-7">
             <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
@@ -94,7 +94,7 @@
         </div>
         <div class="row">
           <div class="col-sm-5">
-            <label>Genre</label>
+            <label class="infoLabel">Genre</label>
           </div>
           <div class="col-sm-7">
             <input id="genre" type="text" name="genre" formControlName="genre"
@@ -114,6 +114,7 @@
             </div>
             <div class="col-10">
               <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
+              <button class="btn pull-right" type="button" tooltip="Delete the event" (click)="deleteEvent(event)"><i class="fa fa-trash"></i></button>
               <ul class="list-inline">
                 <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
                   date:'EE'}}
@@ -137,7 +138,7 @@
     </div>
 
   </div>
-  <button type="submit" class="btn btn-outline-success btn-save col-12 mb-3">Save</button>
+  <button type="submit" class="btn btn-outline-success btn-save col-12 mb-3 mt-2">Save</button>
 </form>
 
 <ng-template #template>

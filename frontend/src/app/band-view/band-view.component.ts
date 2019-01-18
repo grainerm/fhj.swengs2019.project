@@ -164,6 +164,13 @@ export class BandViewComponent implements OnInit {
     this.eventForm.reset();
     this.modalRef.hide();
   }
+  deleteEvent(event: Event) {
+    console.log(event);
+    this.eventService.delete(event)
+      .subscribe((response) => {
+        this.ngOnInit();
+      });
+  }
 
   editPicture() {
     this.hasPicture = false;
