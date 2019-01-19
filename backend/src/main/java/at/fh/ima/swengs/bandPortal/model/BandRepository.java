@@ -12,4 +12,5 @@ import java.util.List;
 public interface BandRepository extends PagingAndSortingRepository<Band,Long>, JpaRepository<Band, Long>, CrudRepository<Band, Long> {
 
     public List<Band> findByName(@Param("name") String name);
+    public Band findById(@Param("id") long id);
 }

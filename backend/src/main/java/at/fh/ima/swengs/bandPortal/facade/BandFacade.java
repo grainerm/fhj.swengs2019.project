@@ -5,8 +5,12 @@ import at.fh.ima.swengs.bandPortal.model.Band;
 import at.fh.ima.swengs.bandPortal.service.*;
 import at.fh.ima.swengs.bandPortal.service.BandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import org.springframework.security.core.userdetails.User;
 
 import java.util.stream.Collectors;
 
@@ -25,6 +29,9 @@ public class BandFacade {
 
     @Autowired
     private AlbumService albumService;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
@@ -73,4 +80,9 @@ public class BandFacade {
         mapEntityToDto(entity, dto);
         return dto;
     }
+
+    /*public BandDTO getUserBand() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        userDetailsService.loadUserByUsername(username).;
+    }*/
 }

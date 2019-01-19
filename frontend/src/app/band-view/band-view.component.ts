@@ -9,6 +9,8 @@ import {EventService} from '../service/event.service';
 import {Member} from '../api/member';
 import {CountryService} from '../service/country.service';
 import {Country} from '../api/country';
+import {UserService} from '../service/user.service';
+import {User} from '../api/user';
 
 @Component({
   selector: 'app-band-view',
@@ -29,7 +31,8 @@ export class BandViewComponent implements OnInit {
   regexp;
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
-              private bandService: BandService, private eventService: EventService, private  countryService: CountryService) {
+              private bandService: BandService, private eventService: EventService, private  countryService: CountryService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -62,6 +65,10 @@ export class BandViewComponent implements OnInit {
       'eventType': new FormControl('', [Validators.required]),
       'hostCountry': new FormControl('', [Validators.required]),
       'bands': new FormControl()
+    });
+
+    this.userService.getBandUser().subscribe((res: User) => {
+      console.log(res);
     });
 
     this.countryService.getAll().subscribe((response: any) => {

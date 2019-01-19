@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'frontend';
 
   isLoggedIn: boolean;
+  isAdmin: boolean;
 
   constructor(private router: Router, private userService: UserService) {
   }
@@ -20,6 +21,8 @@ export class AppComponent implements OnInit {
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+
+    this.isAdmin = this.userService.getRole();
   }
 
   logout() {
@@ -35,3 +38,4 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 }
+

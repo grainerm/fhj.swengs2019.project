@@ -2,7 +2,7 @@ export interface User {
   id?: number;
   username: string;
   password: string;
-  band_id: any;
+  band_id: number;
   admin: boolean;
 }
 
