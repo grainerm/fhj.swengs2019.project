@@ -1,11 +1,15 @@
 package at.fh.ima.swengs.bandPortal.facade;
 
+import at.fh.ima.swengs.bandPortal.dto.BandDTO;
 import at.fh.ima.swengs.bandPortal.dto.UserDTO;
 import at.fh.ima.swengs.bandPortal.model.BandRepository;
 import at.fh.ima.swengs.bandPortal.model.User;
 import at.fh.ima.swengs.bandPortal.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +23,9 @@ public class UserFacade {
 
     @Autowired
     private BandRepository bandRepository;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     void mapDtoToEntity(UserDTO dto, User entity) {
         entity.setUsername(dto.getUsername());
@@ -55,5 +62,11 @@ public class UserFacade {
         return dto;
     }
 
-
+public UserDTO getUserBand() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        User entity = userRepository.findByUsername(username);
+    UserDTO dto = new UserDTO();
+    mapEntityToDto(entity, dto);
+    return dto;
+    }
 }
