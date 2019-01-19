@@ -21,7 +21,6 @@ public class UserFacade {
     private BandRepository bandRepository;
 
     void mapDtoToEntity(UserDTO dto, User entity) {
-        entity.setId(dto.getId());
         entity.setUsername(dto.getUsername());
         entity.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
         entity.setAdmin(dto.isAdmin());

@@ -28,9 +28,9 @@ public class BandFacade {
     @Autowired
     private AlbumService albumService;
 
-    @Autowired
+    /*@Autowired
     private UserDetailsService userDetailsService;
-
+*/
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
         // entity.setBandPicture(dto.getBandPicture().iterator().next());
