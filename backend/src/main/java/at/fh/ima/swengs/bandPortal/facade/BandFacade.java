@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.security.core.userdetails.User;
+
 import java.util.stream.Collectors;
 
 @Service()
@@ -28,9 +30,9 @@ public class BandFacade {
     @Autowired
     private AlbumService albumService;
 
-    /*@Autowired
+    @Autowired
     private UserDetailsService userDetailsService;
-*/
+
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
         // entity.setBandPicture(dto.getBandPicture().iterator().next());
@@ -81,6 +83,6 @@ public class BandFacade {
 
     /*public BandDTO getUserBand() {
         String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        userDetailsService.loadUserByUsername(username);
+        userDetailsService.loadUserByUsername(username).;
     }*/
 }

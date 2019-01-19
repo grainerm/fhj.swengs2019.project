@@ -50,8 +50,7 @@ export class UserService {
         this.router.navigate(['/banduser-list']);
         return res;
       }
-      this.getBand();
-      console.log(user.id);
+      this.navHome();
     }));
   }
 
@@ -79,6 +78,9 @@ export class UserService {
   getAll() {
     return this.http.get('/api/users');
   }
+  getBandUser() {
+    return this.http.get('/api/dto/user_band');
+  }
 
   getRole() {
     const helper = new JwtHelperService();
@@ -92,7 +94,7 @@ export class UserService {
     return false;
   }
 
-  getBand() {
-    this.router.navigate(['/band-view/1']);
-  }
+    navHome() {
+      this.router.navigate(['/home']);
+    }
 }

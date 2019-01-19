@@ -27,4 +27,9 @@ public class UserController {
     UserDTO update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
         return userFacade.update(id, dto);
     }
+
+     @GetMapping("/dto/user_band")
+    UserDTO getUserBand() {
+        return userFacade.getUserBand();
+    }
 }
