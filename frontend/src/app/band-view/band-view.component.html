@@ -1,23 +1,31 @@
 <form (submit)="saveBand()" [formGroup]="bandForm">
 
   <div>
-    <img src="{{bandForm.value.bandPicture}}" class="band__imageBandview"/>
+    <img src="{{pictureUrl}}" class="band__imageBandview"/>
+    <button class="btn-bandView btn" type="button" (click)="editPicture()" *ngIf="hasPicture">Edit Picture</button>
+    <input class="form-control" *ngIf="!hasPicture" type="text" formControlName="bandPicture"
+           placeholder="Insert image URL...">
+    <div
+      *ngIf="bandForm.controls.bandPicture.invalid && (bandForm.controls.bandPicture.dirty || bandForm.controls.bandPicture.touched)"
+      class="alert alert-danger">
+      Please enter a valid URL!
+    </div>
   </div>
 
 
   <div class="container bandview">
-  <!--div align="center">
-    <h1>{{bandForm.value.name}}</h1>
-  </div-->
+    <!--div align="center">
+      <h1>{{bandForm.value.name}}</h1>
+    </div-->
 
-  <!--div class="col-md-8 offset-2">
-    <img src="{{bandForm.value.bandPicture}}" class="band__imageBandview"/>
-  </div-->
+    <!--div class="col-md-8 offset-2">
+      <img src="{{bandForm.value.bandPicture}}" class="band__imageBandview"/>
+    </div-->
     <div class="bandName">
       <h1>{{bandForm.value.name}}</h1>
     </div>
 
-  <div class="row">
+    <div class="row">
       <!-- Info Column -->
       <div class="col info">
         <h2>Infos</h2>
@@ -26,15 +34,16 @@
           <!-- Member Info -->
           <div *ngFor="let member of members" class="row mb-1 form-group">
             <div class="col-sm-5">
-              <input id="role" type="text" name="role" [value]="member.role"
+              <input id="role" type="text" name="role" [value]="member.role" disabled
                      class="form-control infoInput"/>
             </div>
             <div class="col-sm-6">
-              <input id="name" type="text" name="name" [value]="member.name"
+              <input id="name" type="text" name="name" [value]="member.name" disabled
                      class="form-control infoInput"/>
             </div>
             <div class="col-sm-1">
-              <button (click)="deleteMember(member)" type="button" class="btn btn-bandView"><i class="fa fa-trash"></i></button>
+              <button (click)="deleteMember(member)" type="button" class="btn btn-bandView"><i class="fa fa-trash"></i>
+              </button>
             </div>
           </div>
 
@@ -48,8 +57,14 @@
               <input id="newMember" type="text" name="name" formControlName="name" value=""
                      class="form-control infoInput"/>
             </div>
+
             <div class="col-sm-1 ">
-              <button type="button" (click)="addMember()" class="btn btn-bandView"><i class="fa fa-plus"></i></button>
+              <button type="button" (click)="addMember()" [disabled]="memberForm.invalid" class="btn btn-bandView"><i class="fa fa-plus"></i></button>
+            </div>
+            <div *ngIf="(memberForm.controls.role.invalid && (memberForm.controls.role.dirty || memberForm.controls.role.touched)) ||
+                (memberForm.controls.name.invalid && (memberForm.controls.name.dirty || memberForm.controls.name.touched))"
+                 class="alert alert-danger">
+              Please enter a name and a role!
             </div>
           </div>
         </div>
@@ -69,7 +84,7 @@
           </div>
           <div class="col-sm-7">
             <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
-                        [placeholder]="bandForm.value.country.name" [noAutoComplete]="true"
+                        [noAutoComplete]="true"
                         formControlName="country"></ngx-select>
 
           </div>
@@ -122,7 +137,7 @@
     </div>
 
   </div>
-  <button type="submit" class="btn-bandView"><i class="fa fa-plus"></i></button>
+  <button type="submit" class="btn btn-outline-success btn-save col-12 mb-3">Save</button>
 </form>
 
 <ng-template #template>
@@ -158,7 +173,7 @@
         </div>
         <div class="col-md-8">
           <input id="date" bsDatepicker type="text" name="date" formControlName="date" value=""
-                 class="form-control" [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}"/>
+                 class="form-control" [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" placeholder="Select a date..."/>
         </div>
       </div>
       <div class="row mb-2">
@@ -180,9 +195,17 @@
                       formControlName="hostCountry"></ngx-select>
         </div>
       </div>
-      <div class="row pull-right mr-1">
-        <button class="btn btn-bandView" type="submit">Save</button>
+
+      <div class="row pull-right mr-1 mb-1">
+        <button class="btn btn-bandView" type="submit" [disabled]="eventForm.invalid">Save</button>
       </div>
+      <div *ngIf="eventForm.invalid && (eventForm.controls.hostCountry.dirty)"
+           class="row pull-left alert alert-danger">
+        Please enter the information above!
+      </div>
+
+
     </div>
+
   </form>
 </ng-template>

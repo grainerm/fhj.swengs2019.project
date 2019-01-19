@@ -13,8 +13,8 @@ export class BandService {
   getById(id: number) {
     return this.http.get('/api/dto/bands/' + id).pipe(
       map((res: any) => {
-      return res;
-    }));
+        return res;
+      }));
   }
 
   update(band: Band) {
