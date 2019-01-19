@@ -44,8 +44,8 @@ public class Band {
 
     @ManyToMany
     @JoinTable(name = "events_bands",
-            joinColumns = @JoinColumn(name = "bands_id"),
-            inverseJoinColumns = @JoinColumn(name = "events_id")
+            joinColumns = @JoinColumn(name = "band_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
     )
     private Set<Event> events;
 

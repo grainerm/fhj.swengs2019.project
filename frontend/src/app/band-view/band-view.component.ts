@@ -34,14 +34,6 @@ export class BandViewComponent implements OnInit {
 
   ngOnInit() {
 
-    /*this.bandForm = this.fb.group({
-      id: [''],
-      name: [''],
-      foundingYear: [''],
-      country: [''],
-      genre: [''],
-
-    });*/
     this.regexp = /\.(jpeg|jpg|gif|png)$/;
 
     this.bandForm = new FormGroup({
@@ -53,7 +45,7 @@ export class BandViewComponent implements OnInit {
       'events': new FormControl(),
       'albums': new FormControl(),
       'member': new FormControl(),
-      'bandPicture': new FormControl('', [Validators.required, Validators.pattern(this.regexp)]),
+      'bandPicture': new FormControl('', [Validators.pattern(this.regexp)]),
       'description': new FormControl()
     });
     this.memberForm = new FormGroup({
@@ -68,7 +60,8 @@ export class BandViewComponent implements OnInit {
       'place': new FormControl('', [Validators.required]),
       'date': new FormControl('', [Validators.required]),
       'eventType': new FormControl('', [Validators.required]),
-      'hostCountry': new FormControl('', [Validators.required])
+      'hostCountry': new FormControl('', [Validators.required]),
+      'bands': new FormControl()
     });
 
     this.countryService.getAll().subscribe((response: any) => {
@@ -90,7 +83,7 @@ export class BandViewComponent implements OnInit {
         this.members = response._embedded.members;
       });
 
-    this.eventService.getAll()
+    this.eventService.getAllByBand(id)
       .subscribe((response: any) => {
         this.events = response._embedded.events;
       });
@@ -103,6 +96,7 @@ export class BandViewComponent implements OnInit {
     }
   }
 
+  // members
   deleteMember(member: Member) {
     // const member = this.memberForm.value;
     console.log(member);
@@ -136,6 +130,28 @@ export class BandViewComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  // events
+  addEvent() {
+    const idArray: Array<string> = [this.route.snapshot.paramMap.get('id')];
+    this.eventForm.controls.bands.setValue(idArray);
+    const event = this.eventForm.value;
+
+    this.eventService.create(event)
+      .subscribe((response: any) => {
+        this.events.push(response);
+      });
+    console.log(event.date);
+    this.eventForm.reset();
+    this.modalRef.hide();
+  }
+  deleteEvent(event: Event) {
+    console.log(event);
+    this.eventService.delete(event)
+      .subscribe((response) => {
+        this.ngOnInit();
+      });
+  }
+
   saveBand() {
     const band = this.bandForm.value;
     if (band.bandPicture.match(this.regexp)) {
@@ -152,24 +168,6 @@ export class BandViewComponent implements OnInit {
           this.bandForm.setValue(response);
         });
     }
-  }
-
-  addEvent() {
-    const event = this.eventForm.value;
-    this.eventService.create(event)
-      .subscribe((response: any) => {
-        this.events.push(response);
-      });
-    console.log(event.date);
-    this.eventForm.reset();
-    this.modalRef.hide();
-  }
-  deleteEvent(event: Event) {
-    console.log(event);
-    this.eventService.delete(event)
-      .subscribe((response) => {
-        this.ngOnInit();
-      });
   }
 
   editPicture() {

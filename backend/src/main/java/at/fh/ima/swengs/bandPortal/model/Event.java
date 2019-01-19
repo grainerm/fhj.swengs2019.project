@@ -34,12 +34,12 @@ public class Event {
     @ManyToOne
     private Country hostCountry;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "events_bands",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "band_id")
     )
-    private List<Band> bands;
+    private Set<Band> bands;
 
     @Version
     @JsonIgnore
@@ -48,7 +48,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String place, Date date, String eventType, Country hostCountry, List<Band> bands) {
+    public Event(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
         this.name = name;
         this.place = place;
         this.date = date;
@@ -105,11 +105,11 @@ public class Event {
         this.hostCountry = hostCountry;
     }
 
-    public List<Band> getBands() {
+    public Set<Band> getBands() {
         return bands;
     }
 
-    public void setBands(List<Band> bands) {
+    public void setBands(Set<Band> bands) {
         this.bands = bands;
     }
 }
