@@ -7,6 +7,7 @@ import {BandService} from '../service/band.service';
 import {EventService} from '../service/event.service';
 import {Actor} from '../api/actor';
 import {Band} from '../api/band';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-band',
@@ -16,6 +17,7 @@ import {Band} from '../api/band';
 export class HomeComponent implements OnInit {
 
   bands: Array<Band>;
+  isLoggedIn: boolean;
 
   constructor(private route: ActivatedRoute, private bandService: BandService, private router: Router) { }
 
