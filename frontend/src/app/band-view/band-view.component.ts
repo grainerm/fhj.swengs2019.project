@@ -28,6 +28,7 @@ export class BandViewComponent implements OnInit {
   events;
   pictureUrl: string;
   hasPicture: boolean;
+  bandOwner: boolean;
   regexp;
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
@@ -67,9 +68,17 @@ export class BandViewComponent implements OnInit {
       'bands': new FormControl()
     });
 
-    this.userService.getBandUser().subscribe((res: User) => {
-      console.log(res);
-    });
+    this.bandOwner = false;
+    if (this.userService.isLoggedIn && this.userService.isAdmin) {
+      this.bandOwner = true;
+    } else {
+      this.userService.getBandUser().subscribe((res: User) => {
+        if (this.bandForm.value.id === res.band_id) {
+          this.bandOwner = true;
+        }
+        console.log(this.bandOwner);
+      });
+    }
 
     this.countryService.getAll().subscribe((response: any) => {
       this.countries = response._embedded.countries;
@@ -78,7 +87,6 @@ export class BandViewComponent implements OnInit {
 
     const data = this.route.snapshot.data;
     const band = data.band;
-    // console.log(band.member);
     if (band) {
       this.bandForm.setValue(band);
       console.log(this.bandForm.value);
@@ -105,7 +113,6 @@ export class BandViewComponent implements OnInit {
 
   // members
   deleteMember(member: Member) {
-    // const member = this.memberForm.value;
     console.log(member);
     this.memberService.delete(member)
       .subscribe((response) => {
@@ -126,11 +133,6 @@ export class BandViewComponent implements OnInit {
         this.members.push(response);
       });
     this.memberForm.reset();
-    // this.bandForm.controls.member.setValue(this.members);
-
-    console.log(this.bandForm.value);
-    // this.memberForm.controls.name.setValue('');
-    // this.memberForm.controls.role.setValue('');
   }
 
   openModal(template: TemplateRef<any>) {
@@ -147,7 +149,6 @@ export class BandViewComponent implements OnInit {
       .subscribe((response: any) => {
         this.events.push(response);
       });
-    console.log(event.date);
     this.eventForm.reset();
     this.modalRef.hide();
   }

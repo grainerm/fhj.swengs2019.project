@@ -38,7 +38,8 @@ public class UserFacade {
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
         dto.setPassword(entity.getPassword());
-        dto.setBand_id(entity.getBand().getId());
+        if(entity.getBand() != null)
+            dto.setBand_id(entity.getBand().getId());
     }
 
     public UserDTO update(Long id, UserDTO dto) {

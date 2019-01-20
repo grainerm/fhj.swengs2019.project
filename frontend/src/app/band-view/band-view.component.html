@@ -2,8 +2,8 @@
 
   <div>
     <img src="{{pictureUrl}}" class="band__imageBandview"/>
-    <button class="btn-bandView btn" type="button" (click)="editPicture()" *ngIf="hasPicture">Edit Picture</button>
-    <input class="form-control" *ngIf="!hasPicture" type="text" formControlName="bandPicture"
+    <button class="btn-bandView btn" type="button" (click)="editPicture()" *ngIf="hasPicture && bandOwner">Edit Picture</button>
+    <input class="form-control" *ngIf="!hasPicture && bandOwner" type="text" formControlName="bandPicture"
            placeholder="Insert image URL...">
     <div
       *ngIf="bandForm.controls.bandPicture.invalid && (bandForm.controls.bandPicture.dirty || bandForm.controls.bandPicture.touched)"
@@ -42,13 +42,13 @@
                      class="form-control infoInput"/>
             </div>
             <div class="col-sm-1">
-              <button (click)="deleteMember(member)" type="button" class="btn btn-bandView"><i class="fa fa-trash"></i>
+              <button *ngIf="bandOwner" (click)="deleteMember(member)" type="button" class="btn btn-bandView"><i class="fa fa-trash"></i>
               </button>
             </div>
           </div>
 
           <!-- new Member -->
-          <div class="row mb-5">
+          <div class="row mb-5" *ngIf="bandOwner">
             <div class="col-sm-5">
               <input id="newRole" type="text" name="role" formControlName="role" value=""
                      class="form-control infoInput"/>
@@ -75,7 +75,7 @@
           </div>
           <div class="col-sm-7">
             <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
-                   class="form-control infoInput" value="{{bandForm.value.foundingYear}}"/>
+                   class="form-control infoInput" value="{{bandForm.value.foundingYear}}" [readonly]="!bandOwner"/>
           </div>
         </div>
         <div class="row mb-1">
@@ -85,7 +85,7 @@
           <div class="col-sm-7">
             <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
                         [noAutoComplete]="true"
-                        formControlName="country"></ngx-select>
+                        formControlName="country" [disabled]="!bandOwner"></ngx-select>
 
           </div>
         </div>
@@ -98,7 +98,7 @@
           </div>
           <div class="col-sm-7">
             <input id="genre" type="text" name="genre" formControlName="genre"
-                   class="form-control infoInput" value="{{bandForm.value.genre}}"/>
+                   class="form-control infoInput" value="{{bandForm.value.genre}}" [readonly]="!bandOwner"/>
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="col-10">
               <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
-              <button class="btn pull-right" type="button" tooltip="Delete the event" (click)="deleteEvent(event)"><i class="fa fa-trash"></i></button>
+              <button class="btn pull-right" type="button" tooltip="Delete the event" (click)="deleteEvent(event)" *ngIf="bandOwner"><i class="fa fa-trash"></i></button>
               <ul class="list-inline">
                 <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
                   date:'EE'}}
@@ -131,14 +131,14 @@
           </div>
         </div>
         <div class="row mt-1 pull-right">
-          <button class="btn" type="button" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
+          <button class="btn" *ngIf="bandOwner" type="button" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
         </div>
 
       </div>
     </div>
 
   </div>
-  <button type="submit" class="btn btn-outline-success btn-save col-12 mb-3 mt-2">Save</button>
+  <button type="submit" *ngIf="bandOwner" class="btn btn-outline-success btn-save col-12 mb-3 mt-2">Save</button>
 </form>
 
 <ng-template #template>

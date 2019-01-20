@@ -34,7 +34,7 @@ public class Event {
     @ManyToOne
     private Country hostCountry;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "events_bands",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "band_id")
