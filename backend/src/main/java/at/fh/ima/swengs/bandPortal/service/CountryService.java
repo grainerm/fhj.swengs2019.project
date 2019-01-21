@@ -36,4 +36,12 @@ public class CountryService {
     public List<Country> getAllCountries(){
         return countryRepository.findAll();
     }
+
+    public List<Country> getCountriesWithBands() {return countryRepository.findCountriesByBandsIsNotNull();}
+
+    public List<Country> getCountriesWithEvents() {return countryRepository.findCountriesByEventsIsNotNull();}
+
+    public List<Country> getCountriesWithBandsAndEvents() {return countryRepository.findCountriesByEventsIsNotNullAndBandsIsNotNull();}
+
+
 }

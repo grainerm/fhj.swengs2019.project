@@ -43,6 +43,8 @@ public class CountryFacade {
         dto.setNameCode(entity.getNameCode());
     }
 
+
+
     public CountryDTO update(long id, CountryDTO dto) {
         Country entity = countryService.findById(id).get();
         mapDtoToEntity(dto, entity);
@@ -71,5 +73,45 @@ public class CountryFacade {
              cdto.add(dto);
          });
          return cdto;
+    }
+
+    public List<CountryDTO> getAllCountrysWithBands(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithBands().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setFill("#10BFB2");
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
+    }
+    public List<CountryDTO> getAllCountrysWithEvents(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithEvents().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setFill("#10BFB2");
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
+    }
+    public List<CountryDTO> getAllCountrysWithBandsAndEvents(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithBandsAndEvents().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setFill("#10BFB2");
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
     }
 }
