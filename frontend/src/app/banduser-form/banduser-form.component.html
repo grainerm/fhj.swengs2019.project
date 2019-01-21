@@ -70,6 +70,8 @@
     </div>
   </div>
 
+  <div class="row" style="margin-top: 2%;">
+    <div class="col-md-4 offset-4">
   <div class="btn-group" *ngIf="newBand === true">
     <button type="submit" (click)="setShouldNavigateToList()" class="btn btn-primary" [disabled]="userForm.invalid">
       Save
@@ -77,6 +79,8 @@
     <button type="submit" (click)="navigateToList()" class="btn btn-primary">
       Back without saving
     </button>
+  </div>
+    </div>
   </div>
 
 </form>
