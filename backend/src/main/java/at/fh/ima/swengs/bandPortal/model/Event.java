@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -111,5 +112,26 @@ public class Event {
 
     public void setBands(Set<Band> bands) {
         this.bands = bands;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event band = (Event) o;
+        return Objects.equals(getEventID(), band.getEventID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventID);
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventID=" + eventID +
+                ", version=" + version +
+                '}';
     }
 }

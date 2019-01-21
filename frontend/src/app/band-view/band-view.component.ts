@@ -148,10 +148,14 @@ export class BandViewComponent implements OnInit {
     this.eventService.create(event)
       .subscribe((response: any) => {
         this.events.push(response);
+        // console.log(this.events.);
+        this.bandForm.value.events.push(response.eventID);
+        console.log(this.bandForm.value);
       });
     this.eventForm.reset();
     this.modalRef.hide();
   }
+
   deleteEvent(event: Event) {
     console.log(event);
     this.eventService.delete(event)
@@ -162,6 +166,7 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
+    console.log(band);
     if (band.bandPicture.match(this.regexp)) {
       this.pictureUrl = band.bandPicture;
       this.hasPicture = true;
