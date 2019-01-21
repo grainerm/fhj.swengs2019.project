@@ -1,6 +1,7 @@
 package at.fh.ima.swengs.bandPortal.facade;
 
 import at.fh.ima.swengs.bandPortal.dto.BandDTO;
+import at.fh.ima.swengs.bandPortal.dto.CountryDTO;
 import at.fh.ima.swengs.bandPortal.model.Band;
 import at.fh.ima.swengs.bandPortal.service.*;
 import at.fh.ima.swengs.bandPortal.service.BandService;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.security.core.userdetails.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service()
@@ -81,8 +84,4 @@ public class BandFacade {
         return dto;
     }
 
-    /*public BandDTO getUserBand() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        userDetailsService.loadUserByUsername(username).;
-    }*/
 }

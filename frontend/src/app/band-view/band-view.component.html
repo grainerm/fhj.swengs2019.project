@@ -20,6 +20,8 @@
 
     <!--div class="col-md-8 offset-2">
       <img src="{{bandForm.value.bandPicture}}" class="band__imageBandview"/>
+
+
     </div-->
     <div class="bandName">
       <h1>{{bandForm.value.name}}</h1>
@@ -89,9 +91,7 @@
 
           </div>
         </div>
-        <div class="row">
 
-        </div>
         <div class="row">
           <div class="col-sm-5">
             <label class="infoLabel">Genre</label>
@@ -101,6 +101,16 @@
                    class="form-control infoInput" value="{{bandForm.value.genre}}" [readonly]="!bandOwner"/>
           </div>
         </div>
+        <div class="row" *ngIf="bandOwner">
+          <div class="col-sm-5">
+            <label class="infoLabel">Description</label>
+          </div>
+          <div class="col-sm-7">
+            <textarea rows="6" id="description" type="text" name="description" formControlName="description"
+                   class="form-control" value="{{bandForm.value.description}}">Test</textarea>
+          </div>
+        </div>
+
       </div>
 
       <!-- Event column -->

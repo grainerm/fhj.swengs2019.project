@@ -9,7 +9,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActorListComponent} from './actor-list/actor-list.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
 import {BsDatepickerModule, ModalModule, SortableModule} from 'ngx-bootstrap';
@@ -22,7 +21,6 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BandViewComponent } from './band-view/band-view.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
-import {ActorService} from './service/actor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent } from './events/events.component';
@@ -32,6 +30,8 @@ import {MediainputComponent} from './mediainput/mediainput.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import {SafeUrlPipe} from './safe-url.pipe';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
+import {ShowHidePasswordModule} from 'ngx-show-hide-password';
+
 
 
 defineLocale('de', deLocale);
@@ -50,9 +50,7 @@ export function tokenGetter() {
     LoginComponent,
     BanduserListComponent,
     BanduserFormComponent,
-    LogoutComponent,
     BandViewComponent,
-    LogoutComponent,
     HomeComponent,
     EventsComponent,
     MediainputComponent,
@@ -61,6 +59,7 @@ export function tokenGetter() {
     MapComponent,
   ],
   imports: [
+    ShowHidePasswordModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

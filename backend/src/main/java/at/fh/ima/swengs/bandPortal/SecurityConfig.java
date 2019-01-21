@@ -47,10 +47,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // allow all POST requests
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
+                .antMatchers(HttpMethod.GET, "/bands").permitAll()
+                .antMatchers(HttpMethod.GET, "/countries").permitAll()
+                .antMatchers(HttpMethod.GET, "/events").permitAll()
+                .antMatchers(HttpMethod.GET, "/dto/bands/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/bands/**/members").permitAll()
+                .antMatchers(HttpMethod.GET, "/bands/**/events").permitAll()
                 // must be an admin if trying to access admin area (authentication is also required here)
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 // any other requests must be authenticated
                 .anyRequest().authenticated();
+
+
     }
 
     // Spring has UserDetailsService interface, which can be overriden to provide our implementation for fetching user from database (or any other source).
