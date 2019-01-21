@@ -1,18 +1,20 @@
-<div class="container">
-  <div class="col-md-12 offset-3">
+<div class="row">
+  <div class="col-md-4 offset-4">
 
-<button type="button" class="btn btn-outline-success btn-create" (click)="createUser()">
-  Create user
-</button><br>
+    <button type="button" class="btn btn-outline-success btn-create" (click)="createUser()">
+      Create user
+    </button>
 
-
+    <label class="infoLabel">Username</label>
     <div *ngFor="let user of users" class="row">
 
-    <div class="list-group user-list">
-      <li class="list-group-item">{{user.username}} {{user.band_id}}</li>
+      <div class="list-group user-list">
+        <li class="list-group-item">{{user.username}} {{user.band_id}}</li>
+      </div>
+      <button class="btn btn-outline-success btn-edit"type="button" (click)="editUser(user.id)">Edit</button>
+      <button class="btn btn-outline-success btn-delete"type="button" (click)="deleteUser(user)">Delete</button>
     </div>
-    <button class="btn btn-outline-success btn-edit"type="button" (click)="editUser(user.id)">Edit</button>
-    <button class="btn btn-outline-success btn-delete"type="button" (click)="deleteUser(user)">Delete</button>
-  </div>
 </div>
 </div>
+
+
