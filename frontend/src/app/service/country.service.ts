@@ -8,7 +8,17 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
+  getCountriesWithBands(){
+    return this.http.get('api/dto/countrieswithbands');
+  }
+  getCountriesWithEvents(){
+    return this.http.get('api/dto/countrieswithevents');
+  }
+  getCountriesWithBandsAndEvents(){
+    return this.http.get('api/dto/countrieswithbandsandevents');
+  }
+
   getAll() {
-    return this.http.get('api/countries');
+    return this.http.get('api/dto/countries');
   }
 }
