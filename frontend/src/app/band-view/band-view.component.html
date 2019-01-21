@@ -1,6 +1,6 @@
 <form (submit)="saveBand()" [formGroup]="bandForm">
 
-  <div>
+
     <img src="{{pictureUrl}}" class="band__imageBandview"/>
     <button class="btn-bandView btn" type="button" (click)="editPicture()" *ngIf="hasPicture && bandOwner">Edit Picture</button>
     <input class="form-control" *ngIf="!hasPicture && bandOwner" type="text" formControlName="bandPicture"
@@ -10,36 +10,35 @@
       class="alert alert-danger">
       Please enter a valid URL!
     </div>
-  </div>
 
 
-  <div class="container bandview">
-    <!--div align="center">
-      <h1>{{bandForm.value.name}}</h1>
-    </div-->
 
-    <!--div class="col-md-8 offset-2">
-      <img src="{{bandForm.value.bandPicture}}" class="band__imageBandview"/>
-
-
-    </div-->
+  <div class="bandview">
     <div class="bandName">
       <h1>{{bandForm.value.name}}</h1>
     </div>
 
-    <div class="row">
+    <div class="row infos-events">
       <!-- Info Column -->
-      <div class="col info">
+      <div class="col-md-6 info">
         <h2>Infos</h2>
 
         <div [formGroup]="memberForm">
           <!-- Member Info -->
+          <div class="row">
+          <div class="col-sm-4">
+          <label class="infoLabel">Role</label>
+          </div>
+          <div class="col-sm-4">
+            <label class="infoLabel">Name</label>
+          </div>
+          </div>
           <div *ngFor="let member of members" class="row mb-1 form-group">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <input id="role" type="text" name="role" [value]="member.role" disabled
                      class="form-control infoInput"/>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <input id="name" type="text" name="name" [value]="member.name" disabled
                      class="form-control infoInput"/>
             </div>
@@ -51,11 +50,11 @@
 
           <!-- new Member -->
           <div class="row mb-5" *ngIf="bandOwner">
-            <div class="col-sm-5">
+            <div class="col-sm-4">
               <input id="newRole" type="text" name="role" formControlName="role" value=""
                      class="form-control infoInput"/>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
               <input id="newMember" type="text" name="name" formControlName="name" value=""
                      class="form-control infoInput"/>
             </div>
@@ -70,69 +69,79 @@
             </div>
           </div>
         </div>
+          <!-- other Info -->
+          <div class="general">
+          <div class="row mb-1">
+            <div class="col-sm-4">
+              <label class="infoLabel">Founding Year</label>
+            </div>
+            <div class="col-sm-5">
+              <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
+                     class="form-control infoInput" value="{{bandForm.value.foundingYear}}" [readonly]="!bandOwner"/>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-sm-4">
+              <label class="infoLabel">Country</label>
+            </div>
+            <div class="col-sm-5">
+              <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
+                          [noAutoComplete]="true"
+                          formControlName="country" [disabled]="!bandOwner"></ngx-select>
+
+            </div>
+          </div>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <label class="infoLabel">Genre</label>
+                </div>
+                <div class="col-sm-5">
+                  <input id="genre" type="text" name="genre" formControlName="genre"
+                         class="form-control infoInput" value="{{bandForm.value.genre}}" [readonly]="!bandOwner"/>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="bandOwner">
+                <div class="col-sm-4">
+                  <label class="infoLabel">Description</label>
+                </div>
+                <div class="col-sm-5">
+                  <textarea rows="6" id="description" type="text" name="description" formControlName="description"
+                         class="form-control" value="{{bandForm.value.description}}">Test</textarea>
+                </div>
+
+              </div>
+
+          </div>
+        <button type="submit" *ngIf="bandOwner" class="btn btn-outline-success btn-save saveBandView">Save</button>
+
         <!-- other Info -->
-        <div class="row mb-1">
-          <div class="col-sm-5">
-            <label class="infoLabel">Founding Year</label>
-          </div>
-          <div class="col-sm-7">
-            <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
-                   class="form-control infoInput" value="{{bandForm.value.foundingYear}}" [readonly]="!bandOwner"/>
-          </div>
-        </div>
-        <div class="row mb-1">
-          <div class="col-sm-5">
-            <label class="infoLabel">Country</label>
-          </div>
-          <div class="col-sm-7">
-            <ngx-select id="country" [items]="countries" optionValueField="id" optionTextField="name" name="country"
-                        [noAutoComplete]="true"
-                        formControlName="country" [disabled]="!bandOwner"></ngx-select>
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-5">
-            <label class="infoLabel">Genre</label>
-          </div>
-          <div class="col-sm-7">
-            <input id="genre" type="text" name="genre" formControlName="genre"
-                   class="form-control infoInput" value="{{bandForm.value.genre}}" [readonly]="!bandOwner"/>
-          </div>
-        </div>
-        <div class="row" *ngIf="bandOwner">
-          <div class="col-sm-5">
-            <label class="infoLabel">Description</label>
-          </div>
-          <div class="col-sm-7">
-            <textarea rows="6" id="description" type="text" name="description" formControlName="description"
-                   class="form-control" value="{{bandForm.value.description}}">Test</textarea>
-          </div>
-        </div>
-
       </div>
+      <!-- Info Column -->
 
-      <!-- Event column -->
-      <div class="col events-bandview">
+
+
+    <!-- Event column -->
+      <div class="col-md-6 events-bandview">
         <h2>Events</h2>
-        <div class="container" [formGroup]="eventForm">
+        <div [formGroup]="eventForm">
           <div class="row row-striped" *ngFor="let event of events">
             <div class="col-2 text-right">
-              <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date:'dd'}}</span></h1>
-              <h2>{{event.date | date:'MMM'}}</h2>
+              <h4><span class="badge badge-secondary">{{event.date | date:'dd'}}</span></h4>
+              <h5>{{event.date | date:'MMM'}}</h5>
             </div>
-            <div class="col-10">
-              <h3 class="text-uppercase"><strong>{{event.name}}</strong></h3>
-              <button class="btn pull-right" type="button" tooltip="Delete the event" (click)="deleteEvent(event)" *ngIf="bandOwner"><i class="fa fa-trash"></i></button>
+            <div class="col-md-6 offset-2">
+              <h6 class="text-uppercase"><strong>{{event.name}}</strong></h6>
+              <button style="margin-right:-55%;background-color:DodgerBlue;" class="btn pull-right" type="button" tooltip="Delete the event" (click)="deleteEvent(event)" *ngIf="bandOwner"><i class="fa fa-trash"></i></button>
               <ul class="list-inline">
-                <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
+                <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
                   date:'EE'}}
                 </li>
-                <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date |
+                <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date |
                   date:'HH:mm'}}
                 </li>
-                <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>
+                <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>
                   {{event.hostCountry}}, {{event.place}}
                 </li>
               </ul>
@@ -141,15 +150,16 @@
           </div>
         </div>
         <div class="row mt-1 pull-right">
-          <button class="btn" *ngIf="bandOwner" type="button" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
+          <button class="btn btn-bandView " *ngIf="bandOwner" type="button" (click)="openModal(template)">Add <i class="fa fa-plus"></i></button>
         </div>
 
       </div>
     </div>
 
   </div>
-  <button type="submit" *ngIf="bandOwner" class="btn btn-outline-success btn-save col-12 mb-3 mt-2">Save</button>
 </form>
+
+
 
 <ng-template #template>
   <div class="modal-header">
