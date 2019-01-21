@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -34,12 +35,12 @@ public class Event {
     @ManyToOne
     private Country hostCountry;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "events_bands",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "band_id")
     )
-    private List<Band> bands;
+    private Set<Band> bands;
 
     @Version
     @JsonIgnore
@@ -48,7 +49,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String place, Date date, String eventType, Country hostCountry, List<Band> bands) {
+    public Event(String name, String place, Date date, String eventType, Country hostCountry, Set<Band> bands) {
         this.name = name;
         this.place = place;
         this.date = date;
@@ -105,11 +106,32 @@ public class Event {
         this.hostCountry = hostCountry;
     }
 
-    public List<Band> getBands() {
+    public Set<Band> getBands() {
         return bands;
     }
 
-    public void setBands(List<Band> bands) {
+    public void setBands(Set<Band> bands) {
         this.bands = bands;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event band = (Event) o;
+        return Objects.equals(getEventID(), band.getEventID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventID);
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventID=" + eventID +
+                ", version=" + version +
+                '}';
     }
 }

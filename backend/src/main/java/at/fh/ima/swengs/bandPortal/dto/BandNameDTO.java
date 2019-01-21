@@ -5,6 +5,7 @@ public class BandNameDTO {
 
     private Long id;
     private String name;
+    private String bandPicture;
 
 
     public Long getId() {
@@ -23,5 +24,11 @@ public class BandNameDTO {
         this.name = name;
     }
 
+    public String getBandPicture() {
+        return bandPicture;
+    }
 
+    public void setBandPicture(String bandPicture) {
+        this.bandPicture = bandPicture;
+    }
 }

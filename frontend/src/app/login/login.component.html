@@ -1,16 +1,21 @@
 <div class="login">
   <form (ngSubmit)="login()">
-    <label>
+    <div class="col-md-4 offset-4">
+
       <input class="form-control input-login" type="text" placeholder="Username" name="username" [(ngModel)]="user.username"/>
-    </label>
+
     <br>
-    <label>
-      <input class="form-control input-login" type="text" placeholder="Password" name="password" [(ngModel)]="user.password"/>
-    </label>
+
+      <show-hide-password size="lg" icon="fontawesome" btnStyle="success" [btnOutline]="false">
+
+        <input class="form-control input-login" type="password" placeholder="Password" name="password" [(ngModel)]="user.password"/>
+      </show-hide-password>
+
     <br>
     <button class="btn btn-outline-success btn-login" type="submit">
       Login
     </button>
+    </div>
   </form>
 </div>
 

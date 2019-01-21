@@ -1,3 +1,4 @@
+<div *ngIf="events.length != 0">
 <h1 class="events">Upcoming Events!</h1>
 <div class="row">
   <!--div class="col-sm-6 search-input">
@@ -5,7 +6,7 @@
     <button class="btn" type="submit"><i class="fa fa-search"></i></button>
   </div-->
 </div>
-<div class="container">
+<div class="container" >
   <div class="row row-striped" *ngFor="let event of events">
     <div class="col-2 text-right">
       <h1 class="display-4"><span class="badge badge-secondary">{{event.date | date: 'dd'}}</span></h1>
@@ -21,4 +22,8 @@
       <p>{{event.eventType}}</p>
     </div>
   </div>
+</div>
+</div>
+<div *ngIf="events.length === 0">
+  <h1 class="page-empty">Currently there are no Events!</h1>
 </div>

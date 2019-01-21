@@ -18,7 +18,7 @@ public class CountryService {
     private CountryRepository countryRepository;
 
 
-    public Optional<Country> findById(long id) {
+    public Optional<Country> findById(Long id) {
         return countryRepository.findById(id);
     }
 

@@ -27,8 +27,8 @@ public class BandService {
         return bandRepository.save(entity);
     }
 
-    public List<Band> getBands(List<Long> dtos) {
-        List<Band> entities = new ArrayList<>();
+    public Set<Band> getBands(Set<Long> dtos) {
+        Set<Band> entities = new HashSet<>();
         if (dtos != null) {
             dtos.forEach((dto) -> entities.add(bandRepository.findById(dto).get()));
         }
@@ -43,8 +43,4 @@ public class BandService {
         return entities;
     }
 
-    public Optional<Country> getCountry(Long id)
-    {
-        return countryRepository.findById(id);
-    }
 }

@@ -1,13 +1,20 @@
 package at.fh.ima.swengs.bandPortal.facade;
 
 import at.fh.ima.swengs.bandPortal.dto.BandDTO;
+import at.fh.ima.swengs.bandPortal.dto.CountryDTO;
 import at.fh.ima.swengs.bandPortal.model.Band;
 import at.fh.ima.swengs.bandPortal.service.*;
 import at.fh.ima.swengs.bandPortal.service.BandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.security.core.userdetails.User;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service()
@@ -26,6 +33,9 @@ public class BandFacade {
     @Autowired
     private AlbumService albumService;
 
+    @Autowired
+    private CountryService countryService;
+
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
         // entity.setBandPicture(dto.getBandPicture().iterator().next());
@@ -33,7 +43,9 @@ public class BandFacade {
         entity.setGenre(dto.getGenre());
         entity.setAlbums(albumService.getAlben(dto.getAlbums()));
         entity.setEvents(eventService.getEvents(dto.getEvents()));
-        entity.setCountry(bandService.getCountry(dto.getCountry()).get());
+        //dto.getCountry().
+        if(dto.getCountry() != null)
+            entity.setCountry(countryService.findById(dto.getCountry()).get());
         entity.setMember(memberService.getMembers(dto.getMember()));
         entity.setFoundingYear(dto.getFoundingYear());
         entity.setDescription(dto.getDescription());
@@ -46,7 +58,8 @@ public class BandFacade {
         dto.setGenre(entity.getGenre());
         dto.setAlbums(entity.getAlbums().stream().map((s) -> s.getAlbumID()).collect(Collectors.toList()));
         dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));
-        dto.setCountry(entity.getCountry().getId());
+        if(entity.getCountry() != null)
+            dto.setCountry(entity.getCountry().getId());
         dto.setMember(entity.getMember().stream().map((s) -> s.getMemberID()).collect(Collectors.toList()));
         dto.setFoundingYear(entity.getFoundingYear());
         dto.setDescription(entity.getDescription());
@@ -72,4 +85,5 @@ public class BandFacade {
         mapEntityToDto(entity, dto);
         return dto;
     }
+
 }

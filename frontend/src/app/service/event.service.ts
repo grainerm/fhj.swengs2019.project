@@ -8,6 +8,9 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
+  getAllByBand(id: string) {
+    return this.http.get('/api/bands/' + id + '/events');
+  }
   getAll() {
     return this.http.get('/api/events');
   }

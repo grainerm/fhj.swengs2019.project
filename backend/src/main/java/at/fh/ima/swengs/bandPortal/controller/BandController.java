@@ -1,10 +1,7 @@
 package at.fh.ima.swengs.bandPortal.controller;
 
-import at.fh.ima.swengs.bandPortal.dto.AlbumDTO;
 import at.fh.ima.swengs.bandPortal.dto.BandDTO;
-import at.fh.ima.swengs.bandPortal.facade.AlbumFacade;
 import at.fh.ima.swengs.bandPortal.facade.BandFacade;
-import at.fh.ima.swengs.bandPortal.facade.BandNameFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +25,6 @@ public class BandController {
     BandDTO update(@RequestBody @Valid BandDTO dto, @PathVariable Long id) {
         return bandFacade.update(id, dto);
     }
+
 
 }
