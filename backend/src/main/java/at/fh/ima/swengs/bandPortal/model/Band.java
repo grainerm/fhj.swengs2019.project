@@ -29,7 +29,7 @@ public class Band {
     private String name;
 
     @Column(nullable = true)
-    private int foundingYear;
+    private Long foundingYear;
 
     @OneToMany(mappedBy = "band", cascade = CascadeType.ALL)
     private List<Member> members;
@@ -63,7 +63,7 @@ public class Band {
     public Band() {
     }
 
-    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicture, int foundingYear, String description) {
+    public Band(String name, List<Member> members, String genre, Country country, User user, Set<Event> events, List<Album> albums, String bandPicture, Long foundingYear, String description) {
 
         this.name = name;
         this.members = members;
@@ -140,11 +140,11 @@ public class Band {
         this.albums = albums;
     }
 
-    public int getFoundingYear() {
+    public Long getFoundingYear() {
         return foundingYear;
     }
 
-    public void setFoundingYear(int foundingYear) {
+    public void setFoundingYear(Long foundingYear) {
         this.foundingYear = foundingYear;
     }
 
