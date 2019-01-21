@@ -1,13 +1,18 @@
-<div class="banduser-comp">
+<div class="container">
+  <div class="col-md-12 offset-3">
+
 <button type="button" class="btn btn-outline-success btn-create" (click)="createUser()">
   Create user
 </button><br>
 
-  <div *ngFor="let user of users" class="row">
+
+    <div *ngFor="let user of users" class="row">
+
     <div class="list-group user-list">
       <li class="list-group-item">{{user.username}} {{user.band_id}}</li>
     </div>
     <button class="btn btn-outline-success btn-edit"type="button" (click)="editUser(user.id)">Edit</button>
     <button class="btn btn-outline-success btn-delete"type="button" (click)="deleteUser(user)">Delete</button>
   </div>
+</div>
 </div>

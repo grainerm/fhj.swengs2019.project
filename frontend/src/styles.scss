@@ -68,9 +68,6 @@ body{
   margin-top: -10%;
 }
 
-
-
-
 // Events
 
 .row-striped:nth-of-type(odd){
@@ -109,6 +106,15 @@ body{
 .infoInput:disabled {
   background-color: white;
 }
+
+.page-empty {
+  text-align: center;
+  font-size: 100px;
+  color: lightgrey;
+  margin-top: 200px;
+}
+
+
 
 /*.search-input {
   margin-left: 35%;
@@ -180,9 +186,6 @@ body{
   margin-top: 8px;
 }
 
-.banduser-comp {
-
-}
 
 
 // Bandview
