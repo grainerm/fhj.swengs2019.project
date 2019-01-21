@@ -34,7 +34,7 @@ public class BandFacade {
     private AlbumService albumService;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CountryService countryService;
 
     void mapDtoToEntity(BandDTO dto, Band entity) {
         entity.setName(dto.getName());
@@ -43,7 +43,9 @@ public class BandFacade {
         entity.setGenre(dto.getGenre());
         entity.setAlbums(albumService.getAlben(dto.getAlbums()));
         entity.setEvents(eventService.getEvents(dto.getEvents()));
-        entity.setCountry(bandService.getCountry(dto.getCountry()).get());
+        //dto.getCountry().
+        if(dto.getCountry() != null)
+            entity.setCountry(countryService.findById(dto.getCountry()).get());
         entity.setMember(memberService.getMembers(dto.getMember()));
         entity.setFoundingYear(dto.getFoundingYear());
         entity.setDescription(dto.getDescription());

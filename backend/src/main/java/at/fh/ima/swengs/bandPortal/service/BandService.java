@@ -43,8 +43,4 @@ public class BandService {
         return entities;
     }
 
-    public Optional<Country> getCountry(Long id)
-    {
-        return countryRepository.findById(id);
-    }
 }

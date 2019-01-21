@@ -69,7 +69,7 @@ export class BandViewComponent implements OnInit {
     });
 
     this.bandOwner = false;
-    if (this.userService.isLoggedIn && this.userService.isAdmin) {
+    if (this.userService.isLoggedIn && this.userService.getRole()) {
       this.bandOwner = true;
     } else {
       this.userService.getBandUser().subscribe((res: User) => {
@@ -148,10 +148,14 @@ export class BandViewComponent implements OnInit {
     this.eventService.create(event)
       .subscribe((response: any) => {
         this.events.push(response);
+        // console.log(this.events.);
+        this.bandForm.value.events.push(response.eventID);
+        console.log(this.bandForm.value);
       });
     this.eventForm.reset();
     this.modalRef.hide();
   }
+
   deleteEvent(event: Event) {
     console.log(event);
     this.eventService.delete(event)
@@ -162,10 +166,12 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
+    if(band.country === null) {
+     //  band.country = 0;
+    }
     if (band.bandPicture.match(this.regexp)) {
       this.pictureUrl = band.bandPicture;
       this.hasPicture = true;
-      console.log('valid picture');
     } else {
       band.bandPicture = this.pictureUrl;
     }

@@ -22,7 +22,7 @@ public class BandDTO {
     //private Set<Media> bandPicture;
     private String description;
 
-    private int foundingYear;
+    private Long foundingYear;
 
     public Long getId() {
         return id;
@@ -97,11 +97,11 @@ public class BandDTO {
         this.bandPicture = bandPicture;
     }
 
-    public int getFoundingYear() {
+    public Long getFoundingYear() {
         return foundingYear;
     }
 
-    public void setFoundingYear(int foundingYear) {
+    public void setFoundingYear(Long foundingYear) {
         this.foundingYear = foundingYear;
     }
 
