@@ -15,9 +15,9 @@ public interface CountryRepository extends PagingAndSortingRepository<Country,Lo
     public List<Country> findByName(@Param("name") String name);
 
 
-    public List<Country> findCountriesByBandsIsNotNull();
+    public List<Country> findCountriesByBandsIsNotNullAndEventsIsNull();
 
-    public List<Country> findCountriesByEventsIsNotNull();
+    public List<Country> findCountriesByEventsIsNotNullAndBandsIsNull();
 
     public List<Country> findCountriesByEventsIsNotNullAndBandsIsNotNull();
 
