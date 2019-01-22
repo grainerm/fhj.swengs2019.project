@@ -14,7 +14,15 @@ public class CountryDTO {
     private String nameCode;
     private List<String> bands;
     private Set<String> events;
+    private String fill;
 
+    public String getFill() {
+        return fill;
+    }
+
+    public void setFill(String fill) {
+        this.fill = fill;
+    }
 
     public String getId() {
         return id;

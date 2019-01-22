@@ -12,4 +12,12 @@ import java.util.List;
 public interface CountryRepository extends PagingAndSortingRepository<Country,Long>, JpaRepository<Country, Long>, CrudRepository<Country, Long> {
 
     public List<Country> findByName(@Param("name") String name);
+
+
+    public List<Country> findCountriesByBandsIsNotNull();
+
+    public List<Country> findCountriesByEventsIsNotNull();
+
+    public List<Country> findCountriesByEventsIsNotNullAndBandsIsNotNull();
+
 }
