@@ -4,4 +4,5 @@ export interface Event {
   place: string;
   date: string;
   eventType: string;
+  hostCountry?: string;
 }

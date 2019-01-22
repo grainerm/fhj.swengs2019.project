@@ -81,8 +81,7 @@ export class BandViewComponent implements OnInit {
     }
 
     this.countryService.getAll().subscribe((response: any) => {
-      console.log(response);
-      this.countries = response
+      this.countries = response;
     });
 
     const data = this.route.snapshot.data;
@@ -101,6 +100,7 @@ export class BandViewComponent implements OnInit {
     this.eventService.getAllByBand(id)
       .subscribe((response: any) => {
         this.events = response._embedded.events;
+        console.log(this.events);
       });
 
     this.pictureUrl = '';
@@ -113,7 +113,6 @@ export class BandViewComponent implements OnInit {
 
   // members
   deleteMember(member: Member) {
-    console.log(member);
     this.memberService.delete(member)
       .subscribe((response) => {
         this.ngOnInit();
@@ -148,9 +147,7 @@ export class BandViewComponent implements OnInit {
     this.eventService.create(event)
       .subscribe((response: any) => {
         this.events.push(response);
-        // console.log(this.events.);
         this.bandForm.value.events.push(response.eventID);
-        console.log(this.bandForm.value);
       });
     this.eventForm.reset();
     this.modalRef.hide();
