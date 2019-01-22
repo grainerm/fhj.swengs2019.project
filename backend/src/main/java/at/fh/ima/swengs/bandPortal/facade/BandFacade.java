@@ -45,7 +45,7 @@ public class BandFacade {
         entity.setEvents(eventService.getEvents(dto.getEvents()));
         //dto.getCountry().
         if(dto.getCountry() != null)
-            entity.setCountry(countryService.findById(dto.getCountry()).get());
+            entity.setCountry(countryService.findByCode(dto.getCountry()).get());
         entity.setMember(memberService.getMembers(dto.getMember()));
         entity.setFoundingYear(dto.getFoundingYear());
         entity.setDescription(dto.getDescription());
@@ -59,7 +59,7 @@ public class BandFacade {
         dto.setAlbums(entity.getAlbums().stream().map((s) -> s.getAlbumID()).collect(Collectors.toList()));
         dto.setEvents(entity.getEvents().stream().map((s) -> s.getEventID()).collect(Collectors.toSet()));
         if(entity.getCountry() != null)
-            dto.setCountry(entity.getCountry().getId());
+            dto.setCountry(entity.getCountry().getNameCode());
         dto.setMember(entity.getMember().stream().map((s) -> s.getMemberID()).collect(Collectors.toList()));
         dto.setFoundingYear(entity.getFoundingYear());
         dto.setDescription(entity.getDescription());

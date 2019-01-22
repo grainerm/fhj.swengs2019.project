@@ -32,7 +32,7 @@ public class CountryController {
     }
 
     @GetMapping("/dto/countries")
-    List<CountryDTO> getAll(){
+    List<CountryDTO> getAll() {
         return countryFacade.getAll();
     }
 

@@ -31,7 +31,7 @@ public class EventFacade {
         entity.setPlace(dto.getPlace());
         entity.setDate(dto.getDate());
         entity.setEventType(dto.getEventType());
-        entity.setHostCountry(countryService.findById(dto.getHostCountry()).get());
+        entity.setHostCountry(countryService.findByCode(dto.getHostCountry()).get());
         entity.setBands(bandService.getBands(dto.getBands()));
     }
 
@@ -41,7 +41,7 @@ public class EventFacade {
         dto.setPlace(entity.getPlace());
         dto.setDate(entity.getDate());
         dto.setEventType(entity.getEventType());
-        dto.setHostCountry(entity.getHostCountry().getId());
+        dto.setHostCountry(entity.getHostCountry().getNameCode());
         dto.setBands(entity.getBands().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
 
