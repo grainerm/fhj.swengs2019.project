@@ -166,9 +166,6 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
-    if(band.country === null) {
-     //  band.country = 0;
-    }
     if (band.bandPicture.match(this.regexp)) {
       this.pictureUrl = band.bandPicture;
       this.hasPicture = true;
