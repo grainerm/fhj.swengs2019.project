@@ -81,8 +81,8 @@ export class BandViewComponent implements OnInit {
     }
 
     this.countryService.getAll().subscribe((response: any) => {
-      this.countries = response._embedded.countries;
-      console.log(this.countries);
+      console.log(response);
+      this.countries = response
     });
 
     const data = this.route.snapshot.data;
@@ -166,6 +166,7 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
+    console.log(band);
     if (band.bandPicture.match(this.regexp)) {
       this.pictureUrl = band.bandPicture;
       this.hasPicture = true;
