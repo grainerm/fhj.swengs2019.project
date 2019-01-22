@@ -16,6 +16,7 @@ export class UserService {
   isAdmin: boolean;
   isLoggedIn = false;
   loggedInChange: Subject<boolean> = new Subject<boolean>();
+  isAdminChange: Subject<boolean> = new Subject<boolean>();
   jwtHelperService: JwtHelperService;
 
   users: Array<User>;
@@ -33,6 +34,9 @@ export class UserService {
     this.loggedInChange.subscribe((value) => {
       this.isLoggedIn = value;
     });
+    this.isAdminChange.subscribe((value) => {
+      this.isAdmin = value;
+    });
   }
 
   login(user) {
@@ -45,7 +49,7 @@ export class UserService {
       localStorage.setItem(this.accessTokenLocalStorageKey, token);
       console.log(this.jwtHelperService.decodeToken(token));
       this.loggedInChange.next(true);
-      this.isAdmin = this.getRole();
+      this.isAdminChange.next(this.getRole());
       if (this.isAdmin) {
         this.router.navigate(['/banduser-list']);
         return res;
@@ -57,6 +61,7 @@ export class UserService {
   logout() {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
     this.loggedInChange.next(false);
+    this.isAdminChange.next(false);
     this.router.navigate(['/login']);
   }
   delete(user) {
@@ -87,7 +92,7 @@ export class UserService {
     let token = localStorage.getItem(this.accessTokenLocalStorageKey);
     token = helper.decodeToken(token);
     // console.log(token)
-    if (token['authorities'].includes('ROLE_ADMIN')) {
+    if (token !== null && token['authorities'].includes('ROLE_ADMIN')) {
       return true;
     }
 

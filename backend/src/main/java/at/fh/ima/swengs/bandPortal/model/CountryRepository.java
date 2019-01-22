@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource()
 public interface CountryRepository extends PagingAndSortingRepository<Country,Long>, JpaRepository<Country, Long>, CrudRepository<Country, Long> {
@@ -19,5 +20,7 @@ public interface CountryRepository extends PagingAndSortingRepository<Country,Lo
     public List<Country> findCountriesByEventsIsNotNull();
 
     public List<Country> findCountriesByEventsIsNotNullAndBandsIsNotNull();
+
+    public Optional<Country> findByNameCode(@Param("nameCode") String nameCode);
 
 }

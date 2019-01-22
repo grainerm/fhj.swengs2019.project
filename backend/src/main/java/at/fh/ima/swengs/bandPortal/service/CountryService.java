@@ -22,6 +22,10 @@ public class CountryService {
         return countryRepository.findById(id);
     }
 
+    public Optional<Country> findByCode(String code) {
+        return countryRepository.findByNameCode(code);
+    }
+
     public Country save(Country entity) {
         return countryRepository.save(entity);
     }
