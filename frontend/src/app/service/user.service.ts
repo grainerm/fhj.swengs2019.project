@@ -80,6 +80,10 @@ export class UserService {
       }));
   }
 
+  getById(id: number) {
+    return this.http.get('/api/dto/users/' + id);
+  }
+
   getAll() {
     return this.http.get('/api/users');
   }
