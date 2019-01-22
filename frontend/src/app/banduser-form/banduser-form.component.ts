@@ -4,6 +4,7 @@ import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BandService} from '../service/band.service';
 import {BanduserService} from '../service/banduser.service';
+import {User} from '../api/user';
 
 @Component({
   selector: 'app-banduser-form',
@@ -17,6 +18,7 @@ export class BanduserFormComponent implements OnInit {
   userForm;
   bandOptions;
   newBand: boolean;
+  isEditUser;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private bandUserService: BanduserService) { }
 
@@ -35,14 +37,15 @@ export class BanduserFormComponent implements OnInit {
       'admin': new FormControl(),
     });
 
-    const data = this.route.snapshot.data;
-    const band = data.band;
-    if (band) {
-      this.bandForm.patchValue(band); }
+    this.isEditUser = false;
     const id = this.route.snapshot.paramMap.get('id');
-    const user = this.userService.getById(parseInt(id, 10));
-    if (user) {
-      this.userForm.patchValue(user); }
+    this.userService.getById(parseInt(id, 10)).subscribe((response: User) => {
+      console.log(response);
+      this.userForm.setValue(response);
+      if (response.id) {
+        this.isEditUser = true;
+      }
+    });
   }
 
   saveBand() {
@@ -63,6 +66,7 @@ export class BanduserFormComponent implements OnInit {
 
   saveUser() {
     const user = this.userForm.value;
+    console.log(user);
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
