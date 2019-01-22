@@ -38,10 +38,11 @@ export class BanduserFormComponent implements OnInit {
     const data = this.route.snapshot.data;
     const band = data.band;
     if (band) {
-      this.bandForm.setValue(band); }
-    const user = data.user;
+      this.bandForm.patchValue(band); }
+    const id = this.route.snapshot.paramMap.get('id');
+    const user = this.userService.getById(parseInt(id, 10));
     if (user) {
-      this.userForm.setValue(user); }
+      this.userForm.patchValue(user); }
   }
 
   saveBand() {

@@ -13,6 +13,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 export class BanduserListComponent implements OnInit {
 
   users: Array<User>;
+  public bandUserFormid: boolean;
 
   constructor(private toastrService: ToastrService, private userService: UserService,
               private router: Router, private route: ActivatedRoute) { }
@@ -27,6 +28,8 @@ export class BanduserListComponent implements OnInit {
     this.userService.getAll().subscribe((response: any) => {
       this.users = response._embedded.users;
     });
+
+    this.bandUserFormid = false;
   }
 
   deleteUser(user: User) {
@@ -39,6 +42,7 @@ export class BanduserListComponent implements OnInit {
   }
 
   createUser() {
+    this.bandUserFormid = false;
     this.router.navigate(['/banduser-form']);
   }
 
