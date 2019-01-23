@@ -22,7 +22,7 @@ Thomas Ortner: Backend, BanduserList Component, BanduserForm Component<br /><br 
 4. Open the CommandLine and navigate to the frontend folder<br /> 
 5. Run "npm install"<br /> 
 6. Open the frontend in IntelliJ and start the application (alternatively run "ng serve" in cmd).<br /> 
-7. Open it in a browser<br /> 
+7. Open it in a browser with the url "http://localhost:4200/"<br /> 
 8. The credentials for the user are <b>USERNAME: admin PASSWORD: 12345</b><br /> 
 
 <br /><b>Now you can start your journey through the BandPortal!!!!!!!</b><br /> 
