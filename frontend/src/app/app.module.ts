@@ -84,7 +84,8 @@ export function tokenGetter() {
     ToastrModule.forRoot()
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [BandViewComponent]
 })
 export class AppModule {
 

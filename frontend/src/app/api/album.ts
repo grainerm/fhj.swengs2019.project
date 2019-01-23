@@ -3,4 +3,5 @@ export interface Album {
   name: string;
   releaseYear: number;
   songs: Array<any>;
+  band: number;
 }

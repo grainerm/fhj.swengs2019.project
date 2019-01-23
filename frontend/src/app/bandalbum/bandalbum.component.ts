@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Host, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {AlbumService} from '../service/album.service';
@@ -11,6 +11,7 @@ import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {BandViewComponent} from '../band-view/band-view.component';
 import {Validator} from 'codelyzer/walkerFactory/walkerFn';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bandalbum',
@@ -23,20 +24,33 @@ export class BandalbumComponent implements OnInit {
   songForm;
   albums: Array<Album>;
   songs: Array<Song>;
+  isAdmin: boolean;
+  isLoggedIn: boolean;
   bandOwner: boolean;
 
   constructor(private route: ActivatedRoute, private albumService: AlbumService, private songService: SongService,
-              private bandViewComp: BandViewComponent) {
+              private bandViewComp: BandViewComponent, private userService: UserService) {
   }
 
   ngOnInit() {
 
+    this.bandOwner = false;
+    if (this.userService.isLoggedIn && this.userService.getRole()) {
+      this.bandOwner = true;
+    } else {
+      this.userService.getBandUser().subscribe((res: User) => {
+        if (parseInt(this.route.snapshot.paramMap.get('id'), 10) === res.band_id) {
+          this.bandOwner = true;
+        }
+        console.log(this.bandOwner);
+      });
+    }
     this.albumForm = new FormGroup({
       'albumID': new FormControl(),
       'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'releaseYear': new FormControl('', [Validators.required]),
       'songs': new FormControl(),
-      'edit':  new FormControl()
+      'band':  new FormControl()
     });
 
 
@@ -53,7 +67,10 @@ export class BandalbumComponent implements OnInit {
       console.log('songs', this.songs);
     });
 
-    this.bandOwner = this.bandViewComp.bandOwner;
+    /*this.bandOwner.subscribe((value) => {
+      this.bandViewComp.bandOwner = value;
+      console.log('Bandalbum', this.bandOwner);
+    });*/
   }
 
   getAlbumID() {
@@ -62,7 +79,8 @@ export class BandalbumComponent implements OnInit {
 
   saveAlbum() {
     const album = this.albumForm.value;
-
+    album.band = this.route.snapshot.paramMap.get('id');
+    console.log(album);
     this.albumService.saveAlbum(album)
       .subscribe((response: any) => {
         this.albums.push(response);

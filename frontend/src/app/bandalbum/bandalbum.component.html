@@ -8,8 +8,12 @@
     <input style="vertical-align: bottom; margin: 0px;" name="edit" (click)="getAlbumID()" type="radio" [value]="true" [checked]="edit"/>Edit<br>
     </div!-->
     <div class="col-sm-12 offset-1">
-      <label class="infoLabel">{{album.name}}</label>
+      <label class="infoLabel">{{album.name}}({{album.releaseYear}})</label>
+      <button style="margin-left: 5%;" (click)="deleteAlbum(album)" type="button" class="btn btn-bandView" *ngIf="bandOwner"><i
+        class="fa fa-trash"></i>
+      </button>
     </div>
+
     <!--div class="col-sm-4">
       <input name="edit" [(ngModel)]="edit" type="radio" [value]="true" [checked]="edit"/>Edit<br>
       <input name="edit" [(ngModel)]="edit" type="radio" [value]="false" [checked]="!edit"/>Not<br>
@@ -26,7 +30,7 @@
   </div>
   <div  *ngFor="let song of songs" >
     <div *ngIf="song.album === album.albumID" class="row mb-1 form-group" style="margin-bottom: 50px;">
-      <div class="col-sm-5">
+      <div class="col-sm-4">
         <input id="role" type="text" name="role" [value]="song.name" disabled
                class="form-control infoInput"/>
       </div>
@@ -43,8 +47,9 @@
   </div>
 
   <!-- new Song -->
-  <div [formGroup]="songForm" class="row mb-5" *ngIf="bandOwner">
-    <div class="col-sm-5">
+  <div [formGroup]="songForm"  class="mb-5" *ngIf="bandOwner">
+   <div class="row">
+    <div class="col-sm-4">
       <input id="newSong" type="text" name="name" formControlName="name" value=""
              class="form-control infoInput"/>
     </div>
@@ -57,37 +62,29 @@
       <button type="button" (click)="saveSong(album.albumID)" [disabled]="songForm.invalid" class="btn btn-bandView"><i
         class="fa fa-plus"></i></button>
     </div>
-    <!--div *ngIf="(memberForm.controls.role.invalid && (memberForm.controls.role.dirty || memberForm.controls.role.touched)) ||
-              (memberForm.controls.name.invalid && (memberForm.controls.name.dirty || memberForm.controls.name.touched))"
-         class="alert alert-danger">
-      Please enter a name and a role!
-    </div!-->
+  </div>
   </div>
 </div>
 
-<form (submit)="saveAlbum()" [formGroup]="albumForm" *ngIf="bandOwner">
+<form (submit)="saveAlbum(album)" [formGroup]="albumForm" *ngIf="bandOwner">
   <div class="row">
     <div class="col-sm-4">
+      <label class="infoLabel">Album Name</label>
     <input id="newAlbum" type="text" name="album" formControlName="name" value=""
            class="form-control infoInput"/>
   </div>
     <div class="col-sm-4">
+      <label class="infoLabel">Release Year</label>
       <input id="newYear" type="number" name="year" formControlName="releaseYear" value=""
              class="form-control infoInput"/>
-    </div>
-    <button [disabled]="albumForm.invalid" type="button" class="btn btn-primary" (click)="saveAlbum(album)">Create</button>
 
+
+    </div>
+    <button style="height: 50%;margin-top: 7.5%" [disabled]="albumForm.invalid" type="submit" class="btn btn-primary">Create</button>
   </div>
+
   <div *ngIf="albumForm.invalid && (albumForm.controls.releaseYear.dirty || albumForm.controls.releaseYear.touched)"
        class="alert alert-danger">
     Please enter a name and a year!
   </div>
-  <!-- Songs !-->
-  <!--div class="col-sm-4">
-    <input [formGroup]="songForm" id="newSong" type="text" name="name" formControlName="name" value=""
-           class="form-control infoInput"/>
-  </div>
-
-  <button type="button" class="btn btn-primary" (click)="saveSong(song)">Create</button!-->
-
 </form>

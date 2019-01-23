@@ -22,4 +22,8 @@ export class AlbumService {
   deleteAlbum(album) {
     return this.http.delete('/api/albums/' + album.albumID);
   }
+
+  getAlbumsByBand(id) {
+    return this.http.get('/api/bands/' + id + '/albums');
+  }
 }

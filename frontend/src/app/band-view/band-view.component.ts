@@ -11,6 +11,7 @@ import {CountryService} from '../service/country.service';
 import {Country} from '../api/country';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-band-view',

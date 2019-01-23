@@ -8,7 +8,7 @@ import java.util.List;
 public class AlbumDTO {
     private long albumID;
     private String name;
-    private Band band;
+    private Long band;
     private int releaseYear;
     private List<Long> songs;
 
@@ -28,11 +28,11 @@ public class AlbumDTO {
         this.name = name;
     }
 
-    public Band getBand() {
+    public Long getBand() {
         return band;
     }
 
-    public void setBand(Band band) {
+    public void setBand(Long band) {
         this.band = band;
     }
 

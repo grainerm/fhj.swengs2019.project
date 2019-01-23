@@ -13,7 +13,8 @@ export class AlbumResolver implements Resolve<Observable<Array<any>>> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Observable<any>> | Promise<Observable<any>> | Observable<any> {
-    return this.albumService.getAll();
+    const id = route.paramMap.get('id');
+    return this.albumService.getAlbumsByBand(id);
   }
 
 }
