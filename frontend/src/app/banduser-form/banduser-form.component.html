@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 5%;">
+<div class="row" style="margin-top: 5%;" *ngIf="!isEditUser">
   <div class="col-md-4 offset-4">
     <form [formGroup]="bandForm" (ngSubmit)="saveBand()">
 
@@ -48,12 +48,13 @@
     </div>
     <div class="col-md-4 offset-4">
       <label class="infoLabel" for="password">Password:</label>
-      <input id="password" type="text" name="password" formControlName="password" class="form-control"/>
+        <input id="password" type="password" name="password" formControlName="password" class="form-control"/>
+
     </div>
   </div>
 
 
-  <div class="row">
+  <div class="row" *ngIf="!isEditUser">
     <div class="col-md-4 offset-4">
       <label class="infoLabel" for="band_id">Band:</label>
       <input id="band_id" [value]="bandForm.value.id" name="band_id" formControlName="band_id" class="form-control" readonly/>
@@ -72,7 +73,7 @@
 
   <div class="row" style="margin-top: 2%;">
     <div class="col-md-4 offset-4">
-  <div class="btn-group" *ngIf="newBand === true">
+  <div class="btn-group" *ngIf="isEditUser || newBand === true">
     <button type="submit" (click)="setShouldNavigateToList()" class="btn btn-primary" [disabled]="userForm.invalid">
       Save
     </button>

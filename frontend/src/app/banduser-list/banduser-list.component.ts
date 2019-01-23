@@ -12,7 +12,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 export class BanduserListComponent implements OnInit {
 
   users: Array<User>;
-  public bandUserFormid: boolean;
+  bandUserFormid: boolean;
 
   constructor(private toastrService: ToastrService, private userService: UserService,
               private router: Router, private route: ActivatedRoute) { }
