@@ -1,6 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Actor} from '../api/actor';
 import {MemberService} from '../service/member.service';
 import {BsModalService} from 'ngx-bootstrap';
 import {ActivatedRoute, Route} from '@angular/router';

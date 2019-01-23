@@ -75,7 +75,7 @@ export class MapComponent implements OnInit {
       series1.data = JSON.parse(JSON.stringify(this.band_countries));
     }
     //series1.include = (JSON).parse(this.countries).
-    series1.mapPolygons.template.tooltipText = '\n {name} ({nameCode})\n ______________________________ \n\n Bands: \n ----------\n {bands}\n ______________________________';
+    series1.mapPolygons.template.tooltipText = '\n[bold] {name} ({nameCode})[/]\n ______________________________ \n\n Bands: \n ----------\n {bands}\n ______________________________';
     series1.mapPolygons.template.fill = am4core.color('#5998a6');
     series1.fill = am4core.color('#5998a6');
     let hs1 = series1.mapPolygons.template.states.create('hover');
@@ -92,7 +92,8 @@ export class MapComponent implements OnInit {
       console.log(series2.data);
     }
     //series1.include = (JSON).parse(this.countries).
-    series2.mapPolygons.template.tooltipText = '\n {name} ({nameCode})\n ______________________________ \n\n Events: \n ----------\n {bpevents} \n ______________________________';
+    series2.mapPolygons.template.tooltipText = '\n[bold] {name} ({nameCode})[/]\n ______________________________ \n\n Events: \n ----------\n {bpevents} \n ______________________________';
+
     series2.mapPolygons.template.fill = am4core.color('#75d581');
     series2.fill = am4core.color('#75d581');
     let hs2 = series2.mapPolygons.template.states.create('hover');
@@ -107,8 +108,8 @@ export class MapComponent implements OnInit {
     if(this.band_event_countries.length > 0){
       series3.data = JSON.parse(JSON.stringify(this.band_event_countries));
     }
-    //series1.include = (JSON).parse(this.countries).
-    series3.mapPolygons.template.tooltipText = '\n {name} ({nameCode})\n ______________________________ \n\n Bands: \n ----------\n {bands} \n\n Events: \n ---------- \n {bpevents} \n ______________________________';
+    //series1.include = (JSON).parse(this.countries)
+    series3.mapPolygons.template.tooltipText = '\n[bold] {name} ({nameCode})[/]\n ______________________________ \n\n Bands: \n ----------\n {bands} \n\n Events: \n ---------- \n {bpevents} \n ______________________________';
     series3.mapPolygons.template.tooltipText.big();
     series3.mapPolygons.template.fill = am4core.color('#14404c');
     series3.fill = am4core.color('#14404c');
@@ -121,15 +122,11 @@ export class MapComponent implements OnInit {
     series4.name = 'Other';
     series4.useGeodata = true;
     series4.exclude = ['AQ'].concat(country_ids_bands).concat(country_ids_events).concat(country_ids_bands_events);
-    series4.mapPolygons.template.tooltipText = '\n {name} ({id})\n ______________________________ \n\n No Bands or Events found!\n ______________________________';
+    series4.mapPolygons.template.tooltipText = '\n[bold] {name} ({id})[/]\n ______________________________ \n\n No Bands or Events found!\n ______________________________';
     series4.mapPolygons.template.fill = am4core.color('#96BDC6');
     let hs4 = series4.mapPolygons.template.states.create('hover');
     hs4.properties.fill = am4core.color('#c8f2ec');
     series4.fill = am4core.color('#c8f2ec');
-
-
-
-
 
     // legend settings
     map.legend = new am4maps.Legend();
