@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BandService} from '../service/band.service';
 import {BanduserService} from '../service/banduser.service';
 import {User} from '../api/user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-banduser-form',
@@ -20,7 +21,8 @@ export class BanduserFormComponent implements OnInit {
   newBand: boolean;
   isEditUser;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private bandUserService: BanduserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private bandUserService: BanduserService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -54,7 +56,6 @@ export class BanduserFormComponent implements OnInit {
     this.bandUserService.create(band)
       .subscribe((response: any) => {
         this.newBand = true;
-        alert('created successfully');
         this.bandForm.setValue({
           id: response.id,
           name: response.name
@@ -70,22 +71,26 @@ export class BanduserFormComponent implements OnInit {
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.success('User updated successfully', 'YES');
           this.userForm.setValue(response);
           if (this.shouldNavigateToList) {
             this.navigateToList();
           }
+        }, (err) => {
+          this.toastr.error('User already exists!', 'NONONO');
         });
     } else {
       this.userService.create(user)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success('User created successfully', 'YES');
           // console.log(this.userForm);
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {
             this.router.navigate(['/banduser-list']);
           }
+        }, (err) => {
+          this.toastr.error('User already exists!', 'NONONO');
         });
     }
 

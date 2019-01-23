@@ -5,7 +5,6 @@ import {BsModalService} from 'ngx-bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BandService} from '../service/band.service';
 import {EventService} from '../service/event.service';
-import {Actor} from '../api/actor';
 import {Band} from '../api/band';
 import {UserService} from '../service/user.service';
 
