@@ -25,9 +25,7 @@ export class AppComponent implements OnInit {
 
     this.userService.isAdminChange.subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
-    })
-    console.log('isAdmin: ', this.userService.isLoggedIn);
-    console.log('isLoggedIn', this.userService.getRole());
+    });
   }
 
   logout() {

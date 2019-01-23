@@ -1,17 +1,13 @@
-import {Component, Host, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {AlbumService} from '../service/album.service';
 import {Album} from '../api/album';
 import {Song} from '../api/song';
 import {SongService} from '../service/song.service';
-import {isBoolean} from 'ngx-bootstrap/chronos/utils/type-checks';
-import {passBoolean} from 'protractor/built/util';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {BandViewComponent} from '../band-view/band-view.component';
-import {Validator} from 'codelyzer/walkerFactory/walkerFn';
-import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bandalbum',
@@ -24,8 +20,6 @@ export class BandalbumComponent implements OnInit {
   songForm;
   albums: Array<Album>;
   songs: Array<Song>;
-  isAdmin: boolean;
-  isLoggedIn: boolean;
   bandOwner: boolean;
 
   constructor(private route: ActivatedRoute, private albumService: AlbumService, private songService: SongService,
@@ -42,7 +36,6 @@ export class BandalbumComponent implements OnInit {
         if (parseInt(this.route.snapshot.paramMap.get('id'), 10) === res.band_id) {
           this.bandOwner = true;
         }
-        console.log(this.bandOwner);
       });
     }
     this.albumForm = new FormGroup({
@@ -64,23 +57,12 @@ export class BandalbumComponent implements OnInit {
 
     this.songService.getAll().subscribe((response: any) => {
       this.songs = response;
-      console.log('songs', this.songs);
     });
-
-    /*this.bandOwner.subscribe((value) => {
-      this.bandViewComp.bandOwner = value;
-      console.log('Bandalbum', this.bandOwner);
-    });*/
-  }
-
-  getAlbumID() {
-    return this.albumForm.value.albumID;
   }
 
   saveAlbum() {
     const album = this.albumForm.value;
     album.band = this.route.snapshot.paramMap.get('id');
-    console.log(album);
     this.albumService.saveAlbum(album)
       .subscribe((response: any) => {
         this.albums.push(response);
@@ -98,7 +80,6 @@ export class BandalbumComponent implements OnInit {
   saveSong(albumID) {
     const song = this.songForm.value;
     song.album = albumID;
-    console.log('new song', song);
     this.songService.saveSong(song)
       .subscribe((response: any) => {
         this.songs.push(response);

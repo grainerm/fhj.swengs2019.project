@@ -3,13 +3,10 @@ import 'core-js/shim';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import {Component, OnInit} from '@angular/core';
 import {CountryService} from '../service/country.service';
 import {Country} from '../api/country';
 import {ActivatedRoute} from '@angular/router';
-import {forEach} from '@angular/router/src/utils/collection';
-import {of} from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -53,12 +50,12 @@ export class MapComponent implements OnInit {
         country_ids_events.push(c.nameCode.toUpperCase());
       }});
     // for debug
-    console.log('band_ids: ' + country_ids_bands);
+    /*console.log('band_ids: ' + country_ids_bands);
     console.log('event_ids: ' + country_ids_events);
     console.log('band_event_ids: ' +  country_ids_bands_events);
     console.log(this.band_countries);
     console.log(this.event_countries);
-    console.log(this.band_event_countries);
+    console.log(this.band_event_countries);*/
     //create map
     let map = am4core.create('chartdiv', am4maps.MapChart);
     //global map settings
@@ -87,9 +84,7 @@ export class MapComponent implements OnInit {
     series2.useGeodata = true;
     series2.include = country_ids_events;
     if(this.event_countries.length > 0){
-      console.log("test");
       series2.data = JSON.parse(JSON.stringify(this.event_countries));
-      console.log(series2.data);
     }
     //series1.include = (JSON).parse(this.countries).
     series2.mapPolygons.template.tooltipText = '\n[bold] {name} ({nameCode})[/]\n ______________________________ \n\n Events: \n ----------\n {bpevents} \n ______________________________';

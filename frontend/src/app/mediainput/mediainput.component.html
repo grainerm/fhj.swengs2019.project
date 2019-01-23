@@ -1,8 +1,0 @@
-<div>
-  <div *ngFor="let media of medias; let i = index;">
-    <img [src]="previews[i] | safeUrl" *ngIf="previews[i]"
-         class="img-fluid">
-  </div>
-
-    <input [id]="'field_' + name" type="file" accept="image/*" ng2FileSelect [uploader]="uploader" [multiple]="true"/>
-</div>

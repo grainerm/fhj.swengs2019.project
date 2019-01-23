@@ -8,10 +8,6 @@ export class SongService {
 
   constructor(private http: HttpClient) { }
 
-  getAllForAlbum(id) {
-    return this.http.get('/api/albums/' + id + '/songs');
-  }
-
   getAll() {
     return this.http.get('/api/dto/songs');
   }

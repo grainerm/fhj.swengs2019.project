@@ -1,27 +1,20 @@
 <h2>Albums</h2>
 <div *ngFor="let album of albums;">
   <div class="row">
-  <!--div class="col-sm-4 offset-1" style="font-size: 40px; margin-left: 15%;margin-top: 100px" >
-    {{album.name}} {{album.albumID}}
+    <div class="col-sm-4 ">
+    <label class="infoLabel-album">{{album.name}}</label>
   </div>
-    <div class="col-sm-4">
-    <input style="vertical-align: bottom; margin: 0px;" name="edit" (click)="getAlbumID()" type="radio" [value]="true" [checked]="edit"/>Edit<br>
-    </div!-->
-    <div class="col-sm-12 offset-1">
-      <label class="infoLabel">{{album.name}}({{album.releaseYear}})</label>
-      <button style="margin-left: 5%;" (click)="deleteAlbum(album)" type="button" class="btn btn-bandView" *ngIf="bandOwner"><i
+    <div class="col-sm-4 ">
+      <label class="infoLabel-album"> ({{album.releaseYear}})</label>
+    </div>
+    <div class="col-sm-4 ">
+
+      <button (click)="deleteAlbum(album)" type="button" class="btn btn-bandView mt-2" *ngIf="bandOwner"><i
         class="fa fa-trash"></i>
       </button>
     </div>
-
-    <!--div class="col-sm-4">
-      <input name="edit" [(ngModel)]="edit" type="radio" [value]="true" [checked]="edit"/>Edit<br>
-      <input name="edit" [(ngModel)]="edit" type="radio" [value]="false" [checked]="!edit"/>Not<br>
-    </div-->
   <!-- Song Info -->
-
-  <!--div class="row" style="margin-bottom: 50px;"!-->
-    <div style="margin-bottom: 50px;" class="col-sm-4 offset-1">
+    <div class="col-sm-4 mb-1">
       <label class="infoLabel">Song</label>
     </div>
     <div class="col-sm-4">
@@ -29,7 +22,7 @@
     </div>
   </div>
   <div  *ngFor="let song of songs" >
-    <div *ngIf="song.album === album.albumID" class="row mb-1 form-group" style="margin-bottom: 50px;">
+    <div *ngIf="song.album === album.albumID" class="row mb-1 form-group">
       <div class="col-sm-4">
         <input id="role" type="text" name="role" [value]="song.name" disabled
                class="form-control infoInput"/>
@@ -80,7 +73,9 @@
 
 
     </div>
-    <button style="height: 50%;margin-top: 7.5%" [disabled]="albumForm.invalid" type="submit" class="btn btn-primary">Create</button>
+    <div class="col-sm-1 mt-5">
+    <button [disabled]="albumForm.invalid" type="submit" class="btn btn-bandView">Create</button>
+    </div>
   </div>
 
   <div *ngIf="albumForm.invalid && (albumForm.controls.releaseYear.dirty || albumForm.controls.releaseYear.touched)"

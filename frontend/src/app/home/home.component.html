@@ -3,7 +3,6 @@
   <div class="row">
     <div class="col-sm-6 bandButton" *ngFor="let band of bands">
       <img src="{{band.bandPicture}}" class="band__image"/>
-      <!--h3 class="band__title">{{band.name}}</h3-->
       <button type="button" (click)="navBand(band.id)">{{band.name}}</button>
       <p class="band__description">
         {{band.description}}
