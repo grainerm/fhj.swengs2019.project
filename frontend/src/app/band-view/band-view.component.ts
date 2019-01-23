@@ -11,6 +11,7 @@ import {CountryService} from '../service/country.service';
 import {Country} from '../api/country';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-band-view',
@@ -33,7 +34,7 @@ export class BandViewComponent implements OnInit {
 
   constructor(private memberService: MemberService, private modalService: BsModalService, private route: ActivatedRoute,
               private bandService: BandService, private eventService: EventService, private  countryService: CountryService,
-              private userService: UserService) {
+              private userService: UserService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -173,7 +174,7 @@ export class BandViewComponent implements OnInit {
     if (band.id) {
       this.bandService.update(band)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.success('Band updated successfully', 'YES');
           this.bandForm.setValue(response);
         });
     }
