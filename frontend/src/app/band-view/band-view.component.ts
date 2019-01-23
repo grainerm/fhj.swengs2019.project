@@ -50,7 +50,7 @@ export class BandViewComponent implements OnInit {
       'albums': new FormControl(),
       'member': new FormControl(),
       'bandPicture': new FormControl('', [Validators.pattern(this.regexp)]),
-      'description': new FormControl()
+      'description': new FormControl('', [Validators.maxLength(255)])
     });
     this.memberForm = new FormGroup({
       'memberID': new FormControl(0),

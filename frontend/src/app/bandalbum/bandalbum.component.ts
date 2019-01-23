@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {AlbumService} from '../service/album.service';
 import {Album} from '../api/album';
@@ -10,6 +10,7 @@ import {passBoolean} from 'protractor/built/util';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {BandViewComponent} from '../band-view/band-view.component';
+import {Validator} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-bandalbum',
@@ -32,17 +33,17 @@ export class BandalbumComponent implements OnInit {
 
     this.albumForm = new FormGroup({
       'albumID': new FormControl(),
-      'name': new FormControl(),
-      'releaseYear': new FormControl(),
+      'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
+      'releaseYear': new FormControl('', [Validators.required]),
       'songs': new FormControl(),
       'edit':  new FormControl()
     });
 
 
     this.songForm = new FormGroup({
-      'name': new FormControl(),
+      'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'album': new FormControl(),
-      'length': new FormControl()
+      'length': new FormControl('', [Validators.required])
     });
     const data = this.route.snapshot.data;
     this.albums = data.albums._embedded.albums;

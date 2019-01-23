@@ -76,7 +76,7 @@
               <label class="infoLabel">Founding Year</label>
             </div>
             <div class="col-sm-5">
-              <input id="foundingYear" type="text" name="foundingYear" formControlName="foundingYear"
+              <input id="foundingYear" type="number" name="foundingYear" formControlName="foundingYear"
                      class="form-control infoInput" value="{{bandForm.value.foundingYear}}" [readonly]="!bandOwner"/>
             </div>
           </div>
@@ -109,12 +109,16 @@
                 <div class="col-sm-5">
                   <textarea rows="6" id="description" type="text" name="description" formControlName="description"
                          class="form-control" value="{{bandForm.value.description}}">Test</textarea>
+                  <div *ngIf="bandForm.controls.description.invalid"
+                       class="alert alert-danger">
+                    Only 255 characters allowed!
+                  </div>
                 </div>
 
               </div>
 
           </div>
-        <button type="submit" *ngIf="bandOwner" class="btn btn-outline-success btn-save saveBandView">Save</button>
+        <button type="submit" [disabled]="bandForm.controls.description.invalid" *ngIf="bandOwner" class="btn btn-outline-success btn-save saveBandView">Save</button>
 
         <!-- other Info -->
 

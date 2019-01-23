@@ -49,7 +49,7 @@
              class="form-control infoInput"/>
     </div>
     <div class="col-sm-4">
-      <input id="newLength" type="text" name="length" formControlName="length" value=""
+      <input id="newLength" type="number" name="length" formControlName="length" value=""
              class="form-control infoInput"/>
     </div>
 
@@ -68,10 +68,19 @@
 <form (submit)="saveAlbum()" [formGroup]="albumForm" *ngIf="bandOwner">
   <div class="row">
     <div class="col-sm-4">
-      <input id="newAlbum" type="text" name="album" formControlName="name" value=""
+    <input id="newAlbum" type="text" name="album" formControlName="name" value=""
+           class="form-control infoInput"/>
+  </div>
+    <div class="col-sm-4">
+      <input id="newYear" type="number" name="year" formControlName="releaseYear" value=""
              class="form-control infoInput"/>
     </div>
-    <button type="button" class="btn btn-primary" (click)="saveAlbum(album)">Create</button>
+    <button [disabled]="albumForm.invalid" type="button" class="btn btn-primary" (click)="saveAlbum(album)">Create</button>
+
+  </div>
+  <div *ngIf="albumForm.invalid && (albumForm.controls.releaseYear.dirty || albumForm.controls.releaseYear.touched)"
+       class="alert alert-danger">
+    Please enter a name and a year!
   </div>
   <!-- Songs !-->
   <!--div class="col-sm-4">
