@@ -16,6 +16,7 @@ import {BandListResolver} from './resolver/band-list.resolver';
 import {CountriesResolver} from './resolver/countries.resolver';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {AlbumResolver} from './resolver/album.resolver';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'band-view/:id', component: BandViewComponent, resolve: {
-      band: BandResolver
+      band: BandResolver,
+      albums: AlbumResolver
     }
   },
   /*{

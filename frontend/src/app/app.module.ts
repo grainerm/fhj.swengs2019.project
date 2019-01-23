@@ -31,6 +31,7 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {SafeUrlPipe} from './safe-url.pipe';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 import {ShowHidePasswordModule} from 'ngx-show-hide-password';
+import { BandalbumComponent } from './bandalbum/bandalbum.component';
 
 
 
@@ -57,6 +58,7 @@ export function tokenGetter() {
     SafeUrlPipe,
     EventsComponent,
     MapComponent,
+    BandalbumComponent,
   ],
   imports: [
     ShowHidePasswordModule.forRoot(),

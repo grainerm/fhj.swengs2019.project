@@ -13,17 +13,17 @@ public class AlbumController {
     @Autowired
     private AlbumFacade albumFacade;
 
-    @GetMapping("/dto/alben/{id}")
+    @GetMapping("/dto/albums/{id}")
     AlbumDTO getById(@PathVariable Long id) {
         return albumFacade.getById(id);
     }
 
-    @PostMapping("/dto/alben")
+    @PostMapping("/dto/albums")
     AlbumDTO create(@RequestBody @Valid AlbumDTO dto) {
         return albumFacade.create(dto);
     }
 
-    @PutMapping("/dto/alben/{id}")
+    @PutMapping("/dto/albums/{id}")
     AlbumDTO update(@RequestBody @Valid AlbumDTO dto, @PathVariable Long id) {
         return albumFacade.update(id, dto);
     }

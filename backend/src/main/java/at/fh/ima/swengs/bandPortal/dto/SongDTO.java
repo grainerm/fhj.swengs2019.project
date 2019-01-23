@@ -9,7 +9,7 @@ public class SongDTO {
 
     private Long id;
     private String name;
-    private Album album;
+    private Long album;
     private float length;
 
     public Long getId() {
@@ -28,11 +28,11 @@ public class SongDTO {
         this.name = name;
     }
 
-    public Album getAlbum() {
+    public Long getAlbum() {
         return album;
     }
 
-    public void setAlbum(Album album) {
+    public void setAlbum(Long album) {
         this.album = album;
     }
 

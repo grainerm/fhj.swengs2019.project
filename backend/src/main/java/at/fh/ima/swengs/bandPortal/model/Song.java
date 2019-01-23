@@ -19,7 +19,7 @@ public class Song {
     @Column(nullable = true)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Album album;
 
     @Column(nullable = true)
