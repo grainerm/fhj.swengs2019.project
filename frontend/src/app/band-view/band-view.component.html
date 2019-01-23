@@ -8,7 +8,7 @@
     <div
       *ngIf="bandForm.controls.bandPicture.invalid && (bandForm.controls.bandPicture.dirty || bandForm.controls.bandPicture.touched)"
       class="alert alert-danger">
-      Please enter a valid URL!
+      Please enter a valid picture URL! (must end with .png/.jpeg/.gif)
     </div>
 
 
@@ -138,11 +138,8 @@
                 <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{event.date |
                   date:'EE'}}
                 </li>
-                <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>{{event.date |
-                  date:'HH:mm'}}
-                </li>
                 <li style="font-size: 20px;" class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>
-                  {{event.hostCountry}}, {{event.place}}
+                  {{event.place}}
                 </li>
               </ul>
               <p>{{event.eventType}}</p>
@@ -194,7 +191,7 @@
         </div>
         <div class="col-md-8">
           <input id="date" bsDatepicker type="text" name="date" formControlName="date" value=""
-                 class="form-control" [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" placeholder="Select a date..."/>
+                 class="form-control" autocomplete="off" [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" placeholder="Select a date..."/>
         </div>
       </div>
       <div class="row mb-2">

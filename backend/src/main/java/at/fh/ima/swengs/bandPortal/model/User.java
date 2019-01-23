@@ -21,7 +21,7 @@ public class User {
 
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Band band;
 
     private boolean admin;

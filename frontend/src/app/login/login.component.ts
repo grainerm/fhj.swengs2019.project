@@ -27,11 +27,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user)
       .subscribe((res: any) => {
       }, (error) => {
-        if (!navigator.onLine) {
-          this.toastrService.error('You are offline');
-        } else {
-          alert('wrong username or password');
-        }
+          this.toastrService.error('wrong username or password', 'NONONO');
       });
   }
 }
