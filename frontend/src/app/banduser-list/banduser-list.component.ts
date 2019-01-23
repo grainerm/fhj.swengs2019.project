@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../api/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
-import {Actor} from '../api/actor';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @Component({

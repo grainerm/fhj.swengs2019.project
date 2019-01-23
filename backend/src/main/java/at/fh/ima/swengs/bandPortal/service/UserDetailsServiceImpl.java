@@ -1,7 +1,5 @@
 package at.fh.ima.swengs.bandPortal.service;
 
-import at.fh.ima.swengs.bandPortal.model.Movie;
-import at.fh.ima.swengs.bandPortal.model.MovieRepository;
 import at.fh.ima.swengs.bandPortal.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +16,6 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service("userDetailsService")   // It has to be annotated with @Service.
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -29,8 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private MovieRepository movieRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -63,21 +58,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             admin.setAdmin(true);
             userRepository.save(admin);
 
-            at.fh.ima.swengs.bandPortal.model.User tester = new at.fh.ima.swengs.bandPortal.model.User();
-            tester.setUsername("tester");
-            tester.setPassword(encoder.encode("12345"));
-            userRepository.save(tester);
-        }
-
-        if (movieRepository.count() == 0) {
-            List<String> movieNames = Arrays.asList("Tangled", "The Princess and the Frog", "Beauty and the Beast", "Monsters, Inc.", "Aladdin", "Pocahontas", "Hercules", "A Bug's Life");
-            List<Movie> movies = new ArrayList<>();
-            movieNames.forEach(movieName -> {
-                Movie movie = new Movie();
-                movie.setTitle(movieName);
-                movies.add(movie);
-            });
-            movieRepository.saveAll(movies);
         }
 
     }
