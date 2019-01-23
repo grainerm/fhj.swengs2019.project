@@ -16,6 +16,9 @@ import {BandListResolver} from './resolver/band-list.resolver';
 import {CountriesResolver} from './resolver/countries.resolver';
 import {BanduserListComponent} from './banduser-list/banduser-list.component';
 import {BanduserFormComponent} from './banduser-form/banduser-form.component';
+import {CountriesEventsResolver} from './resolver/countries_for_events.resolver';
+import {CountriesBandsResolver} from './resolver/countries_for_bands.resolver';
+import {CountriesBandsAndEventsResolver} from './resolver/countries_for_bands_and_events.resolver';
 import {AlbumResolver} from './resolver/album.resolver';
 
 const routes: Routes = [
@@ -32,7 +35,11 @@ const routes: Routes = [
     path: 'events', component: EventsComponent
   },
   {
-    path: 'map', component: MapComponent, resolve: { countries: CountriesResolver}
+    path: 'map', component: MapComponent, resolve: {
+      band_countries: CountriesBandsResolver,
+      event_countries: CountriesEventsResolver,
+      event_band_countries: CountriesBandsAndEventsResolver
+    }
   },
   {
     path: 'band-view/:id', component: BandViewComponent, resolve: {

@@ -17,12 +17,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isAdmin = this.userService.getRole();
     this.isLoggedIn = this.userService.isLoggedIn;
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
 
-    this.isAdmin = this.userService.getRole();
+    this.userService.isAdminChange.subscribe((isAdmin) => {
+      this.isAdmin = isAdmin;
+    })
+    console.log('isAdmin: ', this.userService.isLoggedIn);
+    console.log('isLoggedIn', this.userService.getRole());
   }
 
   logout() {

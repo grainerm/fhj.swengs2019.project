@@ -13,8 +13,16 @@ public class CountryDTO {
     private String name;
     private String nameCode;
     private List<String> bands;
-    private Set<String> events;
+    private Set<String> bpevents;
+    private String fill;
 
+    public String getFill() {
+        return fill;
+    }
+
+    public void setFill(String fill) {
+        this.fill = fill;
+    }
 
     public String getId() {
         return id;
@@ -48,11 +56,11 @@ public class CountryDTO {
         this.bands = bands;
     }
 
-    public Set<String> getEvents() {
-        return events;
+    public Set<String> getBpevents() {
+        return bpevents;
     }
 
-    public void setEvents(Set<String> events) {
-        this.events = events;
+    public void setBpevents (Set<String> bpevents) {
+        this.bpevents = bpevents;
     }
 }

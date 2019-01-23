@@ -30,7 +30,7 @@ public class CountryFacade {
 
     void mapDtoToEntity(CountryDTO dto, Country entity) {
         entity.setName(dto.getName());
-        entity.setEvents(eventService.getEventsByName(dto.getEvents()));
+        entity.setEvents(eventService.getEventsByName(dto.getBpevents()));
         entity.setBands(bandService.getBandsForName(dto.getBands()));
         entity.setNameCode(dto.getNameCode());
     }
@@ -38,10 +38,10 @@ public class CountryFacade {
     private void mapEntityToDto(Country entity, CountryDTO dto) {
         dto.setId(entity.getNameCode());
         dto.setName(entity.getName());
-        dto.setBands(entity.getBands().stream().map((s) -> s.getName()).collect(Collectors.toList()));
-        dto.setEvents(entity.getEvents().stream().map((s) -> s.getName()).collect(Collectors.toSet()));
         dto.setNameCode(entity.getNameCode());
     }
+
+
 
     public CountryDTO update(long id, CountryDTO dto) {
         Country entity = countryService.findById(id).get();
@@ -71,5 +71,46 @@ public class CountryFacade {
              cdto.add(dto);
          });
          return cdto;
+    }
+
+    public List<CountryDTO> getAllCountrysWithBands(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithBands().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setBands(entity.getBands().stream().map((s) -> s.getName()).collect(Collectors.toList()));
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
+    }
+    public List<CountryDTO> getAllCountrysWithEvents(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithEvents().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setBpevents(entity.getEvents().stream().map((s) -> s.getName()).collect(Collectors.toSet()));
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
+    }
+    public List<CountryDTO> getAllCountrysWithBandsAndEvents(){
+        List<CountryDTO> cdto = new ArrayList<>();
+        countryService.getCountriesWithBandsAndEvents().forEach(entity -> {
+            CountryDTO dto = new CountryDTO();
+            mapEntityToDto(entity,dto);
+            if(!cdto.contains(dto)){
+                dto.setBands(entity.getBands().stream().map((s) -> s.getName()).collect(Collectors.toList()));
+                dto.setBpevents(entity.getEvents().stream().map((s) -> s.getName()).collect(Collectors.toSet()));
+                cdto.add(dto);
+            } //5C5CFF
+
+        });
+        return cdto;
     }
 }

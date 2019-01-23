@@ -22,6 +22,10 @@ public class CountryService {
         return countryRepository.findById(id);
     }
 
+    public Optional<Country> findByCode(String code) {
+        return countryRepository.findByNameCode(code);
+    }
+
     public Country save(Country entity) {
         return countryRepository.save(entity);
     }
@@ -36,4 +40,12 @@ public class CountryService {
     public List<Country> getAllCountries(){
         return countryRepository.findAll();
     }
+
+    public List<Country> getCountriesWithBands() {return countryRepository.findCountriesByBandsIsNotNullAndEventsIsNull();}
+
+    public List<Country> getCountriesWithEvents() {return countryRepository.findCountriesByEventsIsNotNullAndBandsIsNull();}
+
+    public List<Country> getCountriesWithBandsAndEvents() {return countryRepository.findCountriesByEventsIsNotNullAndBandsIsNotNull();}
+
+
 }

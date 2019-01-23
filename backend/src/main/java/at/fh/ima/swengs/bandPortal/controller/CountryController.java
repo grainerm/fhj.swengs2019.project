@@ -32,8 +32,21 @@ public class CountryController {
     }
 
     @GetMapping("/dto/countries")
-    List<CountryDTO> getAll(){
+    List<CountryDTO> getAll() {
         return countryFacade.getAll();
+    }
+
+    @GetMapping("/dto/countrieswithbands")
+    List<CountryDTO> getAllCountrysWithBands(){
+        return countryFacade.getAllCountrysWithBands();
+    }
+    @GetMapping("/dto/countrieswithevents")
+    List<CountryDTO> getAllCountrysWithEvents(){
+        return countryFacade.getAllCountrysWithEvents();
+    }
+    @GetMapping("/dto/countrieswithbandsandevents")
+    List<CountryDTO> getAllCountrysWithBandsAndEvents(){
+        return countryFacade.getAllCountrysWithBandsAndEvents();
     }
 
 }

@@ -15,7 +15,7 @@ public class BandDTO {
     private String name;
     private List<Long> member;
     private String genre;
-    private Long country;
+    private String country;
     private Set<Long> events;
     private List<Long> albums;
     private String bandPicture;
@@ -56,11 +56,11 @@ public class BandDTO {
         this.genre = genre;
     }
 
-    public Long getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(Long country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
