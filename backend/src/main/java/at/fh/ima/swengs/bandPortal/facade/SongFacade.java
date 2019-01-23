@@ -1,5 +1,6 @@
 package at.fh.ima.swengs.bandPortal.facade;
 
+import at.fh.ima.swengs.bandPortal.dto.CountryDTO;
 import at.fh.ima.swengs.bandPortal.dto.SongDTO;
 import at.fh.ima.swengs.bandPortal.model.Song;
 import at.fh.ima.swengs.bandPortal.service.AlbumService;
@@ -7,6 +8,9 @@ import at.fh.ima.swengs.bandPortal.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service()
 @Transactional
@@ -50,5 +54,15 @@ public class SongFacade {
         SongDTO dto = new SongDTO();
         mapEntityToDto(entity, dto);
         return dto;
+    }
+
+    public List<SongDTO> getAll(){
+        List<SongDTO> sdto = new ArrayList<SongDTO>();
+        songService.getAllSongs().forEach(entity -> {
+            SongDTO dto = new SongDTO();
+            mapEntityToDto(entity,dto);
+            sdto.add(dto);
+        });
+        return sdto;
     }
 }

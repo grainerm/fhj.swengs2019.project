@@ -24,8 +24,8 @@
       <label class="infoLabel">Length</label>
     </div>
   </div>
-  <div [formGroup]="songForm" [formGroup]="albumForm" *ngFor="let song of songs" >
-    <div *ngIf="songForm.value.album === albumForm.value.albumID" class="row mb-1 form-group" style="margin-bottom: 50px;">
+  <div  *ngFor="let song of songs" >
+    <div *ngIf="song.album === album.albumID" class="row mb-1 form-group" style="margin-bottom: 50px;">
       <div class="col-sm-5">
         <input id="role" type="text" name="role" [value]="song.name" disabled
                class="form-control infoInput"/>
@@ -35,17 +35,15 @@
                class="form-control infoInput"/>
       </div>
       <div class="col-sm-1">
-        <button (click)="deleteSong(song)" type="button" class="btn btn-bandView"><i
+        <button (click)="deleteSong(song)" type="button" class="btn btn-bandView" *ngIf="bandOwner"><i
           class="fa fa-trash"></i>
         </button>
       </div>
-      <p>{{album.albumID}}</p>
-      <p>{{song.album}}</p>
     </div>
   </div>
 
   <!-- new Song -->
-  <div [formGroup]="songForm" [formGroup]="albumForm" class="row mb-5" >
+  <div [formGroup]="songForm" class="row mb-5" *ngIf="bandOwner">
     <div class="col-sm-5">
       <input id="newSong" type="text" name="name" formControlName="name" value=""
              class="form-control infoInput"/>
@@ -67,45 +65,7 @@
   </div>
 </div>
 
-<!--table style="margin-bottom: 15%;" class="table">
-  <thead>
-  <tr>
-    <th class="infoLabel" style="width: 40%">Name</th>
-    <th style="width: 10%"></th>
-    <th class="infoLabel" style="width: 40%">Songs</th>
-  </tr>
-  </thead>
-  <tbody>
-
-
-
-
-  <tr class="table-list" *ngFor="let album of albums">
-    <td><strong>{{ album.name }}</strong></td>
-    <td> <div class="btn-group">
-      <button type="button" class="btn btn-danger" (click)="deleteAlbum(album)">
-        Delete
-      </button>
-    </div></td>
-
-    <td [formGroup]="songForm" *ngFor="let song of songs;">
-        {{song.name}}
-    </td>
-    <td> <div class="btn-group">
-      <button type="button" class="btn btn-danger" (click)="deleteSong(song)">
-        Delete
-      </button>
-    </div></td>
-  </tr>
-
-
-  </tbody>
-</table>
-
-
-<!-- Album !-->
-
-<form (submit)="saveAlbum()" [formGroup]="albumForm">
+<form (submit)="saveAlbum()" [formGroup]="albumForm" *ngIf="bandOwner">
   <div class="row">
     <div class="col-sm-4">
       <input id="newAlbum" type="text" name="album" formControlName="name" value=""

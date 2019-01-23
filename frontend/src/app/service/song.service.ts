@@ -13,7 +13,7 @@ export class SongService {
   }
 
   getAll() {
-    return this.http.get('/api/songs');
+    return this.http.get('/api/dto/songs');
   }
 
   deleteSong(song) {

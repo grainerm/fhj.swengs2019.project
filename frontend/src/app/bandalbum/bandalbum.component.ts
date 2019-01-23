@@ -9,6 +9,7 @@ import {isBoolean} from 'ngx-bootstrap/chronos/utils/type-checks';
 import {passBoolean} from 'protractor/built/util';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
+import {BandViewComponent} from '../band-view/band-view.component';
 
 @Component({
   selector: 'app-bandalbum',
@@ -21,10 +22,10 @@ export class BandalbumComponent implements OnInit {
   songForm;
   albums: Array<Album>;
   songs: Array<Song>;
-  //edit;
+  bandOwner: boolean;
 
-
-  constructor(private route: ActivatedRoute, private albumService: AlbumService, private songService: SongService) {
+  constructor(private route: ActivatedRoute, private albumService: AlbumService, private songService: SongService,
+              private bandViewComp: BandViewComponent) {
   }
 
   ngOnInit() {
@@ -47,11 +48,11 @@ export class BandalbumComponent implements OnInit {
     this.albums = data.albums._embedded.albums;
 
     this.songService.getAll().subscribe((response: any) => {
-      this.songs = response._embedded.songs;
+      this.songs = response;
       console.log('songs', this.songs);
     });
 
-    console.log('albums', this.albums);
+    this.bandOwner = this.bandViewComp.bandOwner;
   }
 
   getAlbumID() {
@@ -78,7 +79,7 @@ export class BandalbumComponent implements OnInit {
   saveSong(albumID) {
     const song = this.songForm.value;
     song.album = albumID;
-    console.log(song);
+    console.log('new song', song);
     this.songService.saveSong(song)
       .subscribe((response: any) => {
         this.songs.push(response);

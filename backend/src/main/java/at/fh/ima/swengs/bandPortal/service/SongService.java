@@ -1,5 +1,6 @@
 package at.fh.ima.swengs.bandPortal.service;
 
+import at.fh.ima.swengs.bandPortal.model.Country;
 import at.fh.ima.swengs.bandPortal.model.Song;
 import at.fh.ima.swengs.bandPortal.model.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class SongService {
             dtos.forEach((dto) -> entities.add(songRepository.findById(dto).get()));
         }
         return entities;
+    }
+
+    public List<Song> getAllSongs(){
+        return songRepository.findAll();
     }
 }
