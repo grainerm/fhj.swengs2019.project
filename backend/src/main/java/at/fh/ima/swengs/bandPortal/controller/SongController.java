@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class SongController {
@@ -26,5 +27,10 @@ public class SongController {
     @PutMapping("/dto/songs/{id}")
     SongDTO update(@RequestBody @Valid SongDTO dto, @PathVariable Long id) {
         return songFacade.update(id, dto);
+    }
+
+    @GetMapping("/dto/songs")
+    List<SongDTO> getAll() {
+        return songFacade.getAll();
     }
 }

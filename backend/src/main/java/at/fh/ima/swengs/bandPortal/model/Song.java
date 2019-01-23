@@ -32,7 +32,7 @@ public class Song {
     public Song() {
     }
 
-    public Song(String name, Band band, float length) {
+    public Song(String name, Album album, float length) {
         this.name = name;
         this.album = album;
         this.length = length;

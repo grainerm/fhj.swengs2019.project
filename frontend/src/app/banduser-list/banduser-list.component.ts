@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../api/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-banduser-list',
@@ -18,12 +18,6 @@ export class BanduserListComponent implements OnInit {
               private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    /*this.users = this.userService.getAll(this.users);
-
-    const data = this.route.snapshot.data;
-    this.users = data.users._embedded.users;
-    console.log(this.users);*/
     this.userService.getAll().subscribe((response: any) => {
       this.users = response._embedded.users;
     });
@@ -47,7 +41,6 @@ export class BanduserListComponent implements OnInit {
 
   editUser(id) {
     this.router.navigate(['/banduser-form/' + id]).then(success => {
-      console.log(success);
     }, error => {
       this.toastrService.error('This is not possible :(');
     });

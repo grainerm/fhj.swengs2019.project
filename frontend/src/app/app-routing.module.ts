@@ -14,6 +14,7 @@ import {BanduserFormComponent} from './banduser-form/banduser-form.component';
 import {CountriesEventsResolver} from './resolver/countries_for_events.resolver';
 import {CountriesBandsResolver} from './resolver/countries_for_bands.resolver';
 import {CountriesBandsAndEventsResolver} from './resolver/countries_for_bands_and_events.resolver';
+import {AlbumResolver} from './resolver/album.resolver';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
   },
   {
     path: 'band-view/:id', component: BandViewComponent, resolve: {
-      band: BandResolver
+      band: BandResolver,
+      albums: AlbumResolver
     }
   },
   /*{

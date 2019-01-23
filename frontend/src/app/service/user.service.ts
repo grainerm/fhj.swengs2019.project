@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {of, Subject, throwError} from 'rxjs';
+import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../api/user';
-import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class UserService {
 
   accessTokenLocalStorageKey = 'access_token';
 
-  constructor(private http: HttpClient, private router: Router, private toastrService: ToastrService) {
+  constructor(private http: HttpClient, private router: Router) {
     this.jwtHelperService = new JwtHelperService();
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     if (token) {
@@ -89,7 +88,6 @@ export class UserService {
     const helper = new JwtHelperService();
     let token = localStorage.getItem(this.accessTokenLocalStorageKey);
     token = helper.decodeToken(token);
-    // console.log(token)
     if (token !== null && token['authorities'].includes('ROLE_ADMIN')) {
       return true;
     }

@@ -320,10 +320,39 @@ body{
 
 }
 
+/*.bandAlbum {
+  h1 {
+    padding-top: 20px;
+    color: lightgrey;
+    font-size: 100px;
+  }
+  h2 {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    color: lightgrey;
+  }
+  padding-left: 5%;
+  padding-right: 5%;
+}*/
+
 .infoLabel {
   color: lightgrey;
   font-style: italic;
   font-size: 170%;
+
+
+}
+
+.infoLabel-album {
+  color: lightgrey;
+  font-size: 200%;
   font-weight: bold;
+
+}
+
+.table-list {
+  color: lightgrey;
+  font-size: 130%;
 
 }

@@ -1,0 +1,85 @@
+<h2>Albums</h2>
+<div *ngFor="let album of albums;">
+  <div class="row">
+    <div class="col-sm-4 ">
+    <label class="infoLabel-album">{{album.name}}</label>
+  </div>
+    <div class="col-sm-4 ">
+      <label class="infoLabel-album"> ({{album.releaseYear}})</label>
+    </div>
+    <div class="col-sm-4 ">
+
+      <button (click)="deleteAlbum(album)" type="button" class="btn btn-bandView mt-2" *ngIf="bandOwner"><i
+        class="fa fa-trash"></i>
+      </button>
+    </div>
+  <!-- Song Info -->
+    <div class="col-sm-4 mb-1">
+      <label class="infoLabel">Song</label>
+    </div>
+    <div class="col-sm-4">
+      <label class="infoLabel">Length</label>
+    </div>
+  </div>
+  <div  *ngFor="let song of songs" >
+    <div *ngIf="song.album === album.albumID" class="row mb-1 form-group">
+      <div class="col-sm-4">
+        <input id="role" type="text" name="role" [value]="song.name" disabled
+               class="form-control infoInput"/>
+      </div>
+      <div class="col-sm-4">
+        <input id="name" type="text" name="name" [value]="song.length" disabled
+               class="form-control infoInput"/>
+      </div>
+      <div class="col-sm-1">
+        <button (click)="deleteSong(song)" type="button" class="btn btn-bandView" *ngIf="bandOwner"><i
+          class="fa fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- new Song -->
+  <div [formGroup]="songForm"  class="mb-5" *ngIf="bandOwner">
+   <div class="row">
+    <div class="col-sm-4">
+      <input id="newSong" type="text" name="name" formControlName="name" value=""
+             class="form-control infoInput"/>
+    </div>
+    <div class="col-sm-4">
+      <input id="newLength" type="number" name="length" formControlName="length" value=""
+             class="form-control infoInput"/>
+    </div>
+
+    <div class="col-sm-1 ">
+      <button type="button" (click)="saveSong(album.albumID)" [disabled]="songForm.invalid" class="btn btn-bandView"><i
+        class="fa fa-plus"></i></button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<form (submit)="saveAlbum(album)" [formGroup]="albumForm" *ngIf="bandOwner">
+  <div class="row">
+    <div class="col-sm-4">
+      <label class="infoLabel">Album Name</label>
+    <input id="newAlbum" type="text" name="album" formControlName="name" value=""
+           class="form-control infoInput"/>
+  </div>
+    <div class="col-sm-4">
+      <label class="infoLabel">Release Year</label>
+      <input id="newYear" type="number" name="year" formControlName="releaseYear" value=""
+             class="form-control infoInput"/>
+
+
+    </div>
+    <div class="col-sm-1 mt-5">
+    <button [disabled]="albumForm.invalid" type="submit" class="btn btn-bandView">Create</button>
+    </div>
+  </div>
+
+  <div *ngIf="albumForm.invalid && (albumForm.controls.releaseYear.dirty || albumForm.controls.releaseYear.touched)"
+       class="alert alert-danger">
+    Please enter a name and a year!
+  </div>
+</form>

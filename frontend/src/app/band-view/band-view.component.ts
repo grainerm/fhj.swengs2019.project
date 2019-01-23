@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {MemberService} from '../service/member.service';
 import {BsModalService} from 'ngx-bootstrap';
 import {ActivatedRoute, Route} from '@angular/router';
@@ -7,7 +7,6 @@ import {BandService} from '../service/band.service';
 import {EventService} from '../service/event.service';
 import {Member} from '../api/member';
 import {CountryService} from '../service/country.service';
-import {Country} from '../api/country';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
 import {ToastrService} from 'ngx-toastr';
@@ -50,7 +49,7 @@ export class BandViewComponent implements OnInit {
       'albums': new FormControl(),
       'member': new FormControl(),
       'bandPicture': new FormControl('', [Validators.pattern(this.regexp)]),
-      'description': new FormControl()
+      'description': new FormControl('', [Validators.maxLength(255)])
     });
     this.memberForm = new FormGroup({
       'memberID': new FormControl(0),
@@ -76,7 +75,6 @@ export class BandViewComponent implements OnInit {
         if (this.bandForm.value.id === res.band_id) {
           this.bandOwner = true;
         }
-        console.log(this.bandOwner);
       });
     }
 
@@ -88,7 +86,6 @@ export class BandViewComponent implements OnInit {
     const band = data.band;
     if (band) {
       this.bandForm.setValue(band);
-      console.log(this.bandForm.value);
     }
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -100,7 +97,6 @@ export class BandViewComponent implements OnInit {
     this.eventService.getAllByBand(id)
       .subscribe((response: any) => {
         this.events = response._embedded.events;
-        console.log(this.events);
       });
 
     this.pictureUrl = '';
@@ -154,7 +150,6 @@ export class BandViewComponent implements OnInit {
   }
 
   deleteEvent(event: Event) {
-    console.log(event);
     this.eventService.delete(event)
       .subscribe((response) => {
         this.ngOnInit();
@@ -163,7 +158,6 @@ export class BandViewComponent implements OnInit {
 
   saveBand() {
     const band = this.bandForm.value;
-    console.log(band);
     if (band.bandPicture.match(this.regexp)) {
       this.pictureUrl = band.bandPicture;
       this.hasPicture = true;

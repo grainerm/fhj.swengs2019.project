@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {BandService} from '../service/band.service';
 import {BanduserService} from '../service/banduser.service';
 import {User} from '../api/user';
 import {ToastrService} from 'ngx-toastr';
@@ -17,7 +16,6 @@ export class BanduserFormComponent implements OnInit {
   bandForm;
   shouldNavigateToList: boolean;
   userForm;
-  bandOptions;
   newBand: boolean;
   isEditUser;
 
@@ -42,7 +40,6 @@ export class BanduserFormComponent implements OnInit {
     this.isEditUser = false;
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.getById(parseInt(id, 10)).subscribe((response: User) => {
-      console.log(response);
       this.userForm.setValue(response);
       if (response.id) {
         this.isEditUser = true;
@@ -67,7 +64,6 @@ export class BanduserFormComponent implements OnInit {
 
   saveUser() {
     const user = this.userForm.value;
-    console.log(user);
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
@@ -83,7 +79,6 @@ export class BanduserFormComponent implements OnInit {
       this.userService.create(user)
         .subscribe((response: any) => {
           this.toastr.success('User created successfully', 'YES');
-          // console.log(this.userForm);
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {

@@ -3,6 +3,7 @@ package at.fh.ima.swengs.bandPortal.facade;
 import at.fh.ima.swengs.bandPortal.dto.AlbumDTO;
 import at.fh.ima.swengs.bandPortal.model.Album;
 import at.fh.ima.swengs.bandPortal.service.AlbumService;
+import at.fh.ima.swengs.bandPortal.service.BandService;
 import at.fh.ima.swengs.bandPortal.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,11 @@ public class AlbumFacade {
     @Autowired
     private SongService songService;
 
+    @Autowired
+    BandService bandService;
+
     void mapDtoToEntity(AlbumDTO dto, Album entity) {
-        entity.setBand(dto.getBand());
+        entity.setBand(bandService.findById(dto.getBand()).get());
         entity.setName(dto.getName());
         entity.setReleaseYear(dto.getReleaseYear());
         entity.setSongs(songService.getSongs(dto.getSongs()));
@@ -29,7 +33,7 @@ public class AlbumFacade {
 
     private void mapEntityToDto(Album entity, AlbumDTO dto) {
         dto.setAlbumID(entity.getAlbumID());
-        dto.setBand(entity.getBand());
+        dto.setBand(entity.getBand().getId());
         dto.setName(entity.getName());
         dto.setReleaseYear(entity.getReleaseYear());
         dto.setSongs(entity.getSongs().stream().map((s) -> s.getId()).collect(Collectors.toList()));

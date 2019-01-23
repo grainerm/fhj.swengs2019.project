@@ -25,7 +25,7 @@ public class Album {
     @Column(nullable = true)
     private int releaseYear;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Song> songs;
 
     @Version
