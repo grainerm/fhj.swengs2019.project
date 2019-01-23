@@ -29,9 +29,11 @@ public class UserFacade {
 
     void mapDtoToEntity(UserDTO dto, User entity) {
         entity.setUsername(dto.getUsername());
-        entity.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
+        if(!dto.getPassword().equals(entity.getPassword()))
+            entity.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
         entity.setAdmin(dto.isAdmin());
-        entity.setBand(bandRepository.findById(dto.getBand_id()).get());
+        if(dto.getBand_id() != null)
+            entity.setBand(bandRepository.findById(dto.getBand_id()).get());
     }
 
     void mapEntityToDto(User entity, UserDTO dto) {
@@ -40,6 +42,7 @@ public class UserFacade {
         dto.setPassword(entity.getPassword());
         if(entity.getBand() != null)
             dto.setBand_id(entity.getBand().getId());
+        dto.setAdmin(entity.isAdmin());
     }
 
     public UserDTO update(Long id, UserDTO dto) {
