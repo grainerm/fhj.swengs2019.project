@@ -72,12 +72,7 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/users/' + user.id, user).pipe(
-      catchError((err: HttpErrorResponse) => {
-        this.toastrService.error('You can not update when offline');
-
-        return throwError(err);
-      }));
+    return this.http.put('/api/dto/users/' + user.id, user);
   }
 
   getById(id: number) {
