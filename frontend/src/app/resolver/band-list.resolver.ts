@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {ActorService} from '../service/actor.service';
 import {BandService} from '../service/band.service';
 
 @Injectable({

@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import {of, Subject, throwError} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../api/user';
-import {Actor} from '../api/actor';
 import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
