@@ -28,6 +28,8 @@ export class BandalbumComponent implements OnInit {
 
   ngOnInit() {
 
+    // Determining the band owner
+    // The same procedure is used in band-view.component
     this.bandOwner = false;
     if (this.userService.isLoggedIn && this.userService.getRole()) {
       this.bandOwner = true;
@@ -38,6 +40,7 @@ export class BandalbumComponent implements OnInit {
         }
       });
     }
+    // Forms
     this.albumForm = new FormGroup({
       'albumID': new FormControl(),
       'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -45,13 +48,12 @@ export class BandalbumComponent implements OnInit {
       'songs': new FormControl(),
       'band':  new FormControl()
     });
-
-
     this.songForm = new FormGroup({
       'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'album': new FormControl(),
       'length': new FormControl('', [Validators.required])
     });
+
     const data = this.route.snapshot.data;
     this.albums = data.albums._embedded.albums;
 
@@ -60,6 +62,7 @@ export class BandalbumComponent implements OnInit {
     });
   }
 
+  // Album section
   saveAlbum() {
     const album = this.albumForm.value;
     album.band = this.route.snapshot.paramMap.get('id');
@@ -77,6 +80,7 @@ export class BandalbumComponent implements OnInit {
       });
   }
 
+  // Song section
   saveSong(albumID) {
     const song = this.songForm.value;
     song.album = albumID;
