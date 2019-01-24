@@ -37,6 +37,7 @@ export class BandViewComponent implements OnInit {
 
   ngOnInit() {
 
+    // The regular expression is used to only allow URLs for the image that end with one of the types
     this.regexp = /\.(jpeg|jpg|gif|png)$/;
 
     this.bandForm = new FormGroup({
@@ -67,6 +68,7 @@ export class BandViewComponent implements OnInit {
       'bands': new FormControl()
     });
 
+    // If the user is admin or the band_id of the user = the id of the viewed band, he is considered the band owner
     this.bandOwner = false;
     if (this.userService.isLoggedIn && this.userService.getRole()) {
       this.bandOwner = true;
@@ -78,28 +80,32 @@ export class BandViewComponent implements OnInit {
       });
     }
 
-    this.countryService.getAll().subscribe((response: any) => {
-      this.countries = response;
-    });
-
     const data = this.route.snapshot.data;
+    this.countries = data.countries;
+    /* this.countryService.getAll().subscribe((response: any) => {
+      this.countries = response;
+    });*/
+
     const band = data.band;
     if (band) {
       this.bandForm.setValue(band);
     }
 
+    // Getting all members of the viewed band
     const id = this.route.snapshot.paramMap.get('id');
     this.memberService.getAll(id)
       .subscribe((response: any) => {
         this.members = response._embedded.members;
       });
 
+    // Getting all events of the viewed band
     this.eventService.getAllByBand(id)
       .subscribe((response: any) => {
         this.events = response._embedded.events;
       });
 
-    this.pictureUrl = '';
+    // If the band has no picture, the default image is used, otherwise the image of the bandForm is used
+    this.pictureUrl = 'https://stmed.net/sites/default/files/band-%28music%29-wallpapers-30255-4113516.jpg';
     this.hasPicture = false;
     if (this.bandForm.value.bandPicture) {
       this.hasPicture = true;
@@ -107,13 +113,12 @@ export class BandViewComponent implements OnInit {
     }
   }
 
-  // members
+  // Member section
   deleteMember(member: Member) {
     this.memberService.delete(member)
       .subscribe((response) => {
         this.ngOnInit();
       });
-
   }
 
   addMember() {
@@ -134,7 +139,7 @@ export class BandViewComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  // events
+  // Event section
   addEvent() {
     const idArray: Array<string> = [this.route.snapshot.paramMap.get('id')];
     this.eventForm.controls.bands.setValue(idArray);
@@ -156,6 +161,7 @@ export class BandViewComponent implements OnInit {
       });
   }
 
+  // Band section
   saveBand() {
     const band = this.bandForm.value;
     if (band.bandPicture.match(this.regexp)) {

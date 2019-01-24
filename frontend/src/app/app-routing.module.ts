@@ -39,7 +39,8 @@ const routes: Routes = [
   {
     path: 'band-view/:id', component: BandViewComponent, resolve: {
       band: BandResolver,
-      albums: AlbumResolver
+      albums: AlbumResolver,
+      countries: CountriesResolver
     }
   },
   /*{

@@ -58,7 +58,7 @@ export class BanduserFormComponent implements OnInit {
           name: response.name
         });
        this.userForm.controls.band_id.setValue(response.id);
-
+       this.toastr.success('Band created', 'YES');
       });
   }
 
